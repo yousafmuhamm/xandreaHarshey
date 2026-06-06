@@ -43,20 +43,31 @@ export default function AnimatedImage({
     if (!wrap || !inner || prefersReducedMotion()) return;
 
     const ctx = gsap.context(() => {
+      // Linked fromTo tweens own the hidden "from" state (CSS keeps the image
+      // fully visible), so a GSAP/no-JS failure or a StrictMode re-mount can
+      // never leave images clipped out.
       // Curtain wipe
-      gsap.to(wrap, {
-        clipPath: "inset(0 0 0% 0)",
-        duration: DURATION.slow,
-        ease: EASE.expo,
-        scrollTrigger: { trigger: wrap, start: TRIGGER_START },
-      });
+      gsap.fromTo(
+        wrap,
+        { clipPath: "inset(0 0 100% 0)" },
+        {
+          clipPath: "inset(0 0 0% 0)",
+          duration: DURATION.slow,
+          ease: EASE.expo,
+          scrollTrigger: { trigger: wrap, start: TRIGGER_START },
+        }
+      );
       // Inner scale settle
-      gsap.to(inner, {
-        scale: 1,
-        duration: DURATION.hero,
-        ease: EASE.out,
-        scrollTrigger: { trigger: wrap, start: TRIGGER_START },
-      });
+      gsap.fromTo(
+        inner,
+        { scale: 1.18 },
+        {
+          scale: 1,
+          duration: DURATION.hero,
+          ease: EASE.out,
+          scrollTrigger: { trigger: wrap, start: TRIGGER_START },
+        }
+      );
       // Parallax drift
       if (parallax) {
         gsap.fromTo(

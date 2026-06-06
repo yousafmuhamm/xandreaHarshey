@@ -61,10 +61,11 @@ export const hero = {
     { label: "View Our Portfolio", href: "/projects", primary: false },
     { label: "Partner With Us", href: "/contact?type=partnership", primary: false },
   ],
-  // Hero media — PLACEHOLDERS. Swap `video` for branded b-roll in /public/video.
-  poster: ux("1486406146926-c627a92ad1ab", 2000),
-  video:
-    "https://assets.mixkit.co/videos/preview/mixkit-construction-of-a-building-in-time-lapse-42622-large.mp4",
+  // Hero media — self-hosted in /public/video for reliability (no hotlink/CORS
+  // dependency). Swap for branded b-roll when available; keep poster matching
+  // the first video frame so there's no jump if the video is still buffering.
+  poster: "/video/hero-poster.jpg",
+  video: "/video/hero.mp4",
 };
 
 export const overview = {

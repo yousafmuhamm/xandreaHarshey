@@ -20,16 +20,17 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const heroAnchor = document.getElementById("hero-anchor");
-
+    // Re-query each run: on client navigation the hero anchor only exists
+    // on the home page, and the new DOM mounts after this effect's deps change.
     const update = () => {
       setScrolled(window.scrollY > 40);
-      if (heroAnchor) {
-        const rect = heroAnchor.getBoundingClientRect();
-        setOverHero(rect.bottom > 90);
-      } else {
-        setOverHero(false);
-      }
+      const heroAnchor = document.getElementById("hero-anchor");
+      // "Over the hero" = the dark hero still covers the header strip. Tie the
+      // light treatment to this alone so the header flips to solid/ink the
+      // instant a light section reaches the top — never white-on-cream.
+      setOverHero(
+        heroAnchor ? heroAnchor.getBoundingClientRect().bottom > 80 : false
+      );
     };
 
     update();
@@ -41,16 +42,17 @@ export default function Header() {
     };
   }, [pathname]);
 
-  // Light treatment only when transparent over the hero and not scrolled.
-  const light = overHero && !scrolled;
+  // White logo + nav only while the dark hero is behind the header; otherwise
+  // solid cream background with ink text. `scrolled` just trims the height.
+  const light = overHero;
 
   return (
     <>
       <header
         className={`fixed inset-x-0 top-0 z-[150] transition-all duration-500 ease-luxe ${
-          scrolled || !overHero
-            ? "border-b border-ink/10 bg-cream/90 backdrop-blur-md"
-            : "bg-transparent"
+          overHero
+            ? "bg-transparent"
+            : "border-b border-ink/10 bg-cream/90 shadow-[0_1px_20px_rgba(17,17,17,0.06)] backdrop-blur-md"
         } ${scrolled ? "py-3" : "py-5"}`}
       >
         <div className="container-site flex items-center justify-between">

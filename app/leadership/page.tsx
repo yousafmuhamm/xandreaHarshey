@@ -43,6 +43,7 @@ export default function LeadershipPage() {
         eyebrow="Leadership Team"
         titleLines={["The people behind", "the enterprise."]}
         intro="Building organizations through strong leadership, operational discipline, strategic partnerships, and long-term thinking."
+        image="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=80"
       />
 
       {/* Full verbatim bios as crawlable page content */}

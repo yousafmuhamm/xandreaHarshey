@@ -14,6 +14,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { prefersReducedMotion } from "@/lib/useReducedMotion";
@@ -41,6 +42,7 @@ export default function SmoothScrollProvider({
 }) {
   const lenisRef = useRef<Lenis | null>(null);
   const [ready, setReady] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     if (prefersReducedMotion()) {
@@ -50,10 +52,10 @@ export default function SmoothScrollProvider({
     }
 
     const lenis = new Lenis({
-      duration: 1.15,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      lerp: 0.1,
       smoothWheel: true,
       wheelMultiplier: 1,
+      syncTouch: false,
       touchMultiplier: 1.6,
     });
     lenisRef.current = lenis;
@@ -74,12 +76,21 @@ export default function SmoothScrollProvider({
     };
   }, []);
 
-  // Refresh ScrollTrigger once everything (fonts, images) has settled.
+  // Keep ScrollTrigger positions correct: refresh after layout settles, once
+  // web fonts load (they change heading heights → trigger positions), and on
+  // every route change. Also reset to the top on navigation so each new page
+  // starts at its hero. (ScrollTrigger auto-refreshes on resize itself.)
   useEffect(() => {
     if (!ready) return;
-    const id = window.setTimeout(() => ScrollTrigger.refresh(), 300);
+    lenisRef.current?.scrollTo(0, { immediate: true });
+
+    const refresh = () => ScrollTrigger.refresh();
+    const id = window.setTimeout(refresh, 350);
+    if (typeof document !== "undefined" && "fonts" in document) {
+      document.fonts.ready.then(refresh).catch(() => {});
+    }
     return () => window.clearTimeout(id);
-  }, [ready]);
+  }, [ready, pathname]);
 
   const value: LenisCtx = {
     lenis: lenisRef.current,

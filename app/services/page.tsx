@@ -40,6 +40,7 @@ export default function ServicesPage() {
         eyebrow="Services & Capabilities"
         titleLines={["Capabilities across", "every division."]}
         intro="An interactive service matrix displaying all company capabilities across divisions — hover or tap any area to explore."
+        image="https://images.unsplash.com/photo-1486304873000-235643847519?auto=format&fit=crop&w=2000&q=80"
       />
 
       <ServiceMatrix withHeading={false} />

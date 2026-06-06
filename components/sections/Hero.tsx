@@ -44,16 +44,14 @@ export default function Hero() {
           },
         }
       );
-      // Subhead + CTAs stagger in after the headline.
+      // Subhead + CTAs stagger in after the headline. fromTo is StrictMode-safe
+      // (single linked tween that ctx.revert() can fully undo on re-mount).
       if (bottomRef.current) {
-        gsap.from(bottomRef.current.children, {
-          opacity: 0,
-          y: 30,
-          duration: 1,
-          ease: "power3.out",
-          stagger: 0.12,
-          delay: 0.9,
-        });
+        gsap.fromTo(
+          bottomRef.current.children,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.9, ease: "power3.out", stagger: 0.1, delay: 0.7 }
+        );
       }
     }, section);
 
@@ -64,7 +62,7 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="hero-anchor"
-      className="relative flex h-[100svh] min-h-[640px] items-end overflow-hidden bg-navy-deep"
+      className="relative flex min-h-[100svh] items-end overflow-hidden bg-navy-deep"
     >
       {/* Media layer (poster always present; video on top, hides on error) */}
       <div ref={mediaRef} className="absolute inset-0 h-full w-full">
@@ -83,7 +81,9 @@ export default function Hero() {
             muted
             loop
             playsInline
+            preload="auto"
             poster={hero.poster}
+            aria-hidden="true"
             onError={() => setVideoFailed(true)}
           >
             <source src={hero.video} type="video/mp4" />
@@ -96,7 +96,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-ink/20" />
 
       {/* Content */}
-      <div className="container-site relative z-10 pb-24 pt-32">
+      <div className="container-site relative z-10 pb-20 pt-32 md:pb-24 md:pt-36">
         <span className="eyebrow mb-6 block text-gold-light">{hero.eyebrow}</span>
 
         <RevealText
@@ -120,7 +120,6 @@ export default function Hero() {
                 key={cta.label}
                 href={cta.href}
                 variant={cta.primary ? "gold" : "light"}
-                cursorLabel={cta.primary ? "Explore" : undefined}
               >
                 {cta.label}
               </Button>

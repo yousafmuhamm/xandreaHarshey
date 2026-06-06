@@ -9,6 +9,11 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
+  // Dev-only introspection hook (handy for debugging reveal/scroll issues).
+  if (process.env.NODE_ENV !== "production") {
+    (window as unknown as Record<string, unknown>).gsap = gsap;
+    (window as unknown as Record<string, unknown>).ScrollTrigger = ScrollTrigger;
+  }
 }
 
 export { gsap, ScrollTrigger };

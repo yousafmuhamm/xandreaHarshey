@@ -16,20 +16,20 @@ export const EASE = {
 } as const;
 
 export const DURATION = {
-  fast: 0.6,
-  base: 0.9,
-  slow: 1.2,
-  hero: 1.4,
+  fast: 0.5,
+  base: 0.75,
+  slow: 0.95,
+  hero: 1.0,
 } as const;
 
 export const STAGGER = {
-  tight: 0.06,
-  base: 0.09,
-  loose: 0.12,
+  tight: 0.05,
+  base: 0.08,
+  loose: 0.1,
 } as const;
 
 /** Standard ScrollTrigger start for "element enters viewport" reveals. */
-export const TRIGGER_START = "top 82%";
+export const TRIGGER_START = "top 85%";
 
 /** Framer Motion variants reused across components. */
 export const fadeUp = {

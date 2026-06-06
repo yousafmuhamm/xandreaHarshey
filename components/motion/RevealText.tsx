@@ -35,23 +35,29 @@ export default function RevealText({
     if (!el || prefersReducedMotion()) return;
 
     const spans = el.querySelectorAll<HTMLElement>(".reveal-line > span");
+    if (!spans.length) return;
 
     const ctx = gsap.context(() => {
-      const tween = {
+      // A single fromTo owns the hidden "from" (yPercent:110) and the reveal
+      // as ONE linked tween, so gsap.context().revert() cleans it up fully
+      // (StrictMode-safe — no orphaned gsap.set lingering after a re-mount).
+      // The CSS default is visible; driving the start from a CSS
+      // `translateY(110%)` would be read by GSAP as pixels, so a `yPercent:0`
+      // tween resolves to 0→0 (no movement = permanently stuck heading).
+      const to = {
         yPercent: 0,
         duration: DURATION.hero,
         ease: EASE.expo,
         stagger: STAGGER.base,
         delay,
       };
-      if (immediate) {
-        gsap.to(spans, tween);
-      } else {
-        gsap.to(spans, {
-          ...tween,
-          scrollTrigger: { trigger: el, start: TRIGGER_START },
-        });
-      }
+      gsap.fromTo(
+        spans,
+        { yPercent: 110 },
+        immediate
+          ? to
+          : { ...to, scrollTrigger: { trigger: el, start: TRIGGER_START } }
+      );
     }, el);
 
     return () => ctx.revert();

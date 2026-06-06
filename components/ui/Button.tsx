@@ -19,20 +19,14 @@ export default function Button({
   children,
   variant = "ink",
   className = "",
-  cursorLabel,
 }: {
   href: string;
   children: ReactNode;
   variant?: Variant;
   className?: string;
-  cursorLabel?: string;
 }) {
   return (
-    <Link
-      href={href}
-      className={`${variantClass[variant]} ${className}`}
-      data-cursor={cursorLabel}
-    >
+    <Link href={href} className={`${variantClass[variant]} ${className}`}>
       <span>{children}</span>
     </Link>
   );

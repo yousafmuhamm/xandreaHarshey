@@ -31,6 +31,7 @@ export default function AboutPage() {
         eyebrow={about.eyebrow}
         titleLines={["A diversified Canadian", "business group built", "on trust."]}
         intro={about.intro}
+        image={about.image}
       />
 
       {/* Intro continuation */}

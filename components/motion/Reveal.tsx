@@ -38,16 +38,22 @@ export default function Reveal({
 
     const ctx = gsap.context(() => {
       const targets = stagger ? (el.children as unknown as Element[]) : el;
-      gsap.set(targets, { opacity: 0, y });
-      gsap.to(targets, {
-        opacity: 1,
-        y: 0,
-        duration: DURATION.base,
-        ease: EASE.out,
-        delay,
-        stagger: stagger ? STAGGER.base : 0,
-        scrollTrigger: { trigger: el, start: TRIGGER_START },
-      });
+      // Single linked fromTo (see RevealText): the hidden state is owned by
+      // the tween and fully reverted on cleanup, so content is never left
+      // stuck-hidden by a re-mount, a GSAP failure, or no JS.
+      gsap.fromTo(
+        targets,
+        { opacity: 0, y },
+        {
+          opacity: 1,
+          y: 0,
+          duration: DURATION.base,
+          ease: EASE.out,
+          delay,
+          stagger: stagger ? STAGGER.base : 0,
+          scrollTrigger: { trigger: el, start: TRIGGER_START },
+        }
+      );
     }, el);
 
     return () => ctx.revert();

@@ -56,14 +56,6 @@ body {
     font-weight: 400;
   }
 
-  /* Hide default cursor only when the custom cursor is active (desktop, pointer:fine) */
-  @media (hover: hover) and (pointer: fine) {
-    body.custom-cursor-active,
-    body.custom-cursor-active a,
-    body.custom-cursor-active button {
-      cursor: none;
-    }
-  }
 }
 
 @layer components {
@@ -144,74 +136,33 @@ body {
 }
 
 /* ============================================================
-   Animation primitives (JS toggles these via GSAP / classes)
+   Animation primitives
+
+   IMPORTANT (resilience): elements are VISIBLE by default. The hidden
+   "from" state for each reveal is applied by GSAP in JS (gsap.set) only
+   after GSAP is confirmed loaded and motion is allowed. So with no JS, a
+   GSAP load failure, or reduced-motion, content stays fully visible — a
+   broken script can never blank the page.
    ============================================================ */
 
-/* Masked line reveal — used for headline word/line entrances */
+/* Masked line reveal — used for headline word/line entrances.
+   Visible by default; RevealText sets yPercent:110 then animates to 0. */
 .reveal-line {
   display: block;
   overflow: hidden;
 }
 .reveal-line > span {
   display: block;
-  transform: translateY(110%);
   will-change: transform;
 }
 
-/* Clip-path curtain wipe for images */
-.img-reveal {
-  clip-path: inset(0 0 100% 0);
-}
+/* Clip-path curtain wipe for images — AnimatedImage sets the clipped /
+   scaled "from" state in JS, so the image is fully visible without JS. */
 .img-reveal img,
 .img-reveal video {
-  transform: scale(1.18);
   will-change: transform, clip-path;
 }
 
-/* Fade-rise default state for scroll reveals (set before JS runs) */
-.fade-rise {
-  opacity: 0;
-  transform: translateY(40px);
-  will-change: transform, opacity;
-}
-
-/* Custom cursor */
-.cursor-dot {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  pointer-events: none;
-  mix-blend-mode: difference;
-  border-radius: 9999px;
-  background: #ffffff;
-  width: 10px;
-  height: 10px;
-  transform: translate(-50%, -50%);
-  transition: width 0.3s ease, height 0.3s ease, background 0.3s ease;
-}
-.cursor-dot.is-hovering {
-  width: 64px;
-  height: 64px;
-  background: rgba(255, 255, 255, 0.9);
-}
-.cursor-label {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  pointer-events: none;
-  color: var(--ink);
-  font-size: 0.62rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
-.cursor-label.is-visible {
-  opacity: 1;
-}
 
 /* Scroll indicator */
 .scroll-indicator-line {
@@ -250,16 +201,27 @@ body {
   animation-play-state: paused;
 }
 
-/* Thin scrollbar that fits the aesthetic */
+/* Subtle scrollbar: a thin, rounded, inset translucent thumb on a transparent
+   track. Reads as intentional over both cream and navy sections — never the
+   hard navy bar/rail that looked like a stray element at the right edge. */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(21, 36, 59, 0.35) transparent;
+}
 ::-webkit-scrollbar {
-  width: 9px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--cream);
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--navy);
-  border-radius: 0;
+  background-color: rgba(21, 36, 59, 0.32);
+  border-radius: 9999px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(21, 36, 59, 0.55);
 }
 
 ::selection {
@@ -288,13 +250,5 @@ body {
   .img-reveal img,
   .img-reveal video {
     transform: none !important;
-  }
-  .fade-rise {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-  .cursor-dot,
-  .cursor-label {
-    display: none !important;
   }
 }
