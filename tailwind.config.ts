@@ -23,11 +23,11 @@ const config: Config = {
         paper: "#FFFFFF",
         navy: {
           DEFAULT: "#15243B",
-          deep: "#0E1828",
+          deep: "#0E1A2B",
         },
         gold: {
           DEFAULT: "#A9885F",
-          light: "#C2A57E",
+          light: "#C2A878",
         },
       },
       fontFamily: {

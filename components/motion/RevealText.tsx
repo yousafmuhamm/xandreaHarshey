@@ -9,7 +9,7 @@
 import { useRef, type ElementType } from "react";
 import { useIsomorphicLayoutEffect } from "@/lib/useIsomorphicLayoutEffect";
 import { gsap } from "@/lib/gsap";
-import { DURATION, EASE, STAGGER, TRIGGER_START } from "@/lib/animation";
+import { DURATION, EASE, STAGGER, TRIGGER_START, TRIGGER_ONCE } from "@/lib/animation";
 import { prefersReducedMotion } from "@/lib/useReducedMotion";
 
 type Props = {
@@ -56,7 +56,7 @@ export default function RevealText({
         { yPercent: 110 },
         immediate
           ? to
-          : { ...to, scrollTrigger: { trigger: el, start: TRIGGER_START } }
+          : { ...to, scrollTrigger: { trigger: el, start: TRIGGER_START, once: TRIGGER_ONCE } }
       );
     }, el);
 

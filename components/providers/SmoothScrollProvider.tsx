@@ -1,33 +1,39 @@
 "use client";
 
 /**
- * Lenis smooth inertia scroll synced to GSAP ScrollTrigger — the backbone
- * of the Carolwood feel. Exposes the Lenis instance via context so the
- * mobile menu / modals can lock scrolling and nav links can do smooth
- * anchor jumps. Fully disabled under prefers-reduced-motion.
+ * Native-scroll provider. Lenis smooth/inertia scrolling has been removed so
+ * the page tracks the wheel/trackpad 1:1 (no perceived lag). This provider
+ * now only:
+ *   - keeps GSAP ScrollTrigger positions correct (refresh after fonts load,
+ *     on route change, and on resize),
+ *   - resets to the top of the page on navigation,
+ *   - exposes a tiny `useSmoothScroll()` API so modals / the menu can lock the
+ *     page scroll and nav links can do native in-page jumps.
+ *
+ * The scroll-triggered reveal animations (GSAP ScrollTrigger) are untouched —
+ * they read the normal window scroll and still fade/rise content into view.
  */
 import {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useRef,
-  useState,
   type ReactNode,
 } from "react";
 import { usePathname } from "next/navigation";
-import Lenis from "lenis";
-import { gsap, ScrollTrigger } from "@/lib/gsap";
-import { prefersReducedMotion } from "@/lib/useReducedMotion";
+import { ScrollTrigger } from "@/lib/gsap";
 
-type LenisCtx = {
-  lenis: Lenis | null;
+type ScrollCtx = {
+  /** Lock the page scroll (used by full-screen menu / modals). */
   stop: () => void;
+  /** Release the page scroll lock. */
   start: () => void;
+  /** Native in-page jump to an element/selector or absolute Y. */
   scrollTo: (target: string | number | HTMLElement, offset?: number) => void;
 };
 
-const SmoothScrollContext = createContext<LenisCtx>({
-  lenis: null,
+const SmoothScrollContext = createContext<ScrollCtx>({
   stop: () => {},
   start: () => {},
   scrollTo: () => {},
@@ -40,76 +46,60 @@ export default function SmoothScrollProvider({
 }: {
   children: ReactNode;
 }) {
-  const lenisRef = useRef<Lenis | null>(null);
-  const [ready, setReady] = useState(false);
   const pathname = usePathname();
+  // Track how many things have requested a scroll lock so nested locks behave.
+  const lockCount = useRef(0);
 
+  // Keep ScrollTrigger positions correct: jump to top on navigation, refresh
+  // after layout settles, once web fonts load (they change heading heights →
+  // trigger positions), and on resize. ScrollTrigger reads native window
+  // scroll directly, so no scrollerProxy/Lenis hookup is needed.
   useEffect(() => {
-    if (prefersReducedMotion()) {
-      // Static experience: let ScrollTrigger use native scroll, no Lenis.
-      setReady(true);
-      return;
-    }
-
-    const lenis = new Lenis({
-      lerp: 0.1,
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      syncTouch: false,
-      touchMultiplier: 1.6,
-    });
-    lenisRef.current = lenis;
-
-    // Drive ScrollTrigger from Lenis, and run Lenis on GSAP's ticker.
-    lenis.on("scroll", ScrollTrigger.update);
-
-    const onTick = (time: number) => lenis.raf(time * 1000);
-    gsap.ticker.add(onTick);
-    gsap.ticker.lagSmoothing(0);
-
-    setReady(true);
-
-    return () => {
-      gsap.ticker.remove(onTick);
-      lenis.destroy();
-      lenisRef.current = null;
-    };
-  }, []);
-
-  // Keep ScrollTrigger positions correct: refresh after layout settles, once
-  // web fonts load (they change heading heights → trigger positions), and on
-  // every route change. Also reset to the top on navigation so each new page
-  // starts at its hero. (ScrollTrigger auto-refreshes on resize itself.)
-  useEffect(() => {
-    if (!ready) return;
-    lenisRef.current?.scrollTo(0, { immediate: true });
+    window.scrollTo(0, 0);
 
     const refresh = () => ScrollTrigger.refresh();
-    const id = window.setTimeout(refresh, 350);
+    const id = window.setTimeout(refresh, 300);
+
     if (typeof document !== "undefined" && "fonts" in document) {
       document.fonts.ready.then(refresh).catch(() => {});
     }
-    return () => window.clearTimeout(id);
-  }, [ready, pathname]);
 
-  const value: LenisCtx = {
-    lenis: lenisRef.current,
-    stop: () => lenisRef.current?.stop(),
-    start: () => lenisRef.current?.start(),
-    scrollTo: (target, offset = 0) => {
-      const lenis = lenisRef.current;
-      if (lenis) {
-        lenis.scrollTo(target, { offset, duration: 1.4 });
-      } else if (typeof target !== "number") {
-        const el =
-          typeof target === "string" ? document.querySelector(target) : target;
-        el?.scrollIntoView({ behavior: "auto", block: "start" });
+    window.addEventListener("resize", refresh);
+    return () => {
+      window.clearTimeout(id);
+      window.removeEventListener("resize", refresh);
+    };
+  }, [pathname]);
+
+  const stop = useCallback(() => {
+    lockCount.current += 1;
+    document.body.style.overflow = "hidden";
+  }, []);
+
+  const start = useCallback(() => {
+    lockCount.current = Math.max(0, lockCount.current - 1);
+    if (lockCount.current === 0) document.body.style.overflow = "";
+  }, []);
+
+  const scrollTo = useCallback(
+    (target: string | number | HTMLElement, offset = 0) => {
+      if (typeof target === "number") {
+        window.scrollTo({ top: target + offset, behavior: "auto" });
+        return;
+      }
+      const el =
+        typeof target === "string" ? document.querySelector(target) : target;
+      if (el) {
+        const top =
+          el.getBoundingClientRect().top + window.scrollY + offset;
+        window.scrollTo({ top, behavior: "auto" });
       }
     },
-  };
+    []
+  );
 
   return (
-    <SmoothScrollContext.Provider value={value}>
+    <SmoothScrollContext.Provider value={{ stop, start, scrollTo }}>
       {children}
     </SmoothScrollContext.Provider>
   );

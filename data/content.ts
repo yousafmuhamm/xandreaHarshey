@@ -35,6 +35,7 @@ export const site = {
   hqLine: "Calgary, Alberta, Canada",
 };
 
+/** Full navigation — lives in the slide-out overlay menu. */
 export const nav = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
@@ -47,25 +48,59 @@ export const nav = [
   { label: "Contact", href: "/contact" },
 ];
 
+/** Minimal set of links kept visible in the top bar (logo links Home). */
+export const primaryNav = [
+  { label: "Companies", href: "/companies" },
+  { label: "Projects", href: "/projects" },
+  { label: "Contact", href: "/contact" },
+];
+
+/** Social handles shown in the overlay menu footer (placeholders). */
+export const social = [
+  { label: "LinkedIn", href: "https://www.linkedin.com" },
+  { label: "Instagram", href: "https://www.instagram.com" },
+  { label: "Facebook", href: "https://www.facebook.com" },
+];
+
 export const hero = {
-  eyebrow: "A Diversified Canadian Enterprise",
+  // Warm, human welcome line over the big serif headline.
+  eyebrow: "Welcome to Xandrea Harshey",
   // Headline split into lines for the masked line-by-line reveal.
   headlineLines: ["Building Excellence.", "Delivering Results."],
-  body:
-    "Xandrea Harshey Services Inc. is a Canadian-based diversified business group delivering innovative solutions across construction, facility services, hospitality, international trade, entertainment, and strategic business ventures.",
-  body2:
-    "Through strong leadership, operational excellence, and entrepreneurial vision, we build businesses, create opportunities, and generate lasting value.",
-  ctas: [
-    { label: "Explore Our Companies", href: "/companies", primary: true },
-    { label: "Request a Consultation", href: "/contact", primary: false },
-    { label: "View Our Portfolio", href: "/projects", primary: false },
-    { label: "Partner With Us", href: "/contact?type=partnership", primary: false },
+  // One inviting sentence — warm, not jargon.
+  subtext:
+    "A Canadian company building beautiful spaces and lasting relationships — with craftsmanship, care, and a genuine commitment to the people we serve.",
+  // One clear primary button + a couple of quiet text links.
+  cta: { label: "Discover Our Work", href: "/companies" },
+  links: [
+    { label: "Featured Projects", href: "/projects" },
+    { label: "Get in Touch", href: "/contact" },
   ],
   // Hero media — self-hosted in /public/video for reliability (no hotlink/CORS
   // dependency). Swap for branded b-roll when available; keep poster matching
   // the first video frame so there's no jump if the video is still buffering.
   poster: "/video/hero-poster.jpg",
   video: "/video/hero.mp4",
+};
+
+/**
+ * Full-bleed "welcome" image moment placed immediately after the hero video —
+ * a breathtaking home/property still with a warm welcoming line overlaid.
+ */
+export const welcome = {
+  eyebrow: "Who We Are",
+  statement: "A Canadian enterprise built on people, craftsmanship, and trust.",
+  image: ux("1568605114967-8130f3a36994", 2400),
+  imageAlt:
+    "Warm, sunlit modern home exterior at golden hour — the spaces Xandrea Harshey builds",
+};
+
+/** Large centered positioning statement on the homepage (warm editorial intro). */
+export const statement = {
+  eyebrow: "Our Story",
+  lead: "We build homes, spaces, and businesses that people are proud to be part of —",
+  rest:
+    "bringing care and craftsmanship to construction, property, trade, and hospitality, and building relationships that last well beyond the work itself.",
 };
 
 export const overview = {
@@ -83,7 +118,7 @@ export const overview = {
     "Scalable Growth Strategy",
     "Client-Focused Solutions",
   ],
-  image: ux("1454165804606-c3d57bc86b40", 1400),
+  image: ux("1570129477492-45c003edd2be", 1400),
 };
 
 export const stats = [
@@ -136,8 +171,8 @@ export const about = {
     body:
       "Building organizations through strong leadership, operational discipline, strategic partnerships, and long-term thinking.",
   },
-  image: ux("1497366216548-37526070297c", 1400),
-  imageAlt: "Modern corporate boardroom representing Xandrea Harshey's leadership and governance",
+  image: ux("1600585154340-be6161a56a0c", 1400),
+  imageAlt: "A warmly finished modern home — the kind of craftsmanship Xandrea Harshey is built on",
 };
 
 export type Company = {
@@ -339,7 +374,7 @@ export const capabilities: Capability[] = [
     title: "Strategic Business Ventures",
     blurb:
       "Opportunistic investments and new ventures that extend the group's reach and create cross-industry synergy.",
-    image: ux("1454165804606-c3d57bc86b40", 1200),
+    image: ux("1449824913935-59a10b8d2000", 1200),
   },
   {
     title: "Property Services",
@@ -483,8 +518,8 @@ export const careers = {
     "Leadership Development",
     "Career Advancement Pathways",
   ],
-  image: ux("1521737604893-d14cc237f11d", 1400),
-  imageAlt: "Diverse professional team collaborating in a modern office",
+  image: ux("1504307651254-35680f356dfd", 1400),
+  imageAlt: "Skilled tradespeople building together — a warm, hands-on team at Xandrea Harshey",
 };
 
 export const inquiryCategories = [

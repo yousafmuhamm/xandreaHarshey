@@ -121,6 +121,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
+        <a
+          href="#main"
+          className="sr-only z-[400] rounded-sm bg-navy-deep px-5 py-3 font-sans text-[0.72rem] uppercase tracking-eyebrow text-cream focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+        >
+          Skip to content
+        </a>
         <SmoothScrollProvider>
           <Header />
           <main id="main">{children}</main>

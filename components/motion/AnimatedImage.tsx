@@ -10,7 +10,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import { useIsomorphicLayoutEffect } from "@/lib/useIsomorphicLayoutEffect";
 import { gsap } from "@/lib/gsap";
-import { DURATION, EASE, TRIGGER_START } from "@/lib/animation";
+import { DURATION, EASE, TRIGGER_START, TRIGGER_ONCE } from "@/lib/animation";
 import { prefersReducedMotion } from "@/lib/useReducedMotion";
 
 type Props = {
@@ -54,18 +54,18 @@ export default function AnimatedImage({
           clipPath: "inset(0 0 0% 0)",
           duration: DURATION.slow,
           ease: EASE.expo,
-          scrollTrigger: { trigger: wrap, start: TRIGGER_START },
+          scrollTrigger: { trigger: wrap, start: TRIGGER_START, once: TRIGGER_ONCE },
         }
       );
       // Inner scale settle
       gsap.fromTo(
         inner,
-        { scale: 1.18 },
+        { scale: 1.12 },
         {
           scale: 1,
-          duration: DURATION.hero,
+          duration: DURATION.slow,
           ease: EASE.out,
-          scrollTrigger: { trigger: wrap, start: TRIGGER_START },
+          scrollTrigger: { trigger: wrap, start: TRIGGER_START, once: TRIGGER_ONCE },
         }
       );
       // Parallax drift

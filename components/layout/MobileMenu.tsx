@@ -1,25 +1,34 @@
 "use client";
 
 /**
- * Full-screen overlay mobile menu with a staggered link reveal. Locks the
- * Lenis scroll while open and animates open/closed with Framer Motion.
+ * Full-screen overlay menu (all breakpoints) — the template's luxury slide-out.
+ * Navy background, gold accents, large serif links with a staggered reveal, and
+ * an address / email / social footer. Locks the page scroll while open and
+ * animates open/closed with Framer Motion.
  */
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
-import { nav, site } from "@/data/content";
+import { nav, site, social } from "@/data/content";
 import { useSmoothScroll } from "@/components/providers/SmoothScrollProvider";
 
 const overlay = {
   hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { duration: 0.4, when: "beforeChildren", staggerChildren: 0.06 } },
-  exit: { opacity: 0, transition: { duration: 0.35, when: "afterChildren", staggerChildren: 0.03 } },
+  show: {
+    opacity: 1,
+    transition: { duration: 0.4, when: "beforeChildren", staggerChildren: 0.05 },
+  },
+  exit: {
+    opacity: 0,
+    transition: { duration: 0.3, when: "afterChildren", staggerChildren: 0.02 },
+  },
 };
 
-const link = {
-  hidden: { opacity: 0, y: 28 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
-  exit: { opacity: 0, y: 20, transition: { duration: 0.25 } },
+const item = {
+  hidden: { opacity: 0, y: 26 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+  exit: { opacity: 0, y: 16, transition: { duration: 0.2 } },
 };
 
 export default function MobileMenu({
@@ -30,20 +39,19 @@ export default function MobileMenu({
   onClose: () => void;
 }) {
   const { stop, start } = useSmoothScroll();
+  const pathname = usePathname();
 
   useEffect(() => {
-    if (open) {
-      stop();
-      document.body.style.overflow = "hidden";
-    } else {
-      start();
-      document.body.style.overflow = "";
-    }
+    if (open) stop();
+    else start();
+
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
     return () => {
+      window.removeEventListener("keydown", onKey);
       start();
-      document.body.style.overflow = "";
     };
-  }, [open, stop, start]);
+  }, [open, stop, start, onClose]);
 
   return (
     <AnimatePresence>
@@ -53,37 +61,83 @@ export default function MobileMenu({
           initial="hidden"
           animate="show"
           exit="exit"
-          className="fixed inset-0 z-[300] flex flex-col bg-navy-deep text-cream lg:hidden"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site menu"
+          className="fixed inset-0 z-[300] flex flex-col bg-navy-deep text-cream"
         >
+          {/* Top bar mirrors the header */}
           <div className="container-site flex items-center justify-between py-5">
-            <span className="font-serif text-xl text-cream">{site.shortName}</span>
+            <span className="font-serif text-xl text-cream md:text-2xl">
+              {site.shortName}
+            </span>
             <button
               type="button"
               onClick={onClose}
               aria-label="Close menu"
-              className="font-sans text-[0.72rem] uppercase tracking-eyebrow text-cream/80"
+              className="group flex items-center gap-3 font-sans text-[0.72rem] uppercase tracking-eyebrow text-cream/80 transition-colors hover:text-cream"
             >
               Close
+              <span className="relative block h-4 w-4">
+                <span className="absolute left-0 top-1/2 block h-px w-4 -translate-y-1/2 rotate-45 bg-cream" />
+                <span className="absolute left-0 top-1/2 block h-px w-4 -translate-y-1/2 -rotate-45 bg-cream" />
+              </span>
             </button>
           </div>
 
-          <nav className="container-site flex flex-1 flex-col justify-center gap-1" aria-label="Mobile">
-            {nav.map((item) => (
-              <motion.div key={item.href} variants={link}>
-                <Link
-                  href={item.href}
-                  onClick={onClose}
-                  className="block py-2 font-serif text-4xl text-cream transition-colors duration-300 hover:text-gold sm:text-5xl"
-                >
-                  {item.label}
-                </Link>
-              </motion.div>
-            ))}
+          {/* Links */}
+          <nav
+            className="container-site flex flex-1 flex-col justify-center"
+            aria-label="Full navigation"
+          >
+            <div className="flex flex-col gap-1">
+              {nav.map((link, i) => {
+                const active = pathname === link.href;
+                return (
+                  <motion.div key={link.href} variants={item}>
+                    <Link
+                      href={link.href}
+                      onClick={onClose}
+                      className={`group flex items-baseline gap-4 py-1.5 font-serif text-4xl leading-tight transition-colors duration-300 sm:text-5xl lg:text-6xl ${
+                        active ? "text-gold" : "text-cream hover:text-gold"
+                      }`}
+                    >
+                      <span className="font-sans text-xs text-gold/70">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            </div>
           </nav>
 
-          <motion.div variants={link} className="container-site py-8 text-cream/50">
-            <p className="font-sans text-[0.72rem] uppercase tracking-eyebrow">{site.hqLine}</p>
-            <p className="mt-1 font-sans text-sm">{site.email}</p>
+          {/* Footer — address / email / social */}
+          <motion.div
+            variants={item}
+            className="container-site flex flex-col gap-6 border-t border-cream/10 py-8 text-cream/60 md:flex-row md:items-end md:justify-between"
+          >
+            <div>
+              <p className="font-sans text-[0.72rem] uppercase tracking-eyebrow text-gold-light">
+                {site.hqLine}
+              </p>
+              <p className="mt-2 font-sans text-sm text-cream/75">{site.email}</p>
+              <p className="mt-1 font-sans text-sm text-cream/75">{site.phone}</p>
+            </div>
+            <div className="flex flex-wrap gap-6">
+              {social.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline font-sans text-[0.72rem] uppercase tracking-eyebrow text-cream/70 hover:text-cream"
+                >
+                  {s.label}
+                </a>
+              ))}
+            </div>
           </motion.div>
         </motion.div>
       )}

@@ -1,17 +1,18 @@
 "use client";
 
 /**
- * Sticky header that is transparent with light text while over a dark hero
- * (detected via a #hero-anchor element on the home page) and turns solid /
- * shrinks with ink text once scrolled — including a logo tone swap and
- * animated nav underlines. On pages without a hero it starts solid.
+ * Minimal, elegant top bar (Carolwood pattern): logo on the left; on the right
+ * a small set of primary links + a "Menu" button that opens the full-screen
+ * overlay menu. Transparent with light text while over the dark hero (detected
+ * via a #hero-anchor element on the home page); solid cream with ink text once
+ * scrolled past it. Home is reachable via the logo, so it is not a visible tab.
  */
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 import MobileMenu from "./MobileMenu";
-import { nav } from "@/data/content";
+import { primaryNav } from "@/data/content";
 
 export default function Header() {
   const pathname = usePathname();
@@ -42,7 +43,7 @@ export default function Header() {
     };
   }, [pathname]);
 
-  // White logo + nav only while the dark hero is behind the header; otherwise
+  // White logo + links only while the dark hero is behind the header; otherwise
   // solid cream background with ink text. `scrolled` just trims the height.
   const light = overHero;
 
@@ -58,33 +59,49 @@ export default function Header() {
         <div className="container-site flex items-center justify-between">
           <Logo tone={light ? "light" : "ink"} compact={scrolled} />
 
-          <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
-            {nav.map((item) => {
-              const active = pathname === item.href;
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`link-underline font-sans text-[0.72rem] uppercase tracking-eyebrow transition-colors duration-300 ${
-                    light ? "text-white/90 hover:text-white" : "text-ink/80 hover:text-ink"
-                  } ${active ? "after:scale-x-100 after:origin-left" : ""}`}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-          </nav>
+          <div className="flex items-center gap-8 md:gap-10">
+            <nav
+              className="hidden items-center gap-8 md:flex"
+              aria-label="Primary"
+            >
+              {primaryNav.map((item) => {
+                const active = pathname === item.href;
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`link-underline font-sans text-[0.72rem] uppercase tracking-eyebrow transition-colors duration-300 ${
+                      light ? "text-white/90 hover:text-white" : "text-ink/80 hover:text-ink"
+                    } ${active ? "after:origin-left after:scale-x-100" : ""}`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </nav>
 
-          {/* Hamburger */}
-          <button
-            type="button"
-            onClick={() => setMenuOpen(true)}
-            aria-label="Open menu"
-            className="flex flex-col gap-[6px] p-2 lg:hidden"
-          >
-            <span className={`block h-px w-7 transition-colors ${light ? "bg-white" : "bg-ink"}`} />
-            <span className={`block h-px w-7 transition-colors ${light ? "bg-white" : "bg-ink"}`} />
-          </button>
+            {/* Menu trigger — full-screen overlay */}
+            <button
+              type="button"
+              onClick={() => setMenuOpen(true)}
+              aria-label="Open menu"
+              aria-expanded={menuOpen}
+              aria-haspopup="dialog"
+              className={`group flex items-center gap-3 font-sans text-[0.72rem] uppercase tracking-eyebrow transition-colors duration-300 ${
+                light ? "text-white/90 hover:text-white" : "text-ink/80 hover:text-ink"
+              }`}
+            >
+              <span className="hidden sm:inline">Menu</span>
+              <span className="flex flex-col gap-[5px]">
+                <span
+                  className={`block h-px w-6 transition-colors ${light ? "bg-white" : "bg-ink"}`}
+                />
+                <span
+                  className={`block h-px w-6 transition-colors ${light ? "bg-white" : "bg-ink"}`}
+                />
+              </span>
+            </button>
+          </div>
         </div>
       </header>
 

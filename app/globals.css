@@ -10,9 +10,9 @@
   --cream: #f5f2ec;
   --paper: #ffffff;
   --navy: #15243b;
-  --navy-deep: #0e1828;
+  --navy-deep: #0e1a2b;
   --gold: #a9885f;
-  --gold-light: #c2a57e;
+  --gold-light: #c2a878;
 
   --header-h: 92px;
 }
@@ -23,21 +23,9 @@
 }
 
 html {
-  /* Lenis drives the scroll; keep native smooth off to avoid double easing */
+  /* Fully native, instant scrolling (no Lenis, no smooth easing) — wheel,
+     trackpad, AND keyboard all track 1:1 with zero perceived lag. */
   scroll-behavior: auto;
-}
-
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
 }
 
 body {
