@@ -88,8 +88,8 @@ export const hero = {
  * Rendered as static gold numerals so they're instant and never flicker.
  */
 export const heroStats = [
-  { value: "6", label: "Business Divisions" },
-  { value: "8", label: "Industry Sectors" },
+  { value: "4", label: "Operating Companies" },
+  { value: "30+", label: "Service Capabilities" },
   { value: "$50M+", label: "Enterprise Scale" },
 ];
 
@@ -205,6 +205,8 @@ export type Company = {
   extra?: { heading: string; items: string[] };
   image: string;
   imageAlt: string;
+  /** Optional white, transparent division logo overlaid on the photo (e.g. on hover). */
+  logo?: string;
 };
 
 export const companies: Company[] = [
@@ -226,6 +228,7 @@ export const companies: Company[] = [
     ],
     image: ux("1503387762-592deb58ef4e", 1400),
     imageAlt: "Construction site with tower crane against a clear sky",
+    logo: "/logos/g-pinoy.png",
   },
   {
     slug: "xandrea-facility-services",
@@ -243,6 +246,7 @@ export const companies: Company[] = [
     ],
     image: ux("1581578731548-c64695cc6952", 1400),
     imageAlt: "Professional facility services team maintaining a commercial building",
+    logo: "/logos/facility.png",
   },
   {
     slug: "primeport-commodity",
@@ -260,6 +264,7 @@ export const companies: Company[] = [
     ],
     image: ux("1494412574643-ff11b0a5c1c3", 1400),
     imageAlt: "Cargo containers at an international shipping port",
+    logo: "/logos/primeport.png",
   },
   {
     slug: "construction-property-services",

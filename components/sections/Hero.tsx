@@ -9,10 +9,9 @@
  * #hero-anchor id lets the Header know it is over a dark hero.
  */
 import { useRef, useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
-import ScrollIndicator from "@/components/motion/ScrollIndicator";
+import ContactTrigger from "@/components/contact/ContactTrigger";
 import { useIsomorphicLayoutEffect } from "@/lib/useIsomorphicLayoutEffect";
 import { gsap } from "@/lib/gsap";
 import { prefersReducedMotion } from "@/lib/useReducedMotion";
@@ -121,13 +120,13 @@ export default function Hero() {
       {/* Content — minimal, image-led */}
       <div
         ref={contentRef}
-        className="container-site relative z-10 pb-24 pt-32 md:pb-28 md:pt-36"
+        className="container-site relative z-10 pb-14 pt-44 md:pb-16 md:pt-48"
       >
         <span data-hero-fade className="eyebrow mb-6 block text-gold-light">
           {hero.eyebrow}
         </span>
 
-        <h1 className="max-w-5xl font-serif text-display-xl font-normal uppercase !tracking-[0.04em] text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)]">
+        <h1 className="max-w-5xl font-serif text-[clamp(2.05rem,5.25vw,4.875rem)] font-normal uppercase leading-[1.02] !tracking-[0.04em] text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)]">
           {hero.headlineLines.map((line, i) => (
             <span key={i} className="reveal-line">
               <span>{line}</span>
@@ -135,38 +134,30 @@ export default function Hero() {
           ))}
         </h1>
 
-        <p
-          data-hero-fade
-          className="mt-8 max-w-xl font-sans text-base leading-relaxed text-white/85 md:text-lg"
-        >
-          {hero.subtext}
-        </p>
-
         <div
           data-hero-fade
-          className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-5"
+          className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-5"
         >
           <Button href="/companies" variant="gold">
             Explore Our Companies
           </Button>
-          <Link
-            href="/contact"
-            className="link-underline font-sans text-[0.78rem] uppercase tracking-eyebrow text-white/90 hover:text-white"
-          >
+          <ContactTrigger className="link-underline font-sans text-[0.78rem] uppercase tracking-eyebrow text-white/90 hover:text-white">
             Request a Consultation
-          </Link>
+          </ContactTrigger>
         </div>
 
         {/* Stat panel — three bold gold figures inside a frosted glass box,
             overlaid on the hero (instant, static — never flickers). */}
         <dl
           data-hero-fade
-          className="mt-12 inline-flex flex-wrap items-stretch gap-x-10 gap-y-6 rounded-2xl border border-white/20 bg-white/10 px-8 py-6 shadow-[0_8px_40px_rgba(0,0,0,0.25)] backdrop-blur-xl md:mt-14 md:gap-x-14 md:px-10 md:py-7"
+          className="mt-12 grid w-full max-w-[49rem] grid-cols-1 border border-white/20 bg-white/10 shadow-[0_8px_40px_rgba(0,0,0,0.25)] backdrop-blur-xl sm:grid-cols-3 sm:divide-x sm:divide-white/20 md:mt-14"
         >
           {heroStats.map((s, i) => (
             <div
               key={s.label}
-              className={`${i > 0 ? "md:border-l md:border-white/15 md:pl-14" : ""}`}
+              className={`flex min-h-[7.75rem] flex-col items-center justify-center px-8 py-6 text-center ${
+                i > 0 ? "border-t border-white/20 sm:border-t-0" : ""
+              }`}
             >
               <dt className="font-serif text-3xl font-light leading-none text-gold-light md:text-[2.75rem]">
                 {s.value}
@@ -177,11 +168,6 @@ export default function Hero() {
             </div>
           ))}
         </dl>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2">
-        <ScrollIndicator />
       </div>
     </section>
   );

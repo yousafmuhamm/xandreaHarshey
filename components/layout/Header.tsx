@@ -12,6 +12,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 import MobileMenu from "./MobileMenu";
+import ContactTrigger from "@/components/contact/ContactTrigger";
 import { primaryNav } from "@/data/content";
 
 export default function Header() {
@@ -66,14 +67,18 @@ export default function Header() {
             >
               {primaryNav.map((item) => {
                 const active = pathname === item.href;
+                const cls = `link-underline font-sans text-[0.72rem] uppercase tracking-eyebrow transition-colors duration-300 ${
+                  light ? "text-white/90 hover:text-white" : "text-ink/80 hover:text-ink"
+                } ${active ? "after:origin-left after:scale-x-100" : ""}`;
+                if (item.href === "/contact") {
+                  return (
+                    <ContactTrigger key={item.href} className={cls}>
+                      {item.label}
+                    </ContactTrigger>
+                  );
+                }
                 return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`link-underline font-sans text-[0.72rem] uppercase tracking-eyebrow transition-colors duration-300 ${
-                      light ? "text-white/90 hover:text-white" : "text-ink/80 hover:text-ink"
-                    } ${active ? "after:origin-left after:scale-x-100" : ""}`}
-                  >
+                  <Link key={item.href} href={item.href} className={cls}>
                     {item.label}
                   </Link>
                 );

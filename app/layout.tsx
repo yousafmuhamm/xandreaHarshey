@@ -3,8 +3,10 @@ import { Jost } from "next/font/google";
 import "./globals.css";
 
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
+import ContactModalProvider from "@/components/contact/ContactModalProvider";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import XandreaChatBot from "@/components/XandreaChatBot";
 import { site } from "@/data/content";
 
 /*
@@ -128,10 +130,13 @@ export default function RootLayout({
           Skip to content
         </a>
         <SmoothScrollProvider>
-          <Header />
-          <main id="main">{children}</main>
-          <Footer />
+          <ContactModalProvider>
+            <Header />
+            <main id="main">{children}</main>
+            <Footer />
+          </ContactModalProvider>
         </SmoothScrollProvider>
+        <XandreaChatBot />
       </body>
     </html>
   );

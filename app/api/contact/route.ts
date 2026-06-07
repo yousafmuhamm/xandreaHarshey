@@ -27,8 +27,10 @@ export async function POST(request: Request) {
   const name = String(body.name ?? "").trim();
   const email = String(body.email ?? "").trim();
   const phone = String(body.phone ?? "").trim();
+  const country = String(body.country ?? "").trim();
   const category = String(body.category ?? "General Inquiries").trim();
   const message = String(body.message ?? "").trim();
+  const newsletter = body.newsletter === true;
 
   // Honeypot — bots fill hidden fields; humans never see them.
   if (String(body.company ?? "").trim()) {
@@ -64,7 +66,9 @@ export async function POST(request: Request) {
             `Name: ${name}`,
             `Email: ${email}`,
             `Phone: ${phone || "—"}`,
+            `Country: ${country || "—"}`,
             `Inquiry type: ${category}`,
+            `Newsletter opt-in: ${newsletter ? "Yes" : "No"}`,
             "",
             message,
           ].join("\n"),
@@ -91,7 +95,9 @@ export async function POST(request: Request) {
       name,
       email,
       phone,
+      country,
       category,
+      newsletter,
       message,
     });
   }

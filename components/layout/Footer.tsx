@@ -6,6 +6,7 @@
 import Link from "next/link";
 import Reveal from "@/components/motion/Reveal";
 import NewsletterForm from "./NewsletterForm";
+import ContactTrigger from "@/components/contact/ContactTrigger";
 import { nav, companies, site, footer, contact } from "@/data/content";
 
 export default function Footer() {
@@ -31,12 +32,18 @@ export default function Footer() {
               <ul className="space-y-3">
                 {nav.map((item) => (
                   <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="link-underline font-sans text-sm text-cream/80 hover:text-cream"
-                    >
-                      {item.label}
-                    </Link>
+                    {item.href === "/contact" ? (
+                      <ContactTrigger className="link-underline font-sans text-sm text-cream/80 hover:text-cream">
+                        {item.label}
+                      </ContactTrigger>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className="link-underline font-sans text-sm text-cream/80 hover:text-cream"
+                      >
+                        {item.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>

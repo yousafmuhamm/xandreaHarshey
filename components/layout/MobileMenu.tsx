@@ -13,6 +13,7 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { nav, site, social } from "@/data/content";
 import { useSmoothScroll } from "@/components/providers/SmoothScrollProvider";
+import ContactTrigger from "@/components/contact/ContactTrigger";
 
 const overlay = {
   hidden: { opacity: 0 },
@@ -100,20 +101,30 @@ export default function MobileMenu({
             <div className="flex flex-col gap-1">
               {nav.map((link, i) => {
                 const active = pathname === link.href;
+                const cls = `group flex items-baseline gap-4 py-1.5 font-serif text-4xl leading-tight transition-colors duration-300 sm:text-5xl lg:text-6xl ${
+                  active ? "text-gold" : "text-cream hover:text-gold"
+                }`;
+                const index = (
+                  <span className="font-sans text-xs text-gold/70">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                );
                 return (
                   <motion.div key={link.href} variants={item}>
-                    <Link
-                      href={link.href}
-                      onClick={onClose}
-                      className={`group flex items-baseline gap-4 py-1.5 font-serif text-4xl leading-tight transition-colors duration-300 sm:text-5xl lg:text-6xl ${
-                        active ? "text-gold" : "text-cream hover:text-gold"
-                      }`}
-                    >
-                      <span className="font-sans text-xs text-gold/70">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      {link.label}
-                    </Link>
+                    {link.href === "/contact" ? (
+                      <ContactTrigger
+                        onActivate={onClose}
+                        className={`${cls} w-full text-left`}
+                      >
+                        {index}
+                        {link.label}
+                      </ContactTrigger>
+                    ) : (
+                      <Link href={link.href} onClick={onClose} className={cls}>
+                        {index}
+                        {link.label}
+                      </Link>
+                    )}
                   </motion.div>
                 );
               })}

@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Button from "@/components/ui/Button";
+import ContactTrigger from "@/components/contact/ContactTrigger";
 
 export default function NotFound() {
   return (
@@ -12,12 +12,9 @@ export default function NotFound() {
         </p>
         <div className="mt-10 flex justify-center gap-4">
           <Button href="/" variant="ink">Return Home</Button>
-          <Link
-            href="/contact"
-            className="link-underline self-center font-sans text-[0.72rem] uppercase tracking-eyebrow text-ink/70"
-          >
+          <ContactTrigger className="link-underline self-center font-sans text-[0.72rem] uppercase tracking-eyebrow text-ink/70">
             Contact us
-          </Link>
+          </ContactTrigger>
         </div>
       </div>
     </section>
