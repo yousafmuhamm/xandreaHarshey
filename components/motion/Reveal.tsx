@@ -20,6 +20,13 @@ type Props = {
   stagger?: boolean;
   delay?: number;
   y?: number;
+  /**
+   * Play immediately on mount via a plain tween instead of waiting for a
+   * ScrollTrigger. Use for above-the-fold content (hero eyebrows / intros) so
+   * it can never be left invisible while ScrollTrigger waits to refresh after
+   * fonts load — the cause of the "blank navy flash".
+   */
+  immediate?: boolean;
 };
 
 export default function Reveal({
@@ -29,6 +36,7 @@ export default function Reveal({
   stagger = false,
   delay = 0,
   y = 40,
+  immediate = false,
 }: Props) {
   const ref = useRef<HTMLElement | null>(null);
 
@@ -51,7 +59,10 @@ export default function Reveal({
           ease: EASE.out,
           delay,
           stagger: stagger ? STAGGER.base : 0,
-          scrollTrigger: { trigger: el, start: TRIGGER_START, once: TRIGGER_ONCE },
+          // Above the fold → play now; below the fold → reveal on scroll-in.
+          ...(immediate
+            ? {}
+            : { scrollTrigger: { trigger: el, start: TRIGGER_START, once: TRIGGER_ONCE } }),
         }
       );
     }, el);

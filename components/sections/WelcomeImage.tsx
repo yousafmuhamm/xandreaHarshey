@@ -61,8 +61,10 @@ export default function WelcomeImage() {
         />
       </div>
 
-      {/* Light, warm overlay so the photo stays bright */}
-      <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/80 via-navy-deep/10 to-transparent" />
+      {/* Overlay — strong enough at the bottom that the white statement reads
+          clearly while the photo stays bright up top. */}
+      <div className="absolute inset-0 bg-navy-deep/25" />
+      <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/90 via-navy-deep/30 to-transparent" />
 
       <div className="container-site relative z-10 pb-16 md:pb-24">
         <Reveal>

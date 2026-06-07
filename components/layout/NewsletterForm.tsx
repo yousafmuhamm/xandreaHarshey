@@ -9,18 +9,36 @@ import { AnimatePresence, motion } from "framer-motion";
 
 export default function NewsletterForm() {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "error" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "error" | "success" | "submitting">("idle");
+  const [errorMsg, setErrorMsg] = useState("Please enter a valid email address.");
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     if (!valid) {
+      setErrorMsg("Please enter a valid email address.");
       setStatus("error");
       return;
     }
-    // TODO: connect backend (newsletter provider / CRM).
-    setStatus("success");
-    setEmail("");
+    setStatus("submitting");
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const payload = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setErrorMsg(payload?.error || "Something went wrong. Please try again.");
+        setStatus("error");
+        return;
+      }
+      setStatus("success");
+      setEmail("");
+    } catch {
+      setErrorMsg("Network error — please try again.");
+      setStatus("error");
+    }
   };
 
   return (
@@ -57,15 +75,17 @@ export default function NewsletterForm() {
             />
             <button
               type="submit"
-              className="ml-3 shrink-0 font-sans text-[0.7rem] uppercase tracking-eyebrow text-gold transition-colors hover:text-gold-light"
+              disabled={status === "submitting"}
+              aria-busy={status === "submitting"}
+              className="ml-3 shrink-0 font-sans text-[0.7rem] uppercase tracking-eyebrow text-gold transition-colors hover:text-gold-light disabled:opacity-60"
             >
-              Subscribe
+              {status === "submitting" ? "…" : "Subscribe"}
             </button>
           </motion.form>
         )}
       </AnimatePresence>
       {status === "error" && (
-        <p className="mt-2 font-sans text-xs text-red-300">Please enter a valid email address.</p>
+        <p role="alert" className="mt-2 font-sans text-xs text-red-300">{errorMsg}</p>
       )}
     </div>
   );

@@ -1,8 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 
 /**
- * Text-based corporate wordmark. `tone` swaps between light (over hero) and
- * ink (on solid header / footer). Swap for an SVG logo when branding lands.
+ * Brand wordmark (image). The source art is a white logo, so over the dark hero
+ * it shows as-is; on the solid cream header / footer it's darkened to ink via a
+ * brightness(0) filter (the art is monochrome, so this yields a clean black
+ * mark). `compact` trims the height slightly once the header shrinks on scroll.
  */
 export default function Logo({
   tone = "ink",
@@ -11,16 +14,22 @@ export default function Logo({
   tone?: "ink" | "light";
   compact?: boolean;
 }) {
-  const color = tone === "light" ? "text-white" : "text-ink";
-  const sub = tone === "light" ? "text-white/60" : "text-gold";
   return (
-    <Link href="/" aria-label="Xandrea Harshey Services Inc. — home" className="group block">
-      <span className={`block font-serif leading-none tracking-tight transition-all duration-500 ${color} ${compact ? "text-lg" : "text-xl md:text-2xl"}`}>
-        Xandrea Harshey
-      </span>
-      <span className={`mt-1 block font-sans text-[0.55rem] uppercase tracking-eyebrow transition-colors duration-500 ${sub}`}>
-        Services Inc.
-      </span>
+    <Link
+      href="/"
+      aria-label="Xandrea Harshey Services Inc. — home"
+      className="group block"
+    >
+      <Image
+        src="/brand/logo-white.png"
+        alt="Xandrea Harshey Services Inc."
+        width={981}
+        height={140}
+        priority
+        className={`w-auto transition-all duration-500 ${
+          compact ? "h-9 md:h-10" : "h-11 md:h-14"
+        } ${tone === "light" ? "" : "[filter:brightness(0)]"}`}
+      />
     </Link>
   );
 }

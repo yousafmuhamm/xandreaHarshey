@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Jost } from "next/font/google";
 import "./globals.css";
 
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
@@ -7,19 +7,19 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { site } from "@/data/content";
 
-/* High-contrast serif display + clean grotesque sans, self-hosted via next/font */
-const display = Fraunces({
+/*
+ * Single geometric-sans type system (matches the reference landing page): an
+ * Avenir/Futura-like face for both display and body. Avenir Next/Avenir is
+ * preferred on Apple devices (see the font stacks in tailwind.config + globals);
+ * Jost is the self-hosted, cross-platform fallback so every visitor gets the
+ * same thin, elegant geometric look. The classical serif now lives only in the
+ * brand logo image.
+ */
+const jost = Jost({
   subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-sans",
   display: "swap",
   weight: ["300", "400", "500", "600"],
-  style: ["normal", "italic"],
-});
-
-const body = Inter({
-  subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -115,7 +115,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable}`}>
+    <html lang="en" className={jost.variable}>
       <body>
         <script
           type="application/ld+json"

@@ -84,6 +84,27 @@ export const hero = {
 };
 
 /**
+ * Three bold figures overlaid on the hero (the Carolwood stat-panel pattern).
+ * Rendered as static gold numerals so they're instant and never flicker.
+ */
+export const heroStats = [
+  { value: "6", label: "Business Divisions" },
+  { value: "8", label: "Industry Sectors" },
+  { value: "$50M+", label: "Enterprise Scale" },
+];
+
+/**
+ * Lean trust/credibility row (the Carolwood "Featured In" equivalent) — a
+ * single elegant line of standards rather than a dense band.
+ */
+export const trustSignals = [
+  "Fully Insured",
+  "WCB Coverage",
+  "Safety Certified",
+  "Quality Assured",
+];
+
+/**
  * Full-bleed "welcome" image moment placed immediately after the hero video —
  * a breathtaking home/property still with a warm welcoming line overlaid.
  */

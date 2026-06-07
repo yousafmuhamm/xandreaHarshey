@@ -31,9 +31,25 @@ const config: Config = {
         },
       },
       fontFamily: {
-        // Wired up via next/font CSS variables in app/layout.tsx
-        serif: ["var(--font-display)", "Georgia", "serif"],
-        sans: ["var(--font-body)", "system-ui", "sans-serif"],
+        // One geometric-sans system (matches the reference). Avenir renders
+        // natively on Apple devices; Jost (self-hosted via next/font) is the
+        // cross-platform fallback. `serif` is kept as an alias to the same
+        // stack so existing `font-serif` headings stay on-system without
+        // touching every component.
+        sans: [
+          "Avenir Next",
+          "Avenir",
+          "var(--font-sans)",
+          "system-ui",
+          "sans-serif",
+        ],
+        serif: [
+          "Avenir Next",
+          "Avenir",
+          "var(--font-sans)",
+          "system-ui",
+          "sans-serif",
+        ],
       },
       letterSpacing: {
         eyebrow: "0.22em",

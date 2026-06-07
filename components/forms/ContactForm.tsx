@@ -18,9 +18,12 @@ const labelCls = "eyebrow mb-2 block text-ink/50";
 export default function ContactForm({ defaultCategory }: { defaultCategory?: string }) {
   const [sent, setSent] = useState(false);
   const [errors, setErrors] = useState<Errors>({});
+  const [submitting, setSubmitting] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setFormError(null);
     const data = new FormData(e.currentTarget);
     const next: Errors = {};
     if (!String(data.get("name")).trim()) next.name = "Please enter your name.";
@@ -30,8 +33,27 @@ export default function ContactForm({ defaultCategory }: { defaultCategory?: str
     setErrors(next);
     if (Object.keys(next).length) return;
 
-    // TODO: connect backend (email service / CRM / consultation booking).
-    setSent(true);
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(data.entries())),
+      });
+      const payload = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        if (payload?.errors) setErrors(payload.errors as Errors);
+        setFormError(
+          payload?.error || "We couldn't send your message. Please try again."
+        );
+        return;
+      }
+      setSent(true);
+    } catch {
+      setFormError("Network error — please check your connection and try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -91,9 +113,20 @@ export default function ContactForm({ defaultCategory }: { defaultCategory?: str
             {errors.message && <p className="mt-1 text-xs text-red-600">{errors.message}</p>}
           </div>
 
-          <button type="submit" className="btn-ink self-start">
-            <span>Send Message</span>
-          </button>
+          {/* Honeypot — hidden from humans, catches bots. */}
+          <div aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
+            <label htmlFor="company">Company</label>
+            <input id="company" name="company" tabIndex={-1} autoComplete="off" />
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <button type="submit" className="btn-ink self-start" disabled={submitting} aria-busy={submitting}>
+              <span>{submitting ? "Sending…" : "Send Message"}</span>
+            </button>
+            {formError && (
+              <p role="alert" className="text-sm text-red-600">{formError}</p>
+            )}
+          </div>
         </motion.form>
       )}
     </AnimatePresence>

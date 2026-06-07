@@ -29,7 +29,7 @@ export default function ContactCTA() {
         />
         <Reveal className="mt-12">
           <Button href="/contact" variant="gold">
-            Start the Conversation
+            Request a Consultation
           </Button>
         </Reveal>
       </div>

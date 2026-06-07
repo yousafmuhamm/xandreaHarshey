@@ -8,6 +8,7 @@
  */
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { nav, site, social } from "@/data/content";
@@ -68,9 +69,15 @@ export default function MobileMenu({
         >
           {/* Top bar mirrors the header */}
           <div className="container-site flex items-center justify-between py-5">
-            <span className="font-serif text-xl text-cream md:text-2xl">
-              {site.shortName}
-            </span>
+            <Link href="/" onClick={onClose} aria-label="Xandrea Harshey Services Inc. — home">
+              <Image
+                src="/brand/logo-white.png"
+                alt="Xandrea Harshey Services Inc."
+                width={981}
+                height={140}
+                className="h-9 w-auto md:h-11"
+              />
+            </Link>
             <button
               type="button"
               onClick={onClose}

@@ -16,7 +16,7 @@ import ScrollIndicator from "@/components/motion/ScrollIndicator";
 import { useIsomorphicLayoutEffect } from "@/lib/useIsomorphicLayoutEffect";
 import { gsap } from "@/lib/gsap";
 import { prefersReducedMotion } from "@/lib/useReducedMotion";
-import { hero } from "@/data/content";
+import { hero, heroStats } from "@/data/content";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -111,10 +111,12 @@ export default function Hero() {
         )}
       </div>
 
-      {/* Soft, warm overlays — keep the footage bright and inviting, just enough
-          contrast for the header (top) and the content (bottom). */}
-      <div className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-navy-deep/45 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/80 via-navy-deep/20 to-transparent" />
+      {/* Overlays — a uniform scrim plus a stronger bottom gradient so the white
+          headline/stats read clearly over the (bright) footage, matching the
+          reference's contrast. */}
+      <div className="absolute inset-0 bg-navy-deep/40" />
+      <div className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-navy-deep/50 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/90 via-navy-deep/45 to-transparent" />
 
       {/* Content — minimal, image-led */}
       <div
@@ -125,7 +127,7 @@ export default function Hero() {
           {hero.eyebrow}
         </span>
 
-        <h1 className="max-w-5xl font-serif text-display-xl text-white">
+        <h1 className="max-w-5xl font-serif text-display-xl font-normal uppercase !tracking-[0.04em] text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)]">
           {hero.headlineLines.map((line, i) => (
             <span key={i} className="reveal-line">
               <span>{line}</span>
@@ -144,19 +146,37 @@ export default function Hero() {
           data-hero-fade
           className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-5"
         >
-          <Button href={hero.cta.href} variant="gold">
-            {hero.cta.label}
+          <Button href="/companies" variant="gold">
+            Explore Our Companies
           </Button>
-          {hero.links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="link-underline font-sans text-[0.78rem] uppercase tracking-eyebrow text-white/90 hover:text-white"
-            >
-              {l.label}
-            </Link>
-          ))}
+          <Link
+            href="/contact"
+            className="link-underline font-sans text-[0.78rem] uppercase tracking-eyebrow text-white/90 hover:text-white"
+          >
+            Request a Consultation
+          </Link>
         </div>
+
+        {/* Stat panel — three bold gold figures inside a frosted glass box,
+            overlaid on the hero (instant, static — never flickers). */}
+        <dl
+          data-hero-fade
+          className="mt-12 inline-flex flex-wrap items-stretch gap-x-10 gap-y-6 rounded-2xl border border-white/20 bg-white/10 px-8 py-6 shadow-[0_8px_40px_rgba(0,0,0,0.25)] backdrop-blur-xl md:mt-14 md:gap-x-14 md:px-10 md:py-7"
+        >
+          {heroStats.map((s, i) => (
+            <div
+              key={s.label}
+              className={`${i > 0 ? "md:border-l md:border-white/15 md:pl-14" : ""}`}
+            >
+              <dt className="font-serif text-3xl font-light leading-none text-gold-light md:text-[2.75rem]">
+                {s.value}
+              </dt>
+              <dd className="mt-2 font-sans text-[0.66rem] uppercase tracking-eyebrow text-white/70">
+                {s.label}
+              </dd>
+            </div>
+          ))}
+        </dl>
       </div>
 
       {/* Scroll indicator */}

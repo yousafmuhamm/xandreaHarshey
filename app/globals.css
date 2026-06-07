@@ -31,7 +31,7 @@ html {
 body {
   background-color: var(--cream);
   color: var(--ink);
-  font-family: var(--font-body), system-ui, sans-serif;
+  font-family: "Avenir Next", "Avenir", var(--font-sans), system-ui, sans-serif;
   overflow-x: hidden;
 }
 
@@ -40,10 +40,12 @@ body {
   h2,
   h3,
   h4 {
-    font-family: var(--font-display), Georgia, serif;
+    font-family: "Avenir Next", "Avenir", var(--font-sans), system-ui, sans-serif;
+    /* Elegant geometric headings — weight 400 keeps the thin reference look but
+       stays clearly legible (300 was too faint, especially over imagery). */
     font-weight: 400;
+    letter-spacing: 0.01em;
   }
-
 }
 
 @layer components {
@@ -134,10 +136,18 @@ body {
    ============================================================ */
 
 /* Masked line reveal — used for headline word/line entrances.
-   Visible by default; RevealText sets yPercent:110 then animates to 0. */
+   Visible by default; RevealText sets yPercent:110 then animates to 0.
+   The mask reserves room at the bottom for letter descenders (g, y, p, j) so
+   tight display line-heights are never clipped; a matching negative margin
+   keeps the visual line spacing unchanged. Top padding + negative margin do the
+   same for ascenders/diacritics. */
 .reveal-line {
   display: block;
   overflow: hidden;
+  padding-top: 0.12em;
+  padding-bottom: 0.3em;
+  margin-top: -0.12em;
+  margin-bottom: -0.3em;
 }
 .reveal-line > span {
   display: block;
