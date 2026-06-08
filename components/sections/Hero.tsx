@@ -12,6 +12,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
 import ContactTrigger from "@/components/contact/ContactTrigger";
+import HeroVideoCycle from "@/components/sections/HeroVideoCycle";
 import { useIsomorphicLayoutEffect } from "@/lib/useIsomorphicLayoutEffect";
 import { gsap } from "@/lib/gsap";
 import { prefersReducedMotion } from "@/lib/useReducedMotion";
@@ -21,24 +22,7 @@ export default function Hero() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const mediaRef = useRef<HTMLDivElement | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
   const [videoFailed, setVideoFailed] = useState(false);
-
-  // Kick off video playback as early as possible. React sometimes omits the
-  // `muted` attribute on first render, so we force it via the ref — a muted
-  // video is required for autoplay in Chrome/Safari. If play() rejects we
-  // simply keep the poster.
-  useIsomorphicLayoutEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    v.muted = true;
-    v.defaultMuted = true;
-    const tryPlay = () => v.play().catch(() => {});
-    tryPlay();
-    // Some browsers only allow play once the data is ready.
-    v.addEventListener("canplay", tryPlay, { once: true });
-    return () => v.removeEventListener("canplay", tryPlay);
-  }, []);
 
   // Immediate entrance — fast (hero readable well under ~500ms), independent
   // of the video/poster layer (which fades in separately).
@@ -93,19 +77,11 @@ export default function Hero() {
           className="object-cover"
         />
         {!videoFailed && (
-          <video
-            ref={videoRef}
-            className="absolute inset-0 h-full w-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            aria-hidden="true"
+          <HeroVideoCycle
+            videos={hero.videos}
+            poster={hero.poster}
             onError={() => setVideoFailed(true)}
-          >
-            <source src={hero.video} type="video/mp4" />
-          </video>
+          />
         )}
       </div>
 

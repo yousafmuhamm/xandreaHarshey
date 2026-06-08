@@ -47,47 +47,51 @@ export default function CompanyGrid() {
             key={c.slug}
             href={`/companies#${c.slug}`}
             data-cursor="View"
-            className={`group relative block h-[58vh] overflow-hidden bg-navy-deep ${layout[i] ?? "md:col-span-6 md:h-[58vh]"}`}
+            className={`group relative isolate block h-[58vh] cursor-pointer overflow-hidden bg-navy-deep ${layout[i] ?? "md:col-span-6 md:h-[58vh]"}`}
           >
-            <Image
-              src={c.image}
-              alt={c.imageAlt}
-              fill
-              sizes="(max-width: 768px) 100vw, 58vw"
-              className="object-cover transition-transform duration-[1.4s] ease-luxe group-hover:scale-[1.06]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/90 via-navy-deep/25 to-transparent" />
+            {/* Decorative layers ignore pointer events so the <Link> receives
+                hover across the full tile, not just the bottom text block. */}
+            <div className="pointer-events-none absolute inset-0">
+              <Image
+                src={c.image}
+                alt={c.imageAlt}
+                fill
+                sizes="(max-width: 768px) 100vw, 58vw"
+                className="object-cover transition-transform duration-[1.4s] ease-luxe group-hover:scale-[1.06]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/90 via-navy-deep/25 to-transparent" />
 
-            {/* Division logo — fades in over the upper area on hover, kept clear
-                of the title/tagline at the bottom (4th division has none) */}
-            {c.logo && (
-              <div className="pointer-events-none absolute inset-x-0 top-0 flex h-[60%] items-center justify-center px-8 md:px-10">
-                <Image
-                  src={c.logo}
-                  alt=""
-                  width={620}
-                  height={620}
-                  className="h-auto max-h-[82%] w-auto max-w-[66%] -translate-y-2 scale-95 object-contain opacity-0 drop-shadow-[0_2px_18px_rgba(14,26,43,0.6)] transition-all duration-700 ease-luxe group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-75"
-                />
-              </div>
-            )}
+              {/* Division logo — fades in over the upper area on hover, kept clear
+                  of the title/tagline at the bottom (4th division has none) */}
+              {c.logo && (
+                <div className="absolute inset-x-0 top-0 flex h-[60%] items-center justify-center px-8 md:px-10">
+                  <Image
+                    src={c.logo}
+                    alt=""
+                    width={620}
+                    height={620}
+                    className="h-auto max-h-[82%] w-auto max-w-[66%] -translate-y-2 scale-95 object-contain opacity-0 drop-shadow-[0_2px_18px_rgba(14,26,43,0.6)] transition-all duration-700 ease-luxe group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-75"
+                  />
+                </div>
+              )}
 
-            <div className="absolute inset-x-0 bottom-0 p-8 md:p-10">
-              <span className="eyebrow text-gold-light">{c.tagline}</span>
-              <h3 className="mt-3 font-serif text-3xl text-white md:text-4xl">
-                {c.name}
-              </h3>
+              <div className="absolute inset-x-0 bottom-0 p-8 md:p-10">
+                <span className="eyebrow text-gold-light">{c.tagline}</span>
+                <h3 className="mt-3 font-serif text-3xl text-white md:text-4xl">
+                  {c.name}
+                </h3>
 
-              {/* Slide-up reveal on hover */}
-              <div className="grid grid-rows-[0fr] transition-all duration-700 ease-luxe group-hover:grid-rows-[1fr]">
-                <div className="overflow-hidden">
-                  <p className="max-w-md pt-4 font-sans text-sm leading-relaxed text-white/80">
-                    {c.blurb}
-                  </p>
-                  <span className="mt-5 inline-flex items-center gap-2 font-sans text-[0.7rem] uppercase tracking-eyebrow text-gold-light">
-                    Explore
-                    <span aria-hidden>→</span>
-                  </span>
+                {/* Slide-up reveal on hover */}
+                <div className="grid grid-rows-[0fr] transition-all duration-700 ease-luxe group-hover:grid-rows-[1fr]">
+                  <div className="overflow-hidden">
+                    <p className="max-w-md pt-4 font-sans text-sm leading-relaxed text-white/80">
+                      {c.blurb}
+                    </p>
+                    <span className="mt-5 inline-flex items-center gap-2 font-sans text-[0.7rem] uppercase tracking-eyebrow text-gold-light">
+                      Explore
+                      <span aria-hidden>→</span>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
