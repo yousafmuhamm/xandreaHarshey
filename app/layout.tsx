@@ -6,7 +6,7 @@ import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 import ContactModalProvider from "@/components/contact/ContactModalProvider";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import XandreaChatBot from "@/components/XandreaChatBot";
+import ChatBotLoader from "@/components/ChatBotLoader";
 import { site } from "@/data/content";
 
 /*
@@ -58,9 +58,10 @@ export const metadata: Metadata = {
     description: site.description,
     images: [
       {
-        url: "/og.jpg", // PLACEHOLDER — add a 1200×630 OG image to /public/og.jpg
-        width: 1200,
-        height: 630,
+        // Uses the existing hero still until a dedicated 1200×630 OG image ships.
+        url: "/video/hero-poster.jpg",
+        width: 1920,
+        height: 1080,
         alt: site.name,
       },
     ],
@@ -69,7 +70,12 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: site.name,
     description: site.description,
-    images: ["/og.jpg"],
+    images: ["/video/hero-poster.jpg"],
+  },
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
   },
   robots: {
     index: true,
@@ -110,6 +116,7 @@ const orgJsonLd = {
     { "@type": "Organization", name: "G-Pinoy Construction & Development Inc" },
     { "@type": "Organization", name: "Xandrea Facility Services" },
     { "@type": "Organization", name: "Primeport Commodity Inc." },
+    { "@type": "Organization", name: "Construction & Property Services Division" },
   ],
 };
 
@@ -136,7 +143,7 @@ export default function RootLayout({
             <Footer />
           </ContactModalProvider>
         </SmoothScrollProvider>
-        <XandreaChatBot />
+        <ChatBotLoader />
       </body>
     </html>
   );
