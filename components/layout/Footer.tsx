@@ -12,22 +12,10 @@ import { nav, companies, site, footer, contact } from "@/data/content";
 export default function Footer() {
   return (
     <footer className="bg-navy-deep text-cream">
-      <div className="container-site pb-10 pt-20 md:pt-24">
-        {/* Oversized brand wordmark */}
-        <Reveal>
-          <h2 className="font-serif font-light uppercase leading-[0.9] tracking-[0.02em] text-cream text-[clamp(2.5rem,11vw,9rem)]">
-            Xandrea
-            <br />
-            Harshey
-          </h2>
-          <p className="mt-6 font-serif text-lg italic text-gold-light">
-            {footer.tagline}
-          </p>
-        </Reveal>
-
+      <div className="container-site pb-10 pt-14">
         {/* Link columns */}
         <Reveal>
-          <div className="mt-16 grid gap-12 border-t border-cream/15 pt-14 lg:grid-cols-12">
+          <div className="grid gap-12 border-t border-cream/15 pt-14 lg:grid-cols-12">
             {/* Brand blurb */}
             <div className="lg:col-span-4">
               <p className="max-w-sm font-sans text-sm leading-relaxed text-cream/60">
