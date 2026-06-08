@@ -102,6 +102,10 @@ const orgJsonLd = {
     addressRegion: site.regionCode,
     addressCountry: site.countryCode,
   },
+  logo: {
+    "@type": "ImageObject",
+    url: `${site.url}/brand/logo-white.png`,
+  },
   areaServed: { "@type": "Country", name: "Canada" },
   knowsAbout: [
     "Construction",
@@ -124,7 +128,11 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={jost.variable}>
+    <html lang="en-CA" className={jost.variable}>
+      <head>
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+      </head>
       <body>
         <script
           type="application/ld+json"
