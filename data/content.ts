@@ -72,10 +72,14 @@ export const hero = {
   cta: { label: "Discover Our Work", href: "/companies" },
   links: [{ label: "Get in Touch", href: "/contact" }],
   // Hero media — self-hosted in /public/video for reliability (no hotlink/CORS
-  // dependency). Swap for branded b-roll when available; keep poster matching
-  // the first video frame so there's no jump if the video is still buffering.
+  // dependency). Three clips cycle in sequence; poster matches the first frame
+  // so there's no jump while the first clip buffers.
   poster: "/video/hero-poster.jpg",
-  video: "/video/hero.mp4",
+  videos: [
+    "/video/hero-1.mp4",
+    "/video/hero-2.mp4",
+    "/video/hero-3.mp4",
+  ],
 };
 
 /**
