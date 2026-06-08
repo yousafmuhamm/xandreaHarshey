@@ -135,7 +135,7 @@ export default function XandreaChatBot() {
     loading && lastMsg?.role === "assistant" && lastMsg.content === "";
 
   return (
-    <div className="fixed bottom-5 right-5 z-[300] flex flex-col items-end font-sans md:bottom-6 md:right-6">
+    <div className="pointer-events-none fixed bottom-5 right-5 z-[250] flex flex-col items-end font-sans md:bottom-6 md:right-6">
       {/* Chat panel */}
       <div
         ref={panelRef}
@@ -298,7 +298,7 @@ export default function XandreaChatBot() {
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close Xandrea AI Assistant" : "Open Xandrea AI Assistant"}
           aria-expanded={open}
-          className={`group relative flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-navy to-navy-deep text-cream shadow-[0_18px_40px_-10px_rgba(14,26,43,0.75)] ring-2 ring-gold/50 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_24px_55px_-10px_rgba(14,26,43,0.85)] hover:ring-gold ${
+          className={`group pointer-events-auto relative flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-navy to-navy-deep text-cream shadow-[0_18px_40px_-10px_rgba(14,26,43,0.75)] ring-2 ring-gold/50 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_24px_55px_-10px_rgba(14,26,43,0.85)] hover:ring-gold ${
             open ? "" : "chat-heartbeat"
           }`}
         >

@@ -5,7 +5,7 @@ import OpenAI from "openai";
 export const runtime = "nodejs";
 
 const NVIDIA_BASE_URL = "https://integrate.api.nvidia.com/v1";
-const MODEL = "deepseek-ai/deepseek-v4-flash";
+const MODEL = "meta/llama-3.1-8b-instruct";
 
 const unavailableReply =
   "The assistant is currently unavailable. Please try again later.";
@@ -151,24 +151,16 @@ export async function POST(request: Request) {
   }
 
   try {
-    // `reasoning_effort: "none"` is an NVIDIA NIM extension that keeps DeepSeek
-    // out of its long "thinking" mode — without it these models can hang and the
-    // stream never completes. It lives outside the base OpenAI types, hence the
-    // cast on the params object.
-    const params = {
+    const stream = await openai.chat.completions.create({
       model: MODEL,
       temperature: 0.3,
       max_tokens: 700,
       stream: true,
-      reasoning_effort: "none",
       messages: [
         { role: "system", content: buildSystemPrompt(companyKnowledge) },
         ...messages,
       ],
-    };
-    const stream = (await openai.chat.completions.create(
-      params as unknown as Parameters<typeof openai.chat.completions.create>[0],
-    )) as unknown as AsyncIterable<OpenAI.Chat.Completions.ChatCompletionChunk>;
+    });
 
     const encoder = new TextEncoder();
     const readable = new ReadableStream<Uint8Array>({
