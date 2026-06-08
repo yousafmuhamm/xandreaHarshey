@@ -122,7 +122,7 @@ export default function ContactPage({
       <section className="bg-paper pb-section">
         <div className="container-site">
           <Reveal>
-            <div className="relative aspect-[21/9] w-full overflow-hidden rounded-sm border border-ink/10 grayscale">
+            <div className="relative aspect-video w-full overflow-hidden rounded-sm border border-ink/10 grayscale sm:aspect-[21/9]">
               <iframe
                 title="Xandrea Harshey Services Inc. — Calgary, Alberta"
                 src="https://maps.google.com/maps?q=Calgary%2C%20Alberta%2C%20Canada&t=&z=11&ie=UTF8&iwloc=&output=embed"

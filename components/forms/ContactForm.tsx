@@ -120,7 +120,7 @@ export default function ContactForm({ defaultCategory }: { defaultCategory?: str
           </div>
 
           <div className="flex flex-col gap-3">
-            <button type="submit" className="btn-ink self-start" disabled={submitting} aria-busy={submitting}>
+            <button type="submit" className="btn-ink w-full sm:w-auto sm:self-start" disabled={submitting} aria-busy={submitting}>
               <span>{submitting ? "Sending…" : "Send Message"}</span>
             </button>
             {formError && (

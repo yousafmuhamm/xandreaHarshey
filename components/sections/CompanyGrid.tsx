@@ -75,13 +75,18 @@ export default function CompanyGrid() {
                 </div>
               )}
 
-              <div className="absolute inset-x-0 bottom-0 p-8 md:p-10">
+              <div className="absolute inset-x-0 bottom-0 p-6 md:p-10">
                 <span className="eyebrow text-gold-light">{c.tagline}</span>
-                <h3 className="mt-3 font-serif text-3xl text-white md:text-4xl">
+                <h3 className="mt-2 font-serif text-2xl text-white md:mt-3 md:text-4xl">
                   {c.name}
                 </h3>
 
-                {/* Slide-up reveal on hover */}
+                {/* Always visible explore prompt on mobile; replaced by hover reveal on desktop */}
+                <span className="mt-3 inline-flex items-center gap-2 font-sans text-[0.7rem] uppercase tracking-eyebrow text-gold-light lg:hidden">
+                  Explore <span aria-hidden>→</span>
+                </span>
+
+                {/* Slide-up reveal on hover — desktop only */}
                 <div className="grid grid-rows-[0fr] transition-all duration-700 ease-luxe group-hover:grid-rows-[1fr]">
                   <div className="overflow-hidden">
                     <p className="max-w-md pt-4 font-sans text-sm leading-relaxed text-white/80">

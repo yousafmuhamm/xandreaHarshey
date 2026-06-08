@@ -32,7 +32,7 @@ export default function PageHero({
         </>
       )}
 
-      <div className="container-site relative z-10 pb-section pt-40 md:pt-48">
+      <div className="container-site relative z-10 pb-section pt-28 md:pt-48">
         <Reveal immediate>
           <span className={`eyebrow mb-6 block ${dark ? "text-gold-light" : "text-gold"}`}>
             {eyebrow}

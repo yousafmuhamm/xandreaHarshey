@@ -125,19 +125,17 @@ export default function Hero() {
             overlaid on the hero (instant, static — never flickers). */}
         <dl
           data-hero-fade
-          className="mt-12 grid w-full max-w-[49rem] grid-cols-1 border border-white/20 bg-white/10 shadow-[0_8px_40px_rgba(0,0,0,0.25)] backdrop-blur-xl sm:grid-cols-3 sm:divide-x sm:divide-white/20 md:mt-14"
+          className="mt-12 grid w-full max-w-[49rem] grid-cols-3 divide-x divide-white/20 border border-white/20 bg-white/10 shadow-[0_8px_40px_rgba(0,0,0,0.25)] backdrop-blur-xl md:mt-14"
         >
-          {heroStats.map((s, i) => (
+          {heroStats.map((s) => (
             <div
               key={s.label}
-              className={`flex min-h-[7.75rem] flex-col items-center justify-center px-8 py-6 text-center ${
-                i > 0 ? "border-t border-white/20 sm:border-t-0" : ""
-              }`}
+              className="flex min-h-[5rem] flex-col items-center justify-center px-2 py-4 text-center sm:min-h-[7rem] sm:px-6 md:px-8 md:py-6"
             >
-              <dt className="font-serif text-3xl font-light leading-none text-gold-light md:text-[2.75rem]">
+              <dt className="font-serif text-lg font-light leading-none text-gold-light sm:text-3xl md:text-[2.75rem]">
                 {s.value}
               </dt>
-              <dd className="mt-2 font-sans text-[0.66rem] uppercase tracking-eyebrow text-white/70">
+              <dd className="mt-1.5 font-sans text-[0.52rem] uppercase tracking-eyebrow text-white/70 sm:text-[0.62rem] md:mt-2 md:text-[0.66rem]">
                 {s.label}
               </dd>
             </div>

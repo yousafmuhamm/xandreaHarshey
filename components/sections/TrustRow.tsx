@@ -21,7 +21,7 @@ export default function TrustRow() {
                   {signal}
                 </span>
                 {i < trustSignals.length - 1 && (
-                  <span aria-hidden className="hidden h-1 w-1 rounded-full bg-gold md:inline-block" />
+                  <span aria-hidden className="h-1 w-1 rounded-full bg-gold" />
                 )}
               </li>
             ))}

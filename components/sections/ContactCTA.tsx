@@ -25,7 +25,7 @@ export default function ContactCTA() {
         </Reveal>
         <RevealText
           lines={["Let's Build Something", "Great Together."]}
-          className="mx-auto max-w-5xl font-serif text-display-lg text-cream md:text-display-xl"
+          className="mx-auto max-w-5xl font-serif text-display-md text-cream sm:text-display-lg md:text-display-xl"
         />
         <Reveal className="mt-12">
           <Button href="/contact" variant="gold">

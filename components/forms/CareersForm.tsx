@@ -107,7 +107,7 @@ export default function CareersForm() {
             <textarea id="c-msg" name="message" rows={3} className={`${field} resize-none`} placeholder="Tell us a little about yourself…" />
           </div>
 
-          <button type="submit" className="btn-ink self-start">
+          <button type="submit" className="btn-ink w-full sm:w-auto sm:self-start">
             <span>Submit Application</span>
           </button>
         </motion.form>
