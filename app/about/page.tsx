@@ -4,6 +4,7 @@ import PageHero from "@/components/sections/PageHero";
 import SplitFeature from "@/components/sections/SplitFeature";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/motion/Reveal";
+import FaqAccordion from "@/components/ui/FaqAccordion";
 import ContactCTA from "@/components/sections/ContactCTA";
 import JsonLd, { breadcrumb } from "@/components/seo/JsonLd";
 import { about, site } from "@/data/content";
@@ -140,14 +141,14 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* FAQ — question-format headings for Google AI Overviews + Perplexity citation */}
+      {/* FAQ — accordion dropdowns for UX; FAQPage JSON-LD keeps AI search signals */}
       <section className="bg-cream py-section">
         <div className="container-site max-w-3xl">
           <Reveal>
             <span className="eyebrow mb-10 block text-gold">Frequently Asked Questions</span>
           </Reveal>
-          <div className="divide-y divide-ink/10">
-            {[
+          <FaqAccordion
+            items={[
               {
                 q: "What is Xandrea Harshey Services Inc.?",
                 a: "Xandrea Harshey Services Inc. is a diversified Canadian business group headquartered in Calgary, Alberta. Founded in 2018, the company operates four divisions — G-Pinoy Construction & Development, Xandrea Facility Services, Primeport Commodity, and a Construction & Property Services division — delivering integrated solutions across construction, facility management, international trade, and property services.",
@@ -168,13 +169,8 @@ export default function AboutPage() {
                 q: "Is Xandrea Harshey Services Inc. Canadian-owned?",
                 a: "Yes. Xandrea Harshey Services Inc. is 100% Canadian-owned and operated, headquartered in Calgary, Alberta. The company is registered in Canada and all executive leadership is based in Calgary.",
               },
-            ].map(({ q, a }) => (
-              <Reveal key={q} className="py-8">
-                <h2 className="font-serif text-xl text-ink md:text-2xl">{q}</h2>
-                <p className="mt-3 font-sans text-base leading-relaxed text-ink/70">{a}</p>
-              </Reveal>
-            ))}
-          </div>
+            ]}
+          />
         </div>
       </section>
 

@@ -4,6 +4,7 @@ import Link from "next/link";
 import PageHero from "@/components/sections/PageHero";
 import Reveal from "@/components/motion/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
+import FaqAccordion from "@/components/ui/FaqAccordion";
 import ContactCTA from "@/components/sections/ContactCTA";
 import JsonLd, { breadcrumb } from "@/components/seo/JsonLd";
 import { safety, site } from "@/data/content";
@@ -168,8 +169,8 @@ export default function SafetyPage() {
           <Reveal>
             <span className="eyebrow mb-10 block text-gold">Safety Questions</span>
           </Reveal>
-          <div className="divide-y divide-ink/10">
-            {[
+          <FaqAccordion
+            items={[
               {
                 q: "Is Xandrea Harshey Services Inc. WCB covered?",
                 a: "Yes. Xandrea Harshey Services Inc. and all its divisions maintain active Workers' Compensation Board (WCB) coverage for all workers on Calgary and Alberta project sites.",
@@ -186,13 +187,8 @@ export default function SafetyPage() {
                 q: "How does Xandrea Harshey ensure quality on construction projects?",
                 a: "Structured QC checkpoints are applied at every stage of each project, supported by site audits, professional project management, and continuous improvement programs.",
               },
-            ].map(({ q, a }) => (
-              <Reveal key={q} className="py-8">
-                <h2 className="font-serif text-xl text-ink md:text-2xl">{q}</h2>
-                <p className="mt-3 font-sans text-base leading-relaxed text-ink/70">{a}</p>
-              </Reveal>
-            ))}
-          </div>
+            ]}
+          />
         </div>
       </section>
 
