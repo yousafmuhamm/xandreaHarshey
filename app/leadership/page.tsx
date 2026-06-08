@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import PageHero from "@/components/sections/PageHero";
 import LeaderProfile from "@/components/sections/LeaderProfile";
 import Reveal from "@/components/motion/Reveal";
@@ -8,13 +9,13 @@ import JsonLd, { breadcrumb } from "@/components/seo/JsonLd";
 import { leaders, leadershipFeatures, pageHeroImages, site } from "@/data/content";
 
 export const metadata: Metadata = {
-  title: "Leadership Team — Board & Executives",
+  title: "Leadership Team — Calgary Board & Executives | Xandrea Harshey",
   description:
-    "Meet the leadership of Xandrea Harshey Services Inc.: Alejandro Pagcaliwagan (Chairman of the Board), Ajit Hardasani (President), and Harlem Pagcaliwagan (Chief Operating Officer).",
+    "Meet the Calgary-based leadership of Xandrea Harshey Services Inc.: Alejandro Pagcaliwagan (Chairman of the Board), Ajit Hardasani (President), and Harlem Pagcaliwagan (Chief Operating Officer).",
   alternates: { canonical: "/leadership" },
   openGraph: {
-    title: "Leadership Team | Xandrea Harshey Services Inc.",
-    description: "Strong leadership, operational discipline, and long-term vision.",
+    title: "Leadership Team | Xandrea Harshey Services Inc. — Calgary, Alberta",
+    description: "Strong leadership, operational discipline, and long-term vision — based in Calgary, Alberta.",
     url: `${site.url}/leadership`,
   },
 };
@@ -40,11 +41,36 @@ export default function LeadershipPage() {
       <JsonLd data={peopleJsonLd} />
 
       <PageHero
-        eyebrow="Leadership Team"
+        eyebrow="Leadership Team — Calgary, Alberta"
         titleLines={["The people behind", "the enterprise."]}
-        intro="Building organizations through strong leadership, operational discipline, strategic partnerships, and long-term thinking."
+        intro="Building organizations through strong leadership, operational discipline, strategic partnerships, and long-term thinking. Based in Calgary, Alberta."
         image={pageHeroImages.leadership}
       />
+
+      {/* Last updated + context links */}
+      <section className="bg-cream pb-10 pt-2">
+        <div className="container-site max-w-3xl">
+          <Reveal>
+            <p className="mb-3 font-sans text-xs text-ink/40">Last Updated: June 2026</p>
+            <p className="font-sans text-base leading-relaxed text-ink/65">
+              The leadership team of Xandrea Harshey Services Inc. oversees four Calgary-based operating
+              divisions and a growing portfolio of strategic ventures. Explore our{" "}
+              <Link href="/companies" className="link-underline text-ink hover:text-gold">
+                operating companies
+              </Link>
+              , review{" "}
+              <Link href="/projects" className="link-underline text-ink hover:text-gold">
+                completed projects
+              </Link>
+              , or learn more{" "}
+              <Link href="/about" className="link-underline text-ink hover:text-gold">
+                about the organization
+              </Link>
+              .
+            </p>
+          </Reveal>
+        </div>
+      </section>
 
       {/* Full verbatim bios as crawlable page content */}
       {leaders.map((leader, i) => (

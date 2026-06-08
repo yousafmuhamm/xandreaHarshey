@@ -1,5 +1,3 @@
-"use client";
-
 /**
  * "Our Companies" — an asymmetric, near full-bleed image grid (the template's
  * featured-listings feel). Tiles vary in size; each is a large image with the

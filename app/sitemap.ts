@@ -24,17 +24,28 @@ type SitemapEntry = {
 
 const pages: SitemapEntry[] = [
   // Homepage — core brand destination, updated most frequently
-  { url: site.url, lastModified: "2026-06-06" },
+  { url: site.url, lastModified: "2026-06-07" },
+
+  // Service landing pages — highest commercial intent, own canonical URLs
+  { url: `${site.url}/construction`,       lastModified: "2026-06-07" },
+  { url: `${site.url}/facility-services`,  lastModified: "2026-06-07" },
 
   // Core section pages — ordered by crawl priority / topical importance
-  { url: `${site.url}/about`,      lastModified: "2026-06-01" },
-  { url: `${site.url}/companies`,  lastModified: "2026-06-01" },
+  { url: `${site.url}/about`,      lastModified: "2026-06-07" },
+  { url: `${site.url}/companies`,  lastModified: "2026-06-07" },
+
+  // Individual company profiles
+  { url: `${site.url}/companies/g-pinoy-construction-development`, lastModified: "2026-06-07" },
+  { url: `${site.url}/companies/xandrea-facility-services`,         lastModified: "2026-06-07" },
+  { url: `${site.url}/companies/primeport-commodity`,               lastModified: "2026-06-07" },
+  { url: `${site.url}/companies/construction-property-services`,    lastModified: "2026-06-07" },
   { url: `${site.url}/leadership`, lastModified: "2026-06-01" },
-  { url: `${site.url}/services`,   lastModified: "2026-06-01" },
-  { url: `${site.url}/projects`,   lastModified: "2026-06-01" },
-  { url: `${site.url}/safety`,     lastModified: "2026-06-01" },
+  { url: `${site.url}/services`,   lastModified: "2026-06-07" },
+  { url: `${site.url}/projects`,   lastModified: "2026-06-07" },
+  { url: `${site.url}/safety`,     lastModified: "2026-06-07" },
   { url: `${site.url}/careers`,    lastModified: "2026-06-01" },
-  { url: `${site.url}/contact`,    lastModified: "2026-06-01" },
+  { url: `${site.url}/contact`,    lastModified: "2026-06-07" },
+  // /privacy is noindex — excluded from sitemap intentionally
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

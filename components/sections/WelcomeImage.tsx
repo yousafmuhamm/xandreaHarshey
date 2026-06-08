@@ -56,6 +56,7 @@ export default function WelcomeImage() {
           src={welcome.image}
           alt={welcome.imageAlt}
           fill
+          priority
           sizes="100vw"
           className="object-cover"
         />

@@ -140,7 +140,7 @@ export default function Hero() {
           <Button href="/companies" variant="gold">
             Explore Our Companies
           </Button>
-          <ContactTrigger className="link-underline font-sans text-[0.78rem] uppercase tracking-eyebrow text-white/90 hover:text-white">
+          <ContactTrigger className="link-underline inline-block py-2 font-sans text-[0.78rem] uppercase tracking-eyebrow text-white/90 hover:text-white">
             Request a Consultation
           </ContactTrigger>
         </div>

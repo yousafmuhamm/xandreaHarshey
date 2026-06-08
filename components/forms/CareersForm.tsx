@@ -10,7 +10,7 @@ import { AnimatePresence, motion } from "framer-motion";
 type Errors = Partial<Record<"name" | "email" | "role", string>>;
 
 const field =
-  "w-full border-b border-ink/20 bg-transparent py-3 font-sans text-sm text-ink placeholder:text-ink/40 focus:border-ink focus:outline-none transition-colors";
+  "w-full border-b border-ink/20 bg-transparent py-3 font-sans text-base text-ink placeholder:text-ink/40 focus:border-ink focus:outline-none transition-colors";
 const labelCls = "eyebrow mb-2 block text-ink/50";
 
 const ROLES = [

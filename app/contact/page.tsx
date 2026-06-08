@@ -5,6 +5,27 @@ import ContactForm from "@/components/forms/ContactForm";
 import JsonLd, { breadcrumb } from "@/components/seo/JsonLd";
 import { contact, inquiryCategories, contactFeatures, site } from "@/data/content";
 
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: site.name,
+  url: site.url,
+  email: site.email,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Calgary",
+    addressRegion: "AB",
+    addressCountry: "CA",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 51.0447,
+    longitude: -114.0719,
+  },
+  areaServed: { "@type": "City", name: "Calgary" },
+  openingHours: "Mo-Fr 09:00-17:00",
+};
+
 export const metadata: Metadata = {
   title: "Contact & Consultation — Let's Build Something Great",
   description:
@@ -40,6 +61,7 @@ export default function ContactPage({
       <JsonLd
         data={breadcrumb([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }], site.url)}
       />
+      <JsonLd data={localBusinessJsonLd} />
 
       <PageHero
         eyebrow={contact.eyebrow}

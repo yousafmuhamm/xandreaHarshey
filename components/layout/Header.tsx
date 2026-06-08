@@ -8,12 +8,14 @@
  * scrolled past it. Home is reachable via the logo, so it is not a visible tab.
  */
 import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
-import MobileMenu from "./MobileMenu";
 import ContactTrigger from "@/components/contact/ContactTrigger";
 import { primaryNav } from "@/data/content";
+
+const MobileMenu = dynamic(() => import("./MobileMenu"), { ssr: false });
 
 export default function Header() {
   const pathname = usePathname();
@@ -36,11 +38,17 @@ export default function Header() {
     };
 
     update();
-    window.addEventListener("scroll", update, { passive: true });
+    let rafId: number;
+    const onScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(update);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", update);
     return () => {
-      window.removeEventListener("scroll", update);
+      window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", update);
+      cancelAnimationFrame(rafId);
     };
   }, [pathname]);
 

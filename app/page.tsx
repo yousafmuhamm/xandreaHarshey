@@ -31,6 +31,22 @@ export default function HomePage() {
       <WelcomeImage />
       <TrustRow />
 
+      {/* Crawlable intro — gives Google indexable body text about who we are and
+          where we operate, since the hero and company grid are image-led. */}
+      <section className="bg-cream py-16">
+        <div className="container-site max-w-3xl">
+          <p className="font-sans text-lg leading-relaxed text-ink/70">
+            Xandrea Harshey Services Inc. is a Calgary-based, 100% Canadian-owned
+            diversified enterprise operating across construction, facility management,
+            international trade, and hospitality. Through our four operating companies —
+            G-Pinoy Construction &amp; Development, Xandrea Facility Services, Primeport
+            Commodity, and our Construction &amp; Property Services division — we deliver
+            integrated solutions for commercial, residential, and industrial clients
+            across Alberta and Canada.
+          </p>
+        </div>
+      </section>
+
       {/* Our Companies — the centerpiece */}
       <CompanyGrid />
 

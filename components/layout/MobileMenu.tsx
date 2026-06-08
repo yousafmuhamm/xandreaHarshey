@@ -83,7 +83,7 @@ export default function MobileMenu({
               type="button"
               onClick={onClose}
               aria-label="Close menu"
-              className="group flex items-center gap-3 font-sans text-[0.72rem] uppercase tracking-eyebrow text-cream/80 transition-colors hover:text-cream"
+              className="group flex min-h-[44px] min-w-[44px] items-center gap-3 px-2 font-sans text-[0.72rem] uppercase tracking-eyebrow text-cream/80 transition-colors hover:text-cream"
             >
               Close
               <span className="relative block h-4 w-4">

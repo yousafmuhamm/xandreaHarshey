@@ -81,7 +81,7 @@ body {
 
   /* Fill-on-hover button (Carolwood CTA style) */
   .btn-luxe {
-    @apply relative inline-flex items-center justify-center overflow-hidden border px-8 py-4 font-sans text-[0.72rem] uppercase tracking-eyebrow transition-colors duration-500;
+    @apply relative inline-flex min-h-[44px] items-center justify-center overflow-hidden border px-8 py-4 font-sans text-[0.72rem] uppercase tracking-eyebrow transition-colors duration-500;
   }
   .btn-luxe > span {
     @apply relative z-10 transition-colors duration-500;

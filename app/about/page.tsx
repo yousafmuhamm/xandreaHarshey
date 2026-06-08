@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import PageHero from "@/components/sections/PageHero";
 import SplitFeature from "@/components/sections/SplitFeature";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -20,12 +21,31 @@ export const metadata: Metadata = {
   },
 };
 
+const aboutPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: "About Xandrea Harshey Services Inc.",
+  description:
+    "Xandrea Harshey Services Inc. is a diversified Canadian business group headquartered in Calgary, Alberta — delivering construction, facility services, international trade, and property services.",
+  url: `${site.url}/about`,
+  dateModified: "2026-06-07",
+  inLanguage: "en-CA",
+  about: {
+    "@type": "Organization",
+    name: site.name,
+    url: site.url,
+    foundingDate: "2018",
+    foundingLocation: { "@type": "City", name: "Calgary" },
+  },
+};
+
 export default function AboutPage() {
   return (
     <>
       <JsonLd
         data={breadcrumb([{ name: "Home", path: "/" }, { name: "About", path: "/about" }], site.url)}
       />
+      <JsonLd data={aboutPageJsonLd} />
 
       <PageHero
         eyebrow={about.eyebrow}
@@ -38,7 +58,27 @@ export default function AboutPage() {
       <section className="bg-cream pb-section">
         <div className="container-site max-w-3xl">
           <Reveal>
-            <p className="font-sans text-lg leading-relaxed text-ink/70">{about.intro2}</p>
+            <p className="mb-2 font-sans text-xs text-ink/40">Last Updated: June 2026</p>
+            <p className="font-sans text-lg leading-relaxed text-ink/70">
+              {about.intro2} Our four operating divisions —{" "}
+              <Link href="/construction" className="link-underline text-ink hover:text-gold">
+                G-Pinoy Construction & Development
+              </Link>
+              ,{" "}
+              <Link href="/facility-services" className="link-underline text-ink hover:text-gold">
+                Xandrea Facility Services
+              </Link>
+              , Primeport Commodity, and the Construction & Property Services Division — deliver
+              integrated solutions across{" "}
+              <Link href="/services" className="link-underline text-ink hover:text-gold">
+                eight capability areas
+              </Link>{" "}
+              serving clients in Calgary, Alberta, and beyond. Explore our{" "}
+              <Link href="/companies" className="link-underline text-ink hover:text-gold">
+                full company portfolio
+              </Link>{" "}
+              to learn what each division delivers.
+            </p>
           </Reveal>
         </div>
       </section>
@@ -99,6 +139,58 @@ export default function AboutPage() {
           <SectionHeading align="center" lines={[about.philosophy.body]} as="h2" />
         </div>
       </section>
+
+      {/* FAQ — question-format headings for Google AI Overviews + Perplexity citation */}
+      <section className="bg-cream py-section">
+        <div className="container-site max-w-3xl">
+          <Reveal>
+            <span className="eyebrow mb-10 block text-gold">Frequently Asked Questions</span>
+          </Reveal>
+          <div className="divide-y divide-ink/10">
+            {[
+              {
+                q: "What is Xandrea Harshey Services Inc.?",
+                a: "Xandrea Harshey Services Inc. is a diversified Canadian business group headquartered in Calgary, Alberta. Founded in 2018, the company operates four divisions — G-Pinoy Construction & Development, Xandrea Facility Services, Primeport Commodity, and a Construction & Property Services division — delivering integrated solutions across construction, facility management, international trade, and property services.",
+              },
+              {
+                q: "What does Xandrea Harshey Services Inc. do?",
+                a: "The company provides construction and development services, commercial facility management, international commodity trading, property renovation and restoration, hospitality ventures, and strategic business investments. Its eight capability areas serve commercial, residential, industrial, and multi-family clients across Alberta and Canada.",
+              },
+              {
+                q: "Where is Xandrea Harshey Services Inc. headquartered?",
+                a: "Xandrea Harshey Services Inc. is headquartered in Calgary, Alberta, Canada. The company primarily serves clients across Calgary and Alberta, with international trade operations extending to global markets through Primeport Commodity Inc.",
+              },
+              {
+                q: "Who founded Xandrea Harshey Services Inc.?",
+                a: "Xandrea Harshey Services Inc. was founded in 2018 in Calgary, Alberta. The company is led by Chairman Alejandro Pagcaliwagan, President Ajit Hardasani, and Chief Operating Officer Harlem Pagcaliwagan.",
+              },
+              {
+                q: "Is Xandrea Harshey Services Inc. Canadian-owned?",
+                a: "Yes. Xandrea Harshey Services Inc. is 100% Canadian-owned and operated, headquartered in Calgary, Alberta. The company is registered in Canada and all executive leadership is based in Calgary.",
+              },
+            ].map(({ q, a }) => (
+              <Reveal key={q} className="py-8">
+                <h2 className="font-serif text-xl text-ink md:text-2xl">{q}</h2>
+                <p className="mt-3 font-sans text-base leading-relaxed text-ink/70">{a}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            { "@type": "Question", name: "What is Xandrea Harshey Services Inc.?", acceptedAnswer: { "@type": "Answer", text: "Xandrea Harshey Services Inc. is a diversified Canadian business group headquartered in Calgary, Alberta, founded in 2018, operating across construction, facility management, international trade, and property services." } },
+            { "@type": "Question", name: "What does Xandrea Harshey Services Inc. do?", acceptedAnswer: { "@type": "Answer", text: "The company provides construction and development, commercial facility management, international commodity trading, property renovation, hospitality ventures, and strategic business investments serving clients across Alberta and Canada." } },
+            { "@type": "Question", name: "Where is Xandrea Harshey Services Inc. headquartered?", acceptedAnswer: { "@type": "Answer", text: "Xandrea Harshey Services Inc. is headquartered in Calgary, Alberta, Canada." } },
+            { "@type": "Question", name: "Who founded Xandrea Harshey Services Inc.?", acceptedAnswer: { "@type": "Answer", text: "Xandrea Harshey Services Inc. was founded in 2018 in Calgary, Alberta. The company is led by Chairman Alejandro Pagcaliwagan, President Ajit Hardasani, and COO Harlem Pagcaliwagan." } },
+            { "@type": "Question", name: "Is Xandrea Harshey Services Inc. Canadian-owned?", acceptedAnswer: { "@type": "Answer", text: "Yes. Xandrea Harshey Services Inc. is 100% Canadian-owned and operated, headquartered in Calgary, Alberta." } },
+          ],
+        }}
+      />
 
       <ContactCTA />
     </>

@@ -357,11 +357,11 @@ export const leaders: Leader[] = [
 ];
 
 export const leadershipFeatures = [
-  "Professional executive photography",
-  "Executive biographies",
-  "Leadership philosophy",
-  "Corporate achievements",
-  "Industry expertise",
+  "Accountability-First Culture",
+  "Long-Term Capital Stewardship",
+  "Operational Discipline",
+  "Community Investment",
+  "People-Centered Leadership",
 ];
 
 export type Capability = {
