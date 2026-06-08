@@ -149,7 +149,7 @@ export default function ContactModal({
           animate="show"
           exit="exit"
           onClick={onClose}
-          className="fixed inset-0 z-[300] flex items-center justify-center overflow-y-auto bg-navy-deep/70 px-4 py-8 backdrop-blur-md sm:px-6"
+          className="fixed inset-0 z-[350] flex items-center justify-center overflow-y-auto bg-navy-deep/70 px-4 py-8 backdrop-blur-md sm:px-6"
         >
           <motion.div
             ref={dialogRef}

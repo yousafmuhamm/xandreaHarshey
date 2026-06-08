@@ -1,22 +1,24 @@
 import Hero from "@/components/sections/Hero";
-import CompanyGrid from "@/components/sections/CompanyGrid";
-import TrustRow from "@/components/sections/TrustRow";
 import WelcomeImage from "@/components/sections/WelcomeImage";
+import TrustRow from "@/components/sections/TrustRow";
+import CompanyGrid from "@/components/sections/CompanyGrid";
 import SplitFeature from "@/components/sections/SplitFeature";
-import ProjectsPreview from "@/components/sections/ProjectsPreview";
 import ContactCTA from "@/components/sections/ContactCTA";
 import { companies } from "@/data/content";
 
 /**
- * Home — a lean, image-led gallery. Our Companies leads the scroll right after
- * the hero, then a thin trust row, a full-bleed welcome still, featured
- * projects, a single trade feature, and the contact CTA.
+ * Home — a lean, image-led gallery:
+ *   hero (video + glass stat panel)
+ *   → full-bleed welcome still ("Who We Are")
+ *   → trusted-standards row
+ *   → Our Companies image grid
+ *   → International Trade feature
+ *   → contact CTA → footer.
  *
- * Deliberately NOT on the landing (each lives on its own page): the brand
- * "story"/intro statement (/about), the Construction & Property division
- * feature (/companies), the leadership team (/leadership), the full
- * capabilities accordion (/services), and the deferred premium-features
- * section. The "by the numbers" figures are folded into the hero's glass panel.
+ * Not on the landing (each lives on its own page): the brand story (/about),
+ * the Construction & Property feature (/companies), the leadership team
+ * (/leadership), and the capabilities accordion (/services). The "by the
+ * numbers" figures live in the hero.
  */
 const trade = companies.find((c) => c.slug === "primeport-commodity")!;
 
@@ -25,20 +27,18 @@ export default function HomePage() {
     <>
       <Hero />
 
-      {/* Our Companies — the centerpiece, second in the scroll */}
-      <CompanyGrid />
-
+      {/* Welcome still + trusted standards, directly below the hero */}
+      <WelcomeImage />
       <TrustRow />
 
-      <WelcomeImage />
-
-      <ProjectsPreview />
+      {/* Our Companies — the centerpiece */}
+      <CompanyGrid />
 
       {/* Full-bleed feature — International Trade (image on the right) */}
       <SplitFeature
         fullBleed
         reverse
-        theme="navy"
+        theme="paper"
         eyebrow="International Trade"
         headingLines={["Connecting markets,", "delivering opportunity."]}
         body={[trade.blurb!]}

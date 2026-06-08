@@ -99,18 +99,16 @@ export default function ServiceMatrix({
           <div className="hidden lg:block">
             <div className="sticky top-28">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-cream">
-                {capabilities.map((cap, i) => (
-                  <Image
-                    key={cap.title}
-                    src={cap.image}
-                    alt={cap.title}
-                    fill
-                    sizes="50vw"
-                    className={`object-cover transition-opacity duration-700 ease-luxe ${
-                      i === active ? "opacity-100" : "opacity-0"
-                    }`}
-                  />
-                ))}
+                {/* Only the active image is mounted/fetched — keying on `active`
+                    lets the browser fetch one image at a time instead of all 8. */}
+                <Image
+                  key={capabilities[active].title}
+                  src={capabilities[active].image}
+                  alt={capabilities[active].title}
+                  fill
+                  sizes="50vw"
+                  className="animate-[fadeIn_0.7s_ease] object-cover"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/80 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-8">
                   <h3 className="font-serif text-3xl text-white">{capabilities[active].title}</h3>

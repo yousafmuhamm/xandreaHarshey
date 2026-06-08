@@ -11,11 +11,11 @@ import Button from "@/components/ui/Button";
 import { contact } from "@/data/content";
 
 const CTA_IMAGE =
-  "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=2000&q=80";
+  "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=1280&q=80";
 
 export default function ContactCTA() {
   return (
-    <section className="relative flex min-h-[80vh] items-center overflow-hidden bg-navy-deep text-cream">
+    <section className="relative flex min-h-[58vh] items-center overflow-hidden bg-navy-deep text-cream">
       <Image src={CTA_IMAGE} alt="" fill sizes="100vw" className="object-cover opacity-20" />
       <div className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/85 to-navy-deep/70" />
 

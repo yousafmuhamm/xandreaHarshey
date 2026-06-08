@@ -3,7 +3,7 @@ import PageHero from "@/components/sections/PageHero";
 import CompanyDetail from "@/components/sections/CompanyDetail";
 import ContactCTA from "@/components/sections/ContactCTA";
 import JsonLd, { breadcrumb } from "@/components/seo/JsonLd";
-import { companies, site } from "@/data/content";
+import { companies, pageHeroImages, site } from "@/data/content";
 
 export const metadata: Metadata = {
   title: "Our Companies — Construction, Facility Services & Trade",
@@ -43,7 +43,7 @@ export default function CompaniesPage() {
         eyebrow="Our Companies"
         titleLines={["A group of businesses,", "one standard of", "excellence."]}
         intro="Xandrea Harshey Services Inc. operates through multiple business divisions and strategic ventures — each built to deliver exceptional results while creating synergies across industries."
-        image="https://images.unsplash.com/photo-1486304873000-235643847519?auto=format&fit=crop&w=2000&q=80"
+        image={pageHeroImages.companies}
       />
 
       {companies.map((company, i) => (

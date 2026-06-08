@@ -3,7 +3,7 @@ import PageHero from "@/components/sections/PageHero";
 import ServiceMatrix from "@/components/sections/ServiceMatrix";
 import ContactCTA from "@/components/sections/ContactCTA";
 import JsonLd, { breadcrumb } from "@/components/seo/JsonLd";
-import { capabilities, site } from "@/data/content";
+import { capabilities, pageHeroImages, site } from "@/data/content";
 
 export const metadata: Metadata = {
   title: "Services & Capabilities — Eight Capability Areas",
@@ -40,7 +40,7 @@ export default function ServicesPage() {
         eyebrow="Services & Capabilities"
         titleLines={["Capabilities across", "every division."]}
         intro="An interactive service matrix displaying all company capabilities across divisions — hover or tap any area to explore."
-        image="https://images.unsplash.com/photo-1486304873000-235643847519?auto=format&fit=crop&w=2000&q=80"
+        image={pageHeroImages.services}
       />
 
       <ServiceMatrix withHeading={false} />

@@ -42,8 +42,6 @@ export const nav = [
   { label: "Companies", href: "/companies" },
   { label: "Leadership", href: "/leadership" },
   { label: "Services", href: "/services" },
-  { label: "Projects", href: "/projects" },
-  { label: "Safety", href: "/safety" },
   { label: "Careers", href: "/careers" },
   { label: "Contact", href: "/contact" },
 ];
@@ -51,7 +49,7 @@ export const nav = [
 /** Minimal set of links kept visible in the top bar (logo links Home). */
 export const primaryNav = [
   { label: "Companies", href: "/companies" },
-  { label: "Projects", href: "/projects" },
+  { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -72,10 +70,7 @@ export const hero = {
     "A Canadian company building beautiful spaces and lasting relationships — with craftsmanship, care, and a genuine commitment to the people we serve.",
   // One clear primary button + a couple of quiet text links.
   cta: { label: "Discover Our Work", href: "/companies" },
-  links: [
-    { label: "Featured Projects", href: "/projects" },
-    { label: "Get in Touch", href: "/contact" },
-  ],
+  links: [{ label: "Get in Touch", href: "/contact" }],
   // Hero media — self-hosted in /public/video for reliability (no hotlink/CORS
   // dependency). Swap for branded b-roll when available; keep poster matching
   // the first video frame so there's no jump if the video is still buffering.
@@ -111,7 +106,7 @@ export const trustSignals = [
 export const welcome = {
   eyebrow: "Who We Are",
   statement: "A Canadian enterprise built on people, craftsmanship, and trust.",
-  image: ux("1568605114967-8130f3a36994", 2400),
+  image: ux("1568605114967-8130f3a36994", 1600),
   imageAlt:
     "Warm, sunlit modern home exterior at golden hour — the spaces Xandrea Harshey builds",
 };
@@ -194,6 +189,16 @@ export const about = {
   },
   image: ux("1600585154340-be6161a56a0c", 1400),
   imageAlt: "A warmly finished modern home — the kind of craftsmanship Xandrea Harshey is built on",
+  historyImage: ux("1454165804606-c3d57bc86b40", 1400),
+  historyImageAlt:
+    "Leadership team reviewing plans together — building the enterprise across divisions",
+};
+
+/** Centralized hero imagery for interior pages (keeps page files clean). */
+export const pageHeroImages = {
+  companies: ux("1486304873000-235643847519", 1600),
+  services: ux("1503387762-592deb58ef4e", 1600),
+  leadership: ux("1497366216548-37526070297c", 1600),
 };
 
 export type Company = {

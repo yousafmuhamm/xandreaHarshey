@@ -5,7 +5,7 @@ import Reveal from "@/components/motion/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ContactCTA from "@/components/sections/ContactCTA";
 import JsonLd, { breadcrumb } from "@/components/seo/JsonLd";
-import { leaders, leadershipFeatures, site } from "@/data/content";
+import { leaders, leadershipFeatures, pageHeroImages, site } from "@/data/content";
 
 export const metadata: Metadata = {
   title: "Leadership Team — Board & Executives",
@@ -43,7 +43,7 @@ export default function LeadershipPage() {
         eyebrow="Leadership Team"
         titleLines={["The people behind", "the enterprise."]}
         intro="Building organizations through strong leadership, operational discipline, strategic partnerships, and long-term thinking."
-        image="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=80"
+        image={pageHeroImages.leadership}
       />
 
       {/* Full verbatim bios as crawlable page content */}

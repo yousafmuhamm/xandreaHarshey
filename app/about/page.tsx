@@ -48,8 +48,8 @@ export default function AboutPage() {
         eyebrow="Our Story"
         headingLines={[about.history.heading]}
         body={about.history.body}
-        image={about.image}
-        imageAlt={about.imageAlt}
+        image={about.historyImage}
+        imageAlt={about.historyImageAlt}
         theme="paper"
         reverse
       />

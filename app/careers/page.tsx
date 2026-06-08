@@ -56,8 +56,8 @@ export default function CareersPage() {
             <SectionHeading eyebrow="Apply Now" lines={["Start the", "conversation."]} />
             <Reveal className="mt-6">
               <p className="font-sans text-base leading-relaxed text-ink/70">
-                Submit a general application or express interest in a specific area. This form is a
-                styled demonstration — application handling will be connected to our hiring system.
+                Submit a general application or express interest in a specific area, and our team
+                will be in touch about current and upcoming opportunities.
               </p>
             </Reveal>
           </div>

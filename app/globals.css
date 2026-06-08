@@ -189,6 +189,16 @@ body {
   }
 }
 
+/* Gentle crossfade used when swapping the single active ServiceMatrix preview. */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* Chat launcher "beacon" — an expanding ring that beats once, then rests, so
    it draws the eye periodically instead of pinging continuously. The active
    pulse is compressed into the first ~22% of the cycle; the rest is idle. */

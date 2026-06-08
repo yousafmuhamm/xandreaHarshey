@@ -1,7 +1,7 @@
 /**
- * Site footer — dark navy, editorial. Uses the exact footer copy from the
- * blueprint, plus quick links, company list, contact, and a stubbed
- * newsletter form. Wrapped in a scroll Reveal for the footer entrance.
+ * Site footer — dark navy, editorial. Opens with an oversized brand wordmark
+ * that fills the space with presence, then the link columns, contact, and a
+ * stubbed newsletter form. Wrapped in scroll Reveals for the footer entrance.
  */
 import Link from "next/link";
 import Reveal from "@/components/motion/Reveal";
@@ -12,16 +12,25 @@ import { nav, companies, site, footer, contact } from "@/data/content";
 export default function Footer() {
   return (
     <footer className="bg-navy-deep text-cream">
-      <div className="container-site py-section">
+      <div className="container-site pb-10 pt-20 md:pt-24">
+        {/* Oversized brand wordmark */}
         <Reveal>
-          <div className="grid gap-12 lg:grid-cols-12">
-            {/* Brand */}
+          <h2 className="font-serif font-light uppercase leading-[0.9] tracking-[0.02em] text-cream text-[clamp(2.5rem,11vw,9rem)]">
+            Xandrea
+            <br />
+            Harshey
+          </h2>
+          <p className="mt-6 font-serif text-lg italic text-gold-light">
+            {footer.tagline}
+          </p>
+        </Reveal>
+
+        {/* Link columns */}
+        <Reveal>
+          <div className="mt-16 grid gap-12 border-t border-cream/15 pt-14 lg:grid-cols-12">
+            {/* Brand blurb */}
             <div className="lg:col-span-4">
-              <h2 className="font-serif text-2xl text-cream">{footer.name}</h2>
-              <p className="mt-4 font-serif text-lg italic text-gold-light">
-                {footer.tagline}
-              </p>
-              <p className="mt-6 max-w-sm font-sans text-sm leading-relaxed text-cream/60">
+              <p className="max-w-sm font-sans text-sm leading-relaxed text-cream/60">
                 {footer.blurb}
               </p>
             </div>
