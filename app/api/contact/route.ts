@@ -49,48 +49,13 @@ export async function POST(request: Request) {
   const to = process.env.CONTACT_TO_EMAIL;
   const from = process.env.CONTACT_FROM_EMAIL || "Xandrea Harshey <onboarding@resend.dev>";
 
-  if (apiKey && to) {
-    try {
-      const res = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          from,
-          to: [to],
-          reply_to: email,
-          subject: `New inquiry (${category}) — ${name}`,
-          text: [
-            `Name: ${name}`,
-            `Email: ${email}`,
-            `Phone: ${phone || "—"}`,
-            `Country: ${country || "—"}`,
-            `Inquiry type: ${category}`,
-            `Newsletter opt-in: ${newsletter ? "Yes" : "No"}`,
-            "",
-            message,
-          ].join("\n"),
-        }),
-      });
-      if (!res.ok) {
-        const detail = await res.text();
-        console.error("Resend delivery failed:", res.status, detail);
-        return NextResponse.json(
-          { ok: false, error: "We couldn't send your message. Please try again or email us directly." },
-          { status: 502 }
-        );
-      }
-    } catch (err) {
-      console.error("Resend request error:", err);
+  if (!apiKey || !to) {
+    if (process.env.NODE_ENV === "production") {
       return NextResponse.json(
-        { ok: false, error: "We couldn't send your message. Please try again." },
-        { status: 502 }
+        { ok: false, error: "Contact delivery is not configured yet. Please email us directly." },
+        { status: 503 }
       );
     }
-  } else {
-    // No provider configured — accept and log so the flow works in dev.
     console.info("[contact] (no email provider configured) submission:", {
       name,
       email,
@@ -100,6 +65,47 @@ export async function POST(request: Request) {
       newsletter,
       message,
     });
+    return NextResponse.json({ ok: true });
+  }
+
+  try {
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from,
+        to: [to],
+        reply_to: email,
+        subject: `New inquiry (${category}) - ${name}`,
+        text: [
+          `Name: ${name}`,
+          `Email: ${email}`,
+          `Phone: ${phone || "Not provided"}`,
+          `Country: ${country || "Not provided"}`,
+          `Inquiry type: ${category}`,
+          `Newsletter opt-in: ${newsletter ? "Yes" : "No"}`,
+          "",
+          message,
+        ].join("\n"),
+      }),
+    });
+    if (!res.ok) {
+      const detail = await res.text();
+      console.error("Resend delivery failed:", res.status, detail);
+      return NextResponse.json(
+        { ok: false, error: "We couldn't send your message. Please try again or email us directly." },
+        { status: 502 }
+      );
+    }
+  } catch (err) {
+    console.error("Resend request error:", err);
+    return NextResponse.json(
+      { ok: false, error: "We couldn't send your message. Please try again." },
+      { status: 502 }
+    );
   }
 
   return NextResponse.json({ ok: true });

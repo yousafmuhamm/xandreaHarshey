@@ -74,18 +74,18 @@ export default function ServiceMatrix({
                     aria-expanded={isOpen}
                   >
                     <span className="flex items-baseline gap-4">
-                      <span className="font-sans text-xs text-gold">
+                      <span className="font-sans text-xs text-gold-deep">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <span
                         className={`font-serif text-xl transition-colors duration-300 md:text-2xl ${
-                          isActive ? "text-ink" : "text-ink/55 group-hover:text-ink"
+                          isActive ? "text-ink" : "text-ink/65 group-hover:text-ink"
                         }`}
                       >
                         {cap.title}
                       </span>
                     </span>
-                    <span className="font-sans text-lg text-ink/40 lg:hidden">
+                    <span className="font-sans text-lg text-ink/65 lg:hidden">
                       {isOpen ? "–" : "+"}
                     </span>
                   </button>

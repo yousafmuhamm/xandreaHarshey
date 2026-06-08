@@ -74,7 +74,7 @@ export default function ContactPage({
           {/* Info column */}
           <div>
             <Reveal>
-              <h2 className="eyebrow text-ink/50">{contact.hqHeading}</h2>
+              <h2 className="eyebrow text-ink/65">{contact.hqHeading}</h2>
               <p className="mt-3 font-serif text-2xl text-ink">{contact.hq}</p>
               <a
                 href={`mailto:${site.email}`}
@@ -85,7 +85,7 @@ export default function ContactPage({
             </Reveal>
 
             <Reveal className="mt-10">
-              <h3 className="eyebrow mb-4 text-ink/50">Inquiry Categories</h3>
+              <h3 className="eyebrow mb-4 text-ink/65">Inquiry Categories</h3>
               <ul className="space-y-2">
                 {inquiryCategories.map((c) => (
                   <li key={c} className="flex items-center gap-3 font-sans text-sm text-ink/75">
@@ -97,12 +97,12 @@ export default function ContactPage({
             </Reveal>
 
             <Reveal className="mt-10">
-              <h3 className="eyebrow mb-4 text-ink/50">Contact Features</h3>
+              <h3 className="eyebrow mb-4 text-ink/65">Contact Features</h3>
               <ul className="flex flex-wrap gap-2">
                 {contactFeatures.map((f) => (
                   <li
                     key={f}
-                    className="rounded-full border border-ink/15 px-4 py-2 font-sans text-xs text-ink/70"
+                    className="inline-flex min-h-11 items-center rounded-full border border-ink/15 px-4 py-2 font-sans text-xs text-ink/70"
                   >
                     {f}
                   </li>

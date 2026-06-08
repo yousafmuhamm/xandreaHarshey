@@ -11,6 +11,7 @@
  */
 
 import { useEffect, useRef, useState } from "react";
+import { useDialogFocus } from "@/lib/useDialogFocus";
 
 type Role = "user" | "assistant";
 type Message = { role: Role; content: string };
@@ -38,6 +39,7 @@ export default function XandreaChatBot() {
 
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
+  const panelRef = useRef<HTMLDivElement | null>(null);
 
   // Keep the latest message in view as content streams in.
   useEffect(() => {
@@ -59,6 +61,7 @@ export default function XandreaChatBot() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
+  useDialogFocus(panelRef, open, () => setOpen(false));
 
   async function sendMessage() {
     const text = input.trim();
@@ -135,6 +138,8 @@ export default function XandreaChatBot() {
     <div className="fixed bottom-5 right-5 z-[300] flex flex-col items-end font-sans md:bottom-6 md:right-6">
       {/* Chat panel */}
       <div
+        ref={panelRef}
+        tabIndex={-1}
         className={`mb-3 w-[min(360px,calc(100vw-24px))] origin-bottom-right transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           open
             ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
@@ -159,7 +164,7 @@ export default function XandreaChatBot() {
               type="button"
               onClick={() => setOpen(false)}
               aria-label="Close chat"
-              className="-mr-1 -mt-1 shrink-0 rounded-full p-1.5 text-cream/70 transition-colors hover:bg-white/10 hover:text-cream"
+              className="-mr-1 -mt-1 flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-full p-1.5 text-cream/80 transition-colors hover:bg-white/10 hover:text-cream"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path
@@ -195,7 +200,7 @@ export default function XandreaChatBot() {
                     }`}
                   >
                     {isThinkingBubble ? (
-                      <span className="inline-flex items-center gap-1 text-ink/50">
+                      <span className="inline-flex items-center gap-1 text-ink/65">
                         Thinking
                         <span className="inline-flex gap-0.5">
                           <Dot delay="0ms" />
@@ -222,7 +227,7 @@ export default function XandreaChatBot() {
                       setInput(s);
                       inputRef.current?.focus();
                     }}
-                    className="rounded-full border border-navy/20 bg-white/60 px-3 py-1.5 text-[0.72rem] text-navy transition-colors hover:border-gold hover:text-gold"
+                    className="min-h-11 rounded-full border border-navy/20 bg-white/60 px-3 py-2 text-[0.72rem] text-navy transition-colors hover:border-gold-deep hover:text-gold-deep"
                   >
                     {s}
                   </button>
@@ -241,14 +246,14 @@ export default function XandreaChatBot() {
                 onKeyDown={onKeyDown}
                 rows={1}
                 placeholder="Ask a question..."
-                className="max-h-28 min-h-[42px] flex-1 resize-none rounded-xl border border-navy/15 bg-white/80 px-3.5 py-2.5 text-[0.85rem] text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-gold"
+                className="max-h-28 min-h-11 flex-1 resize-none rounded-xl border border-navy/15 bg-white/80 px-3.5 py-2.5 text-[0.85rem] text-ink outline-none transition-colors placeholder:text-ink/60 focus:border-gold-deep"
               />
               <button
                 type="button"
                 onClick={sendMessage}
                 disabled={loading || !input.trim()}
                 aria-label="Send message"
-                className="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-xl bg-navy text-cream transition-all duration-300 hover:bg-navy-deep disabled:cursor-not-allowed disabled:opacity-40"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-navy text-cream transition-all duration-300 hover:bg-navy-deep disabled:cursor-not-allowed disabled:opacity-40"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path
@@ -273,7 +278,7 @@ export default function XandreaChatBot() {
           onClick={() => setOpen(true)}
           aria-hidden={open}
           tabIndex={open ? -1 : 0}
-          className={`group/label flex items-center gap-2 rounded-full border border-gold/30 bg-white/80 py-2 pl-3.5 pr-4 shadow-[0_10px_30px_-12px_rgba(14,26,43,0.5)] backdrop-blur-md transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-gold ${
+          className={`group/label flex min-h-11 items-center gap-2 rounded-full border border-gold/30 bg-white/80 py-2 pl-3.5 pr-4 shadow-[0_10px_30px_-12px_rgba(14,26,43,0.5)] backdrop-blur-md transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-gold-deep ${
             open
               ? "pointer-events-none translate-x-2 scale-95 opacity-0"
               : "pointer-events-auto opacity-100 motion-safe:animate-[fade-up_0.6s_cubic-bezier(0.16,1,0.3,1)_both]"
@@ -333,7 +338,7 @@ export default function XandreaChatBot() {
 function Dot({ delay }: { delay: string }) {
   return (
     <span
-      className="h-1 w-1 animate-bounce rounded-full bg-ink/40"
+      className="chat-typing-dot h-1.5 w-1.5 rounded-full bg-ink/65"
       style={{ animationDelay: delay }}
     />
   );

@@ -1,9 +1,8 @@
 "use client";
 
 /**
- * Contact / consultation / quote request form. Fully styled + client-side
- * validated; on submit it shows an animated success state. No email is sent —
- * wire the submit handler to a backend later (// TODO).
+ * Contact / consultation / quote request form. Fully styled, client-side
+ * validated, and delivered by the server route when email env vars are present.
  */
 import { useState, type FormEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -12,8 +11,8 @@ import { inquiryCategories } from "@/data/content";
 type Errors = Partial<Record<"name" | "email" | "message", string>>;
 
 const field =
-  "w-full border-b border-ink/20 bg-transparent py-3 font-sans text-base text-ink placeholder:text-ink/40 focus:border-ink focus:outline-none transition-colors";
-const labelCls = "eyebrow mb-2 block text-ink/50";
+  "w-full border-b border-ink/20 bg-transparent py-3 font-sans text-base text-ink placeholder:text-ink/60 focus:border-ink focus:outline-none transition-colors";
+const labelCls = "eyebrow mb-2 block text-ink/65";
 
 export default function ContactForm({ defaultCategory }: { defaultCategory?: string }) {
   const [sent, setSent] = useState(false);
@@ -95,7 +94,7 @@ export default function ContactForm({ defaultCategory }: { defaultCategory?: str
           <div className="grid gap-7 sm:grid-cols-2">
             <div>
               <label htmlFor="phone" className={labelCls}>Phone (optional)</label>
-              <input id="phone" name="phone" className={field} placeholder="(403) 000-0000" />
+              <input id="phone" name="phone" className={field} placeholder="Phone number" />
             </div>
             <div>
               <label htmlFor="category" className={labelCls}>Inquiry Type</label>
@@ -120,7 +119,12 @@ export default function ContactForm({ defaultCategory }: { defaultCategory?: str
           </div>
 
           <div className="flex flex-col gap-3">
-            <button type="submit" className="btn-ink w-full sm:w-auto sm:self-start" disabled={submitting} aria-busy={submitting}>
+            <button
+              type="submit"
+              className="btn-ink min-h-11 w-full sm:w-auto sm:self-start"
+              disabled={submitting}
+              aria-busy={submitting}
+            >
               <span>{submitting ? "Sending…" : "Send Message"}</span>
             </button>
             {formError && (

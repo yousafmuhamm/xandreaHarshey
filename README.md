@@ -72,16 +72,16 @@ edited freely.
 
 ---
 
-## Media placeholders — how to swap
+## Media plan
 
-All imagery is a **placeholder** and should be replaced with branded assets.
+Photography is representative where project-owned media is not available yet. Replace stock with branded assets as they are approved.
 
 | Asset | Where | How to swap |
 | --- | --- | --- |
 | Hero background video | `data/content.ts` → `hero.video` | Drop an MP4 in `public/video/` and point `hero.video` to `/video/your-file.mp4`. A poster image always shows as fallback (and if the video fails to load). |
 | Hero poster | `data/content.ts` → `hero.poster` | Any image URL (or `/...` local path). |
-| Section / company / project / leadership images | `data/content.ts` | Replace the Unsplash URLs (built via the `ux()` helper) with your own. Local images go in `public/` and are referenced as `/your-image.jpg`. |
-| Leadership headshots | `data/content.ts` → `leaders[].image` | **Placeholder portraits** — replace with real executive photography. |
+| Section / company / project / leadership images | `data/content.ts` | Replace the Unsplash URLs (built via the `ux()` helper) with approved brand photography. Local images go in `public/` and are referenced as `/your-image.jpg`. |
+| Leadership headshots | `data/content.ts` → `leaders[].image` | Replace representative portraits with real executive photography. |
 | OG / social image | `app/layout.tsx` → `openGraph.images` | Add a 1200×630 image at `public/og.jpg`. |
 | Logo | `components/layout/Logo.tsx` | Currently a text wordmark — swap for an SVG when branding is final. |
 
@@ -134,8 +134,8 @@ there if you host images elsewhere.
 ## Stubbed for later (intentionally not built)
 
 These "Premium Features" are rendered as **marketing cards** (title + description + “Coming Soon”)
-but have **no backend**. Forms are fully styled and client-side validated; on submit they show a
-success state and call a `// TODO: connect backend` handler.
+but have **no backend**. Public forms submit to server routes and require email-provider
+environment variables in production.
 
 - **Executive Client Portal** (login / secure area)
 - **Investor Portal** (login / secure area)
@@ -146,9 +146,8 @@ success state and call a `// TODO: connect backend` handler.
   i18n can be layered on later.
 - **Digital Resource Center** (document library)
 
-To wire forms up, replace the `// TODO: connect backend` handlers in
-`components/forms/ContactForm.tsx`, `components/forms/CareersForm.tsx`, and
-`components/layout/NewsletterForm.tsx`.
+To enable delivery, configure `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CAREERS_TO_EMAIL`,
+`NEWSLETTER_TO_EMAIL`, and `CONTACT_FROM_EMAIL`.
 
 ---
 

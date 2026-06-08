@@ -7,12 +7,12 @@
  *  Short connective microcopy (e.g. fleshed-out Company History) is marked
  *  with `// connective` and may be edited freely without touching facts.
  *
- *  Imagery uses Unsplash placeholders (themed: construction, Calgary,
- *  corporate, facility, trade, hospitality) — swap the IDs below to brand.
+ *  Imagery uses representative, verified Unsplash photography where no
+ *  project-owned media exists yet. Hero video and division logos are local.
  * ============================================================================
  */
 
-/** Build a consistent Unsplash placeholder URL from a photo id. */
+/** Build a consistent Unsplash media URL from a photo id. */
 const ux = (id: string, w = 1600) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 
@@ -31,7 +31,7 @@ export const site = {
   countryCode: "CA",
   founded: "2018",
   email: "info@xandreaharshey.com",
-  phone: "+1 (403) 000-0000", // connective placeholder — swap for real number
+  phone: "",
   hqLine: "Calgary, Alberta, Canada",
 };
 
@@ -53,12 +53,8 @@ export const primaryNav = [
   { label: "Contact", href: "/contact" },
 ];
 
-/** Social handles shown in the overlay menu footer (placeholders). */
-export const social = [
-  { label: "LinkedIn", href: "https://www.linkedin.com" },
-  { label: "Instagram", href: "https://www.instagram.com" },
-  { label: "Facebook", href: "https://www.facebook.com" },
-];
+/** Official social channels. Keep empty until real profiles are confirmed. */
+export const social: { label: string; href: string }[] = [];
 
 export const hero = {
   // Warm, human welcome line over the big serif headline.
@@ -568,11 +564,11 @@ export const inquiryCategories = [
 ];
 
 export const contactFeatures = [
-  "Online Consultation Booking",
-  "Quote Request Forms",
-  "Interactive Contact Forms",
-  "Live Chat Support",
-  "Office Location Map",
+  "General Inquiries",
+  "Project Consultation Requests",
+  "Partnership Routing",
+  "Career Applications",
+  "Corporate Headquarters",
 ];
 
 export const contact = {
@@ -634,16 +630,18 @@ export const premiumFeatures: PremiumFeature[] = [
   },
 ];
 
-// "Client and partner recognition" marquee — connective placeholders.
+// Operating standards and trust signals. Recognition logos should only be
+// added here after official memberships or partner approvals are confirmed.
 export const recognition = [
-  "Calgary Chamber of Commerce",
   "WCB Alberta",
-  "Canadian Construction Association",
-  "BBB Accredited",
-  "Alberta Construction Safety",
-  "Buildex Canada",
-  "Procurement Canada",
-  "Global Trade Partners",
+  "Fully Insured",
+  "Safety Training",
+  "Quality Control",
+  "Regulatory Compliance",
+  "Professional Project Management",
+  "Site Audits",
+  "Client-Focused Delivery",
+  "Canadian-Owned",
 ];
 
 export const footer = {

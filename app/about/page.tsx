@@ -122,7 +122,7 @@ export default function AboutPage() {
           <Reveal className="grid gap-px overflow-hidden rounded-sm border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-3" stagger>
             {about.values.items.map((v, i) => (
               <div key={v.name} className="group bg-cream p-8 transition-colors duration-500 hover:bg-paper">
-                <span className="font-sans text-xs text-gold">{String(i + 1).padStart(2, "0")}</span>
+                <span className="font-sans text-xs text-gold-deep">{String(i + 1).padStart(2, "0")}</span>
                 <h3 className="mt-4 font-serif text-2xl text-ink">{v.name}</h3>
                 <p className="mt-3 font-sans text-sm leading-relaxed text-ink/65">{v.blurb}</p>
               </div>
@@ -135,7 +135,7 @@ export default function AboutPage() {
       <section className="bg-paper py-section">
         <div className="container-site max-w-4xl text-center">
           <Reveal>
-            <span className="eyebrow mb-6 block text-gold">{about.philosophy.heading}</span>
+            <span className="eyebrow mb-6 block text-gold-deep">{about.philosophy.heading}</span>
           </Reveal>
           <SectionHeading align="center" lines={[about.philosophy.body]} as="h2" />
         </div>

@@ -17,7 +17,7 @@ export default function IntroStatement() {
           <span className="eyebrow mb-8 block">{statement.eyebrow}</span>
           <p className="font-serif text-display-md leading-[1.25] text-ink md:text-display-lg md:leading-[1.2]">
             <span>{statement.lead} </span>
-            <span className="text-ink/45">{statement.rest}</span>
+            <span className="text-ink/65">{statement.rest}</span>
           </p>
         </Reveal>
       </div>

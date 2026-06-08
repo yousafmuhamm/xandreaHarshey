@@ -35,8 +35,8 @@ export default function CompanyDetail({
 
         <div className={reverse ? "lg:order-1" : "lg:order-2"}>
           <Reveal>
-            <span className="eyebrow mb-4 block text-gold">
-              {String(index + 1).padStart(2, "0")} — {company.tagline}
+            <span className="eyebrow mb-4 block text-gold-deep">
+              {String(index + 1).padStart(2, "0")} / {company.tagline}
             </span>
           </Reveal>
           <RevealText lines={[company.name]} className="font-serif text-display-md text-ink" />
@@ -48,7 +48,7 @@ export default function CompanyDetail({
           )}
 
           <Reveal className="mt-10">
-            <h3 className="eyebrow mb-5 text-ink/50">Services</h3>
+            <h3 className="eyebrow mb-5 text-ink/65">Services</h3>
           </Reveal>
           <Reveal className="grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2" stagger>
             {company.services.map((s) => (
@@ -62,13 +62,13 @@ export default function CompanyDetail({
           {company.extra && (
             <div className="mt-10">
               <Reveal>
-                <h3 className="eyebrow mb-5 text-ink/50">{company.extra.heading}</h3>
+                <h3 className="eyebrow mb-5 text-ink/65">{company.extra.heading}</h3>
               </Reveal>
               <Reveal className="flex flex-wrap gap-2" stagger>
                 {company.extra.items.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-ink/15 px-4 py-2 font-sans text-xs text-ink/75"
+                    className="inline-flex min-h-11 items-center rounded-full border border-ink/15 px-4 py-2 font-sans text-xs text-ink/75"
                   >
                     {item}
                   </span>

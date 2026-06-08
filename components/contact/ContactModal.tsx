@@ -17,6 +17,7 @@ import {
 } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useSmoothScroll } from "@/components/providers/SmoothScrollProvider";
+import { useDialogFocus } from "@/lib/useDialogFocus";
 import { inquiryCategories, contact, site, social } from "@/data/content";
 
 type Errors = Partial<Record<"name" | "email" | "message", string>>;
@@ -24,7 +25,7 @@ type Errors = Partial<Record<"name" | "email" | "message", string>>;
 const LUXE = [0.16, 1, 0.3, 1] as const;
 
 const fieldCls =
-  "w-full rounded-xl border border-ink/15 bg-paper/70 px-4 py-3 font-sans text-sm text-ink placeholder:text-ink/40 transition-colors focus:border-ink focus:outline-none focus:ring-1 focus:ring-ink/20";
+  "w-full rounded-xl border border-ink/15 bg-paper/70 px-4 py-3 font-sans text-sm text-ink placeholder:text-ink/60 transition-colors focus:border-ink focus:outline-none focus:ring-1 focus:ring-ink/30";
 
 const backdrop = {
   hidden: { opacity: 0 },
@@ -81,16 +82,11 @@ export default function ContactModal({
   useEffect(() => {
     if (!isOpen) return;
     stop();
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
-    window.addEventListener("keydown", onKey);
-    // Move focus into the dialog for keyboard users.
-    const t = window.setTimeout(() => dialogRef.current?.focus(), 60);
     return () => {
-      window.removeEventListener("keydown", onKey);
-      window.clearTimeout(t);
       start();
     };
   }, [isOpen, stop, start, onClose]);
+  useDialogFocus(dialogRef, isOpen, onClose);
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -166,7 +162,7 @@ export default function ContactModal({
               type="button"
               onClick={onClose}
               aria-label="Close contact form"
-              className="absolute right-4 top-4 z-20 flex h-9 w-9 items-center justify-center rounded-full border border-ink/20 bg-paper/80 text-ink shadow-sm backdrop-blur-sm transition-colors hover:bg-ink hover:text-cream"
+              className="absolute right-4 top-4 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-ink/20 bg-paper/90 text-ink shadow-sm backdrop-blur-sm transition-colors hover:bg-ink hover:text-cream"
             >
               <span className="relative block h-4 w-4">
                 <span className="absolute left-0 top-1/2 block h-px w-4 -translate-y-1/2 rotate-45 bg-current" />
@@ -188,34 +184,36 @@ export default function ContactModal({
                 </h2>
                 <p className="mt-5 max-w-sm font-sans text-sm leading-relaxed text-cream/70">
                   Whether you&rsquo;re a client, partner, or investor, our team is ready to assist
-                  you with every detail — big or small.
+                  you with every detail, big or small.
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 gap-8">
+              <div className="grid gap-8 sm:grid-cols-2">
                 <div>
-                  <h3 className="eyebrow mb-3 text-cream/50">Location</h3>
+                  <h3 className="eyebrow mb-3 text-cream/65">Location</h3>
                   <p className="font-sans text-sm leading-relaxed text-cream/80">{contact.hq}</p>
                 </div>
+                {social.length > 0 && (
+                  <div>
+                    <h3 className="eyebrow mb-3 text-cream/65">Social</h3>
+                    <ul className="space-y-1.5">
+                      {social.map((s) => (
+                        <li key={s.label}>
+                          <a
+                            href={s.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="link-underline font-sans text-sm text-cream/80 hover:text-cream"
+                          >
+                            {s.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
                 <div>
-                  <h3 className="eyebrow mb-3 text-cream/50">Social</h3>
-                  <ul className="space-y-1.5">
-                    {social.map((s) => (
-                      <li key={s.label}>
-                        <a
-                          href={s.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="link-underline font-sans text-sm text-cream/80 hover:text-cream"
-                        >
-                          {s.label}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="eyebrow mb-3 text-cream/50">Email</h3>
+                  <h3 className="eyebrow mb-3 text-cream/65">Email</h3>
                   <a
                     href={`mailto:${site.email}`}
                     className="link-underline font-sans text-sm text-cream/80 hover:text-cream"
@@ -223,15 +221,17 @@ export default function ContactModal({
                     {site.email}
                   </a>
                 </div>
-                <div>
-                  <h3 className="eyebrow mb-3 text-cream/50">Contact</h3>
-                  <a
-                    href={`tel:${site.phone.replace(/[^\d+]/g, "")}`}
-                    className="link-underline font-sans text-sm text-cream/80 hover:text-cream"
-                  >
-                    {site.phone}
-                  </a>
-                </div>
+                {site.phone && (
+                  <div>
+                    <h3 className="eyebrow mb-3 text-cream/65">Phone</h3>
+                    <a
+                      href={`tel:${site.phone.replace(/[^\d+]/g, "")}`}
+                      className="link-underline font-sans text-sm text-cream/80 hover:text-cream"
+                    >
+                      {site.phone}
+                    </a>
+                  </div>
+                )}
               </div>
             </motion.div>
 
@@ -267,7 +267,7 @@ export default function ContactModal({
                   >
                     <div>
                       <h3 className="font-serif text-2xl text-ink">Tell Us What You Need</h3>
-                      <p className="mt-1.5 font-sans text-sm text-ink/55">
+                      <p className="mt-1.5 font-sans text-sm text-ink/65">
                         Our team is ready to assist you with every detail, big or small.
                       </p>
                     </div>
@@ -289,7 +289,7 @@ export default function ContactModal({
                     </div>
 
                     <div>
-                      <span className="eyebrow mb-3 block text-ink/50">Type of Inquiry</span>
+                      <span className="eyebrow mb-3 block text-ink/65">Type of Inquiry</span>
                       <div className="flex flex-wrap gap-2">
                         {inquiryCategories.map((c) => {
                           const selected = active === c;
@@ -299,7 +299,7 @@ export default function ContactModal({
                               type="button"
                               onClick={() => setActive(c)}
                               aria-pressed={selected}
-                              className={`rounded-full border px-4 py-2 font-sans text-xs transition-colors duration-300 ${
+                              className={`min-h-11 rounded-full border px-4 py-2 font-sans text-xs transition-colors duration-300 ${
                                 selected
                                   ? "border-ink bg-ink text-cream"
                                   : "border-ink/20 text-ink/70 hover:border-ink/50"

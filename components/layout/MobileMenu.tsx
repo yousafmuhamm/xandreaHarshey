@@ -10,10 +10,11 @@ import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { nav, site, social } from "@/data/content";
 import { useSmoothScroll } from "@/components/providers/SmoothScrollProvider";
 import ContactTrigger from "@/components/contact/ContactTrigger";
+import { useDialogFocus } from "@/lib/useDialogFocus";
 
 const overlay = {
   hidden: { opacity: 0 },
@@ -42,23 +43,24 @@ export default function MobileMenu({
 }) {
   const { stop, start } = useSmoothScroll();
   const pathname = usePathname();
+  const dialogRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (open) stop();
     else start();
 
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
-    window.addEventListener("keydown", onKey);
     return () => {
-      window.removeEventListener("keydown", onKey);
       start();
     };
   }, [open, stop, start, onClose]);
+  useDialogFocus(dialogRef, open, onClose);
 
   return (
     <AnimatePresence>
       {open && (
         <motion.div
+          ref={dialogRef}
+          tabIndex={-1}
           variants={overlay}
           initial="hidden"
           animate="show"
@@ -83,7 +85,7 @@ export default function MobileMenu({
               type="button"
               onClick={onClose}
               aria-label="Close menu"
-              className="group flex min-h-[44px] min-w-[44px] items-center gap-3 px-2 font-sans text-[0.72rem] uppercase tracking-eyebrow text-cream/80 transition-colors hover:text-cream"
+              className="group flex min-h-11 min-w-11 items-center gap-3 px-2 font-sans text-[0.72rem] uppercase tracking-eyebrow text-cream/80 transition-colors hover:text-cream"
             >
               Close
               <span className="relative block h-4 w-4">
@@ -141,21 +143,25 @@ export default function MobileMenu({
                 {site.hqLine}
               </p>
               <p className="mt-2 font-sans text-sm text-cream/75">{site.email}</p>
-              <p className="mt-1 font-sans text-sm text-cream/75">{site.phone}</p>
+              {site.phone && (
+                <p className="mt-1 font-sans text-sm text-cream/75">{site.phone}</p>
+              )}
             </div>
-            <div className="flex flex-wrap gap-6">
-              {social.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-underline font-sans text-[0.72rem] uppercase tracking-eyebrow text-cream/70 hover:text-cream"
-                >
-                  {s.label}
-                </a>
-              ))}
-            </div>
+            {social.length > 0 && (
+              <div className="flex flex-wrap gap-6">
+                {social.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-underline font-sans text-[0.72rem] uppercase tracking-eyebrow text-cream/70 hover:text-cream"
+                  >
+                    {s.label}
+                  </a>
+                ))}
+              </div>
+            )}
           </motion.div>
         </motion.div>
       )}

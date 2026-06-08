@@ -35,7 +35,7 @@ export default function LeaderProfile({
 
         <div className={reverse ? "lg:order-1" : "lg:order-2"}>
           <Reveal>
-            <span className="eyebrow mb-4 block text-gold">{leader.title}</span>
+            <span className="eyebrow mb-4 block text-gold-deep">{leader.title}</span>
           </Reveal>
           <RevealText lines={[leader.name]} className="font-serif text-display-md text-ink" />
 

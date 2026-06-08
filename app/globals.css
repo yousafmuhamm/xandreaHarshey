@@ -13,6 +13,7 @@
   --navy-deep: #0e1a2b;
   --gold: #a9885f;
   --gold-light: #c2a878;
+  --gold-deep: #6f5431;
 
   --header-h: 92px;
 }
@@ -35,6 +36,12 @@ body {
   overflow-x: hidden;
 }
 
+:focus-visible {
+  outline: 2px solid var(--paper);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 4px var(--gold-deep);
+}
+
 @layer base {
   h1,
   h2,
@@ -50,7 +57,7 @@ body {
 
 @layer components {
   .eyebrow {
-    @apply font-sans text-[0.72rem] uppercase tracking-eyebrow text-gold;
+    @apply font-sans text-[0.72rem] uppercase tracking-eyebrow text-gold-deep;
   }
 
   .container-site {
@@ -115,13 +122,13 @@ body {
   }
 
   .btn-gold {
-    @apply btn-luxe border-gold text-gold;
+    @apply btn-luxe border-gold-deep text-gold-deep;
   }
   .btn-gold::before {
-    @apply bg-gold;
+    @apply bg-gold-deep;
   }
   .btn-gold:hover > span {
-    @apply text-navy-deep;
+    @apply text-cream;
   }
 }
 
@@ -240,6 +247,37 @@ body {
   }
   24% {
     transform: scale(1);
+  }
+}
+
+.chat-typing-dot {
+  animation: chatTypingDot 1.15s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+@keyframes chatTypingDot {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.86);
+  }
+  45% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-indicator-line::after,
+  .chat-beacon,
+  .chat-heartbeat,
+  .chat-typing-dot,
+  .marquee-track {
+    animation: none !important;
+  }
+
+  .link-underline::after,
+  .btn-luxe::before,
+  .btn-luxe > span {
+    transition-duration: 0.01ms !important;
   }
 }
 

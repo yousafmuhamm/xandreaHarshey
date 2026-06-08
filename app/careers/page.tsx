@@ -41,7 +41,7 @@ export default function CareersPage() {
           <Reveal className="grid gap-px overflow-hidden rounded-sm border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-3" stagger>
             {careers.features.map((f, i) => (
               <div key={f} className="bg-cream p-8">
-                <span className="font-sans text-xs text-gold">{String(i + 1).padStart(2, "0")}</span>
+                <span className="font-sans text-xs text-gold-deep">{String(i + 1).padStart(2, "0")}</span>
                 <h3 className="mt-4 font-serif text-xl text-ink">{f}</h3>
               </div>
             ))}

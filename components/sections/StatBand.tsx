@@ -29,7 +29,7 @@ export default function StatBand() {
               <div className="font-serif text-6xl leading-none text-gold-light md:text-7xl lg:text-[5.5rem]">
                 <Counter value={s.value} prefix={s.prefix} suffix={s.suffix} />
               </div>
-              <p className="mt-5 font-sans text-[0.72rem] uppercase tracking-eyebrow text-cream/55">
+              <p className="mt-5 font-sans text-[0.72rem] uppercase tracking-eyebrow text-cream/65">
                 {s.label}
               </p>
             </div>

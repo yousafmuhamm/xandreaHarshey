@@ -1,8 +1,9 @@
 "use client";
 
 /**
- * Careers application form — styled + client-side validated with an animated
- * success state. No backend; submit is stubbed (// TODO connect ATS / email).
+ * Careers application form, with client and server validation. The server route
+ * sends applications when email delivery is configured and fails loudly in
+ * production otherwise.
  */
 import { useState, type FormEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -10,8 +11,8 @@ import { AnimatePresence, motion } from "framer-motion";
 type Errors = Partial<Record<"name" | "email" | "role", string>>;
 
 const field =
-  "w-full border-b border-ink/20 bg-transparent py-3 font-sans text-base text-ink placeholder:text-ink/40 focus:border-ink focus:outline-none transition-colors";
-const labelCls = "eyebrow mb-2 block text-ink/50";
+  "w-full border-b border-ink/20 bg-transparent py-3 font-sans text-base text-ink placeholder:text-ink/60 focus:border-ink focus:outline-none transition-colors";
+const labelCls = "eyebrow mb-2 block text-ink/65";
 
 const ROLES = [
   "Construction & Trades",
@@ -26,9 +27,12 @@ export default function CareersForm() {
   const [sent, setSent] = useState(false);
   const [errors, setErrors] = useState<Errors>({});
   const [fileName, setFileName] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setFormError(null);
     const data = new FormData(e.currentTarget);
     const next: Errors = {};
     if (!String(data.get("name")).trim()) next.name = "Please enter your name.";
@@ -37,8 +41,26 @@ export default function CareersForm() {
     setErrors(next);
     if (Object.keys(next).length) return;
 
-    // TODO: connect backend (applicant tracking system / email).
-    setSent(true);
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/careers", {
+        method: "POST",
+        body: data,
+      });
+      const payload = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        if (payload?.errors) setErrors(payload.errors as Errors);
+        setFormError(
+          payload?.error || "We couldn't submit your application. Please try again."
+        );
+        return;
+      }
+      setSent(true);
+    } catch {
+      setFormError("Network error. Please check your connection and try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -74,7 +96,7 @@ export default function CareersForm() {
           <div className="grid gap-7 sm:grid-cols-2">
             <div>
               <label htmlFor="c-phone" className={labelCls}>Phone (optional)</label>
-              <input id="c-phone" name="phone" className={field} placeholder="(403) 000-0000" />
+              <input id="c-phone" name="phone" className={field} placeholder="Phone number" />
             </div>
             <div>
               <label htmlFor="role" className={labelCls}>Area of Interest</label>
@@ -90,13 +112,14 @@ export default function CareersForm() {
 
           <div>
             <label className={labelCls}>Resume (optional)</label>
-            <label className="flex cursor-pointer items-center justify-between border-b border-ink/20 py-3 font-sans text-sm text-ink/60 hover:border-ink/50">
+            <label className="flex min-h-11 cursor-pointer items-center justify-between border-b border-ink/20 py-3 font-sans text-sm text-ink/65 hover:border-ink/50 focus-within:border-ink">
               <span>{fileName || "Attach a PDF or document"}</span>
-              <span className="text-[0.7rem] uppercase tracking-eyebrow text-gold">Browse</span>
+              <span className="text-[0.7rem] uppercase tracking-eyebrow text-gold-deep">Browse</span>
               <input
                 type="file"
                 name="resume"
-                className="hidden"
+                accept=".pdf,.doc,.docx"
+                className="sr-only"
                 onChange={(e) => setFileName(e.target.files?.[0]?.name ?? "")}
               />
             </label>
@@ -107,9 +130,17 @@ export default function CareersForm() {
             <textarea id="c-msg" name="message" rows={3} className={`${field} resize-none`} placeholder="Tell us a little about yourself…" />
           </div>
 
-          <button type="submit" className="btn-ink w-full sm:w-auto sm:self-start">
-            <span>Submit Application</span>
+          <button
+            type="submit"
+            className="btn-ink min-h-11 w-full sm:w-auto sm:self-start"
+            disabled={submitting}
+            aria-busy={submitting}
+          >
+            <span>{submitting ? "Submitting..." : "Submit Application"}</span>
           </button>
+          {formError && (
+            <p role="alert" className="text-sm text-red-600">{formError}</p>
+          )}
         </motion.form>
       )}
     </AnimatePresence>

@@ -1,8 +1,8 @@
 "use client";
 
 /**
- * Footer newsletter signup. Client-side validation + animated success state.
- * No backend yet — submit is stubbed.
+ * Footer newsletter signup. Client-side validation plus server delivery when
+ * the email provider is configured.
  */
 import { useState, type FormEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -71,13 +71,13 @@ export default function NewsletterForm() {
               }}
               placeholder="Email address"
               aria-label="Email address"
-              className="w-full bg-transparent font-sans text-base text-cream placeholder:text-cream/40 focus:outline-none"
+              className="w-full bg-transparent font-sans text-base text-cream placeholder:text-cream/65 focus:outline-none"
             />
             <button
               type="submit"
               disabled={status === "submitting"}
               aria-busy={status === "submitting"}
-              className="ml-3 shrink-0 font-sans text-[0.7rem] uppercase tracking-eyebrow text-gold transition-colors hover:text-gold-light disabled:opacity-60"
+              className="ml-3 min-h-11 shrink-0 px-2 font-sans text-[0.7rem] uppercase tracking-eyebrow text-gold-light transition-colors hover:text-cream disabled:opacity-60"
             >
               {status === "submitting" ? "…" : "Subscribe"}
             </button>
