@@ -100,7 +100,7 @@ export default function Hero() {
             muted
             loop
             playsInline
-            preload="auto"
+            preload="none"
             poster={hero.poster}
             aria-hidden="true"
             onError={() => setVideoFailed(true)}

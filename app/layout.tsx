@@ -1,13 +1,17 @@
 import type { Metadata } from "next";
 import { Jost } from "next/font/google";
+import dynamic from "next/dynamic";
 import "./globals.css";
 
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 import ContactModalProvider from "@/components/contact/ContactModalProvider";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import XandreaChatBot from "@/components/XandreaChatBot";
 import { site } from "@/data/content";
+
+const XandreaChatBot = dynamic(() => import("@/components/XandreaChatBot"), {
+  ssr: false,
+});
 
 /*
  * Single geometric-sans type system (matches the reference landing page): an
@@ -96,6 +100,10 @@ const orgJsonLd = {
     addressRegion: site.regionCode,
     addressCountry: site.countryCode,
   },
+  logo: {
+    "@type": "ImageObject",
+    url: `${site.url}/brand/logo-white.png`,
+  },
   areaServed: { "@type": "Country", name: "Canada" },
   knowsAbout: [
     "Construction",
@@ -117,7 +125,11 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={jost.variable}>
+    <html lang="en-CA" className={jost.variable}>
+      <head>
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+      </head>
       <body>
         <script
           type="application/ld+json"

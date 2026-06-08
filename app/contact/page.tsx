@@ -107,6 +107,7 @@ export default function ContactPage({
                 className="h-full w-full"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
+                sandbox="allow-scripts allow-same-origin"
               />
             </div>
           </Reveal>

@@ -71,7 +71,7 @@ export default function NewsletterForm() {
               }}
               placeholder="Email address"
               aria-label="Email address"
-              className="w-full bg-transparent font-sans text-sm text-cream placeholder:text-cream/40 focus:outline-none"
+              className="w-full bg-transparent font-sans text-base text-cream placeholder:text-cream/40 focus:outline-none"
             />
             <button
               type="submit"

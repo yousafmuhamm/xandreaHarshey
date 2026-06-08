@@ -92,7 +92,7 @@ export default function Header() {
               aria-label="Open menu"
               aria-expanded={menuOpen}
               aria-haspopup="dialog"
-              className={`group flex items-center gap-3 font-sans text-[0.72rem] uppercase tracking-eyebrow transition-colors duration-300 ${
+              className={`group flex min-h-[44px] min-w-[44px] items-center gap-3 px-2 font-sans text-[0.72rem] uppercase tracking-eyebrow transition-colors duration-300 ${
                 light ? "text-white/90 hover:text-white" : "text-ink/80 hover:text-ink"
               }`}
             >
