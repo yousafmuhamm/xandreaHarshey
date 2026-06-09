@@ -25,7 +25,7 @@ type Errors = Partial<Record<"name" | "email" | "message", string>>;
 const LUXE = [0.16, 1, 0.3, 1] as const;
 
 const fieldCls =
-  "w-full rounded-xl border border-ink/15 bg-paper/70 px-4 py-3 font-sans text-sm text-ink placeholder:text-ink/60 transition-colors focus:border-ink focus:outline-none focus:ring-1 focus:ring-ink/30";
+  "min-w-0 w-full rounded-xl border border-ink/15 bg-paper/70 px-4 py-3 font-sans text-sm text-ink placeholder:text-ink/60 transition-colors focus:border-ink focus:outline-none focus:ring-1 focus:ring-ink/30";
 
 const backdrop = {
   hidden: { opacity: 0 },
@@ -145,7 +145,7 @@ export default function ContactModal({
           animate="show"
           exit="exit"
           onClick={onClose}
-          className="fixed inset-0 z-[350] flex items-center justify-center overflow-y-auto bg-navy-deep/70 px-4 py-8 backdrop-blur-md sm:px-6"
+          className="fixed inset-0 z-[350] flex items-start justify-center overflow-hidden bg-navy-deep/70 px-3 py-3 backdrop-blur-md sm:px-6 sm:py-8 lg:items-center"
         >
           <motion.div
             ref={dialogRef}
@@ -155,7 +155,7 @@ export default function ContactModal({
             aria-label="Contact us"
             variants={panel}
             onClick={(e) => e.stopPropagation()}
-            className="relative grid w-full max-w-5xl gap-0 overflow-hidden rounded-2xl border border-white/20 bg-white/10 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl outline-none lg:grid-cols-[0.82fr_1.18fr]"
+            className="relative grid max-h-[calc(100dvh-1.5rem)] w-full max-w-5xl gap-0 overflow-y-auto overscroll-contain rounded-2xl border border-white/20 bg-white/10 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl outline-none sm:max-h-[calc(100dvh-4rem)] lg:grid-cols-[0.82fr_1.18fr] lg:overflow-hidden"
           >
             {/* Close button */}
             <button
@@ -173,22 +173,22 @@ export default function ContactModal({
             {/* Info column */}
             <motion.div
               variants={item}
-              className="relative flex flex-col justify-between gap-10 bg-navy-deep/40 p-8 text-cream sm:p-10"
+              className="relative order-2 flex min-w-0 flex-col justify-between gap-6 bg-navy-deep/40 p-5 text-cream sm:p-8 lg:order-1 lg:gap-10 lg:p-10"
             >
               <div>
                 <span className="eyebrow text-gold-light">{contact.eyebrow}</span>
-                <h2 className="mt-4 font-serif text-3xl leading-tight text-cream sm:text-4xl">
+                <h2 className="mt-3 font-serif text-2xl leading-tight text-cream sm:text-3xl lg:mt-4 lg:text-4xl">
                   Let&rsquo;s Build Something
                   <br />
                   Great Together.
                 </h2>
-                <p className="mt-5 max-w-sm font-sans text-sm leading-relaxed text-cream/70">
+                <p className="mt-3 max-w-sm font-sans text-sm leading-relaxed text-cream/70 lg:mt-5">
                   Whether you&rsquo;re a client, partner, or investor, our team is ready to assist
                   you with every detail, big or small.
                 </p>
               </div>
 
-              <div className="grid gap-8 sm:grid-cols-2">
+              <div className="grid gap-5 sm:grid-cols-2 lg:gap-8">
                 <div>
                   <h3 className="eyebrow mb-3 text-cream/65">Location</h3>
                   <p className="font-sans text-sm leading-relaxed text-cream/80">{contact.hq}</p>
@@ -238,7 +238,7 @@ export default function ContactModal({
             {/* Form card */}
             <motion.div
               variants={item}
-              className="bg-cream/95 p-8 text-ink sm:p-10"
+              className="order-1 min-w-0 bg-cream/95 p-5 pt-16 text-ink sm:p-8 sm:pt-16 lg:order-2 lg:p-10"
             >
               <AnimatePresence mode="wait">
                 {sent ? (
@@ -263,7 +263,7 @@ export default function ContactModal({
                     onSubmit={onSubmit}
                     noValidate
                     exit={{ opacity: 0 }}
-                    className="grid gap-5"
+                    className="grid w-full min-w-0 gap-4 sm:gap-5 [&>*]:min-w-0 [&>*]:w-full"
                   >
                     <div>
                       <h3 className="font-serif text-2xl text-ink">Tell Us What You Need</h3>
@@ -290,7 +290,7 @@ export default function ContactModal({
 
                     <div>
                       <span className="eyebrow mb-3 block text-ink/65">Type of Inquiry</span>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="-mx-1 flex min-w-0 gap-2 overflow-x-auto px-1 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
                         {inquiryCategories.map((c) => {
                           const selected = active === c;
                           return (
@@ -299,7 +299,7 @@ export default function ContactModal({
                               type="button"
                               onClick={() => setActive(c)}
                               aria-pressed={selected}
-                              className={`min-h-11 rounded-full border px-4 py-2 font-sans text-xs transition-colors duration-300 ${
+                              className={`min-h-10 flex-none rounded-full border px-3.5 py-2 font-sans text-xs transition-colors duration-300 sm:min-h-11 sm:px-4 ${
                                 selected
                                   ? "border-ink bg-ink text-cream"
                                   : "border-ink/20 text-ink/70 hover:border-ink/50"
@@ -323,9 +323,9 @@ export default function ContactModal({
                       {errors.message && <p className="mt-1.5 text-xs text-red-600">{errors.message}</p>}
                     </div>
 
-                    <label className="flex items-center gap-3 font-sans text-xs text-ink/65">
-                      <input type="checkbox" name="newsletter" className="h-4 w-4 rounded border-ink/30 text-ink focus:ring-ink/30" />
-                      I&rsquo;d like to receive exclusive offers and updates
+                    <label className="flex min-w-0 items-center gap-3 font-sans text-xs leading-relaxed text-ink/65">
+                      <input type="checkbox" name="newsletter" className="h-4 w-4 shrink-0 rounded border-ink/30 text-ink focus:ring-ink/30" />
+                      <span className="min-w-0">I&rsquo;d like to receive exclusive offers and updates</span>
                     </label>
 
                     {/* Honeypot — hidden from humans, catches bots. */}

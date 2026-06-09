@@ -76,6 +76,7 @@ function buildSystemPrompt(companyKnowledge: string) {
     "- Use plain text only. Do not use Markdown, asterisks, bold text, tables, headings, or emojis.",
     "- Do not repeat the full company overview unless the visitor asks for background.",
     "- Do not end every answer with a long sales pitch.",
+    "- If the visitor asks about a project, service need, pricing, timelines, inspections, or whether Xandrea can help, answer briefly and invite them to use the quote option in the chat so a specialist can follow up.",
     "- If a question is broad, give a short answer and ask one helpful follow-up question.",
     "",
     "Valid website pages you may mention: /, /about, /companies, /services, /leadership, /careers, /contact. Never reference any other path (for example /projects or /safety do not exist).",

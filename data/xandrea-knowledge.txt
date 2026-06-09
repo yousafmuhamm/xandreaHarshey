@@ -10,7 +10,7 @@ Company Snapshot:
 - Type: Diversified Canadian business group (Canadian-owned enterprise)
 - Founded: 2018
 - Corporate Headquarters: Calgary, Alberta, Canada
-- General email: info@xandreaharshey.com
+- General email: xandreaservices@gmail.com
 - Scale: 6 business divisions across 8 industry sectors; 100% Canadian-owned; approximately $50M+ diversified group scale.
 
 Company Overview:
@@ -151,7 +151,7 @@ Xandrea Harshey Services Inc. supports career growth through current opportuniti
 
 Contact:
 Corporate Headquarters: Calgary, Alberta, Canada
-General email: info@xandreaharshey.com
+General email: xandreaservices@gmail.com
 
 Inquiry Categories:
 - General Inquiries
@@ -168,6 +168,7 @@ AI Assistant Rules:
 - Do not make up project timelines.
 - Do not make up guarantees.
 - Do not provide legal, investment, or contract advice.
+- General phone: +1 (437) 868-1988
 - Do not invent phone numbers, specific staff contacts, or details that are not stated above.
 - If the answer is not available in the company knowledge, say: "I do not have enough information on that yet. Please contact Xandrea Harshey Services Inc. directly for the most accurate answer."
 - Keep answers professional, clear, and concise.

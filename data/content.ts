@@ -30,8 +30,8 @@ export const site = {
   country: "Canada",
   countryCode: "CA",
   founded: "2018",
-  email: "info@xandreaharshey.com",
-  phone: "",
+  email: "xandreaservices@gmail.com",
+  phone: "+1 (437) 868-1988",
   hqLine: "Calgary, Alberta, Canada",
 };
 
