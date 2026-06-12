@@ -319,7 +319,7 @@ export const leaders: Leader[] = [
     name: "Alejandro Pagcaliwagan",
     title: "Chairman of the Board",
     short: "Entrepreneur, contractor, and community leader providing strategic vision across the group.",
-    image: ux("1560250097-0b93528c311a", 1000),
+    image: "/leadership/alejandro-pagcaliwagan.png",
     bio: [
       "Alejandro Pagcaliwagan is a Canadian entrepreneur, contractor, business executive, and community leader based in Calgary, Alberta. As Chairman of the Board of Xandrea Harshey Services Inc., he provides strategic leadership, corporate governance, and long-term vision across the organization's diverse business interests.",
       "With extensive experience in construction, business development, and entrepreneurship, Alejandro has built a reputation for identifying opportunities, fostering strategic partnerships, and driving sustainable growth. His leadership philosophy is rooted in integrity, accountability, innovation, and a commitment to operational excellence.",
@@ -331,11 +331,11 @@ export const leaders: Leader[] = [
   {
     slug: "ajit-hardasani",
     name: "Ajit Hardasani",
-    title: "President",
+    title: "General Manager",
     short: "Seasoned executive driving corporate growth, partnerships, and operational excellence.",
-    image: ux("1507003211169-0a1dd7228f2d", 1000),
+    image: "/leadership/ajit-hardasani.jpg",
     bio: [
-      "Ajit Hardasani is a seasoned business executive, entrepreneur, and corporate leader with extensive experience spanning healthcare, education, trading, consulting, and business development. As President of Xandrea Harshey Services Inc., he is responsible for driving corporate growth, strategic partnerships, operational excellence, and long-term business development initiatives across the organization.",
+      "Ajit Hardasani is a seasoned business executive, entrepreneur, and corporate leader with extensive experience spanning healthcare, education, trading, consulting, and business development. As General Manager of Xandrea Harshey Services Inc., he is responsible for driving corporate growth, strategic partnerships, operational excellence, and long-term business development initiatives across the organization.",
       "Prior to joining Xandrea Harshey Services Inc., Ajit held several senior leadership positions, including Chief Operating Officer of Forticare Health Systems International, where he played an instrumental role in strengthening operations, enhancing organizational performance, and supporting business expansion. He also served as President of Red Diamond Trading Corporation and President of Little Friends of St. Mary's Learning Center, demonstrating a proven track record in executive leadership, strategic planning, and institution building.",
       "In addition to his corporate achievements, Ajit has a creative background as a former songwriter and recording artist in the Philippines, reflecting a unique blend of creativity, innovation, and entrepreneurial thinking. This diverse experience has contributed to his ability to lead organizations with vision, adaptability, and a people-centered approach.",
       "Recognized for his results-driven leadership style and commitment to excellence, Ajit continues to champion innovation, sustainable growth, and value creation while helping position Xandrea Harshey Services Inc. as a respected and diversified Canadian enterprise.",
@@ -346,7 +346,7 @@ export const leaders: Leader[] = [
     name: "Harlem Pagcaliwagan",
     title: "Chief Operating Officer",
     short: "Operations leader overseeing project execution and organizational performance.",
-    image: ux("1472099645785-5658abf4ff4e", 1000),
+    image: "/leadership/harlem-pagcaliwagan.png",
     bio: [
       "Harlem Pagcaliwagan serves as Chief Operating Officer of Xandrea Harshey Services Inc., where he oversees day-to-day operations, project execution, workforce management, and organizational performance across the company's business divisions.",
       "With extensive hands-on experience across multiple construction trades and operational disciplines, Harlem brings a practical understanding of project management, field operations, and business execution. His technical expertise, combined with a strong commitment to quality, efficiency, and client satisfaction, has contributed significantly to the company's growth and operational success.",

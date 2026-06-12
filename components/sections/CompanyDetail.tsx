@@ -8,6 +8,7 @@
 import RevealText from "@/components/motion/RevealText";
 import Reveal from "@/components/motion/Reveal";
 import AnimatedImage from "@/components/motion/AnimatedImage";
+import Image from "next/image";
 import type { Company } from "@/data/content";
 
 export default function CompanyDetail({
@@ -24,13 +25,32 @@ export default function CompanyDetail({
     <section id={company.slug} className={`${bg} scroll-mt-24 py-section`}>
       <div className="container-site grid items-start gap-12 lg:grid-cols-2 lg:gap-20">
         <div className={reverse ? "lg:order-2" : "lg:order-1"}>
-          <AnimatedImage
-            src={company.image}
-            alt={company.imageAlt}
-            parallax
-            ratioClass="aspect-[4/5]"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-          />
+          <div className="relative">
+            <AnimatedImage
+              src={company.image}
+              alt={company.imageAlt}
+              parallax
+              ratioClass="aspect-[4/5]"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            {company.logo && (
+              <>
+                <div
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy-deep/35 via-navy-deep/10 to-navy-deep/25"
+                  aria-hidden
+                />
+                <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-8 md:px-12">
+                  <Image
+                    src={company.logo}
+                    alt=""
+                    width={620}
+                    height={620}
+                    className="h-auto max-h-[42%] w-auto max-w-[72%] object-contain opacity-90 drop-shadow-[0_2px_18px_rgba(14,26,43,0.55)]"
+                  />
+                </div>
+              </>
+            )}
+          </div>
         </div>
 
         <div className={reverse ? "lg:order-1" : "lg:order-2"}>

@@ -163,7 +163,7 @@ export default function AboutPage() {
               },
               {
                 q: "Who founded Xandrea Harshey Services Inc.?",
-                a: "Xandrea Harshey Services Inc. was founded in 2018 in Calgary, Alberta. The company is led by Chairman Alejandro Pagcaliwagan, President Ajit Hardasani, and Chief Operating Officer Harlem Pagcaliwagan.",
+                a: "Xandrea Harshey Services Inc. was founded in 2018 in Calgary, Alberta. The company is led by Chairman Alejandro Pagcaliwagan, General Manager Ajit Hardasani, and Chief Operating Officer Harlem Pagcaliwagan.",
               },
               {
                 q: "Is Xandrea Harshey Services Inc. Canadian-owned?",
@@ -182,7 +182,7 @@ export default function AboutPage() {
             { "@type": "Question", name: "What is Xandrea Harshey Services Inc.?", acceptedAnswer: { "@type": "Answer", text: "Xandrea Harshey Services Inc. is a diversified Canadian business group headquartered in Calgary, Alberta, founded in 2018, operating across construction, facility management, international trade, and property services." } },
             { "@type": "Question", name: "What does Xandrea Harshey Services Inc. do?", acceptedAnswer: { "@type": "Answer", text: "The company provides construction and development, commercial facility management, international commodity trading, property renovation, hospitality ventures, and strategic business investments serving clients across Alberta and Canada." } },
             { "@type": "Question", name: "Where is Xandrea Harshey Services Inc. headquartered?", acceptedAnswer: { "@type": "Answer", text: "Xandrea Harshey Services Inc. is headquartered in Calgary, Alberta, Canada." } },
-            { "@type": "Question", name: "Who founded Xandrea Harshey Services Inc.?", acceptedAnswer: { "@type": "Answer", text: "Xandrea Harshey Services Inc. was founded in 2018 in Calgary, Alberta. The company is led by Chairman Alejandro Pagcaliwagan, President Ajit Hardasani, and COO Harlem Pagcaliwagan." } },
+            { "@type": "Question", name: "Who founded Xandrea Harshey Services Inc.?", acceptedAnswer: { "@type": "Answer", text: "Xandrea Harshey Services Inc. was founded in 2018 in Calgary, Alberta. The company is led by Chairman Alejandro Pagcaliwagan, General Manager Ajit Hardasani, and COO Harlem Pagcaliwagan." } },
             { "@type": "Question", name: "Is Xandrea Harshey Services Inc. Canadian-owned?", acceptedAnswer: { "@type": "Answer", text: "Yes. Xandrea Harshey Services Inc. is 100% Canadian-owned and operated, headquartered in Calgary, Alberta." } },
           ],
         }}

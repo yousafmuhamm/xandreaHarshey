@@ -43,8 +43,8 @@ Services: General Construction, Renovations & Remodeling, Painting Services, Ext
 ### Alejandro Pagcaliwagan — Chairman of the Board
 Alejandro Pagcaliwagan is a Canadian entrepreneur, contractor, business executive, and community leader based in Calgary, Alberta. As Chairman of the Board of Xandrea Harshey Services Inc., he provides strategic leadership, corporate governance, and long-term vision across the organization's diverse business interests. He has extensive experience in construction, business development, and entrepreneurship and maintains a significant digital presence focused on entrepreneurship, leadership, and community development.
 
-### Ajit Hardasani — President
-Ajit Hardasani is a seasoned business executive and entrepreneur with experience spanning healthcare, education, trading, consulting, and business development. As President of Xandrea Harshey Services Inc., he drives corporate growth, strategic partnerships, operational excellence, and long-term business development. Prior roles include Chief Operating Officer of Forticare Health Systems International, President of Red Diamond Trading Corporation, and President of Little Friends of St. Mary's Learning Center.
+### Ajit Hardasani — General Manager
+Ajit Hardasani is a seasoned business executive and entrepreneur with experience spanning healthcare, education, trading, consulting, and business development. As General Manager of Xandrea Harshey Services Inc., he drives corporate growth, strategic partnerships, operational excellence, and long-term business development. Prior roles include Chief Operating Officer of Forticare Health Systems International, President of Red Diamond Trading Corporation, and President of Little Friends of St. Mary's Learning Center.
 
 ### Harlem Pagcaliwagan — Chief Operating Officer
 Harlem Pagcaliwagan serves as Chief Operating Officer of Xandrea Harshey Services Inc., overseeing day-to-day operations, project execution, workforce management, and organizational performance across the company's business divisions. He brings hands-on experience across multiple construction trades and operational disciplines.
@@ -113,7 +113,7 @@ Xandrea Harshey Services Inc. delivers integrated business solutions across cons
 Xandrea Harshey Services Inc. is headquartered in Calgary, Alberta, Canada.
 
 **Who leads Xandrea Harshey Services Inc.?**
-The company is led by Alejandro Pagcaliwagan (Chairman of the Board), Ajit Hardasani (President), and Harlem Pagcaliwagan (Chief Operating Officer).
+The company is led by Alejandro Pagcaliwagan (Chairman of the Board), Ajit Hardasani (General Manager), and Harlem Pagcaliwagan (Chief Operating Officer).
 
 **When was Xandrea Harshey Services Inc. founded?**
 Xandrea Harshey Services Inc. was founded in 2018 in Calgary, Alberta, Canada.

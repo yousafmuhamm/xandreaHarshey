@@ -14,13 +14,19 @@ export default function PageHero({
   titleLines,
   intro,
   image,
+  compact = false,
 }: {
   eyebrow: string;
   titleLines: string[];
   intro?: string;
   image?: string;
+  compact?: boolean;
 }) {
   const dark = Boolean(image);
+  const spacing = compact
+    ? "pb-[clamp(3.5rem,7vw,6.5rem)] pt-28 md:pt-40"
+    : "pb-section pt-28 md:pt-48";
+
   return (
     <section
       className={`relative overflow-hidden ${dark ? "bg-navy-deep text-cream" : "bg-cream text-ink"}`}
@@ -32,7 +38,7 @@ export default function PageHero({
         </>
       )}
 
-      <div className="container-site relative z-10 pb-section pt-28 md:pt-48">
+      <div className={`container-site relative z-10 ${spacing}`}>
         <Reveal immediate>
           <span className={`eyebrow mb-6 block ${dark ? "text-gold-light" : "text-gold-deep"}`}>
             {eyebrow}

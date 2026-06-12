@@ -94,9 +94,29 @@ export async function POST(request: Request) {
     });
     if (!res.ok) {
       const detail = await res.text();
-      console.error("Resend delivery failed:", res.status, detail);
+      let resendMessage = "";
+      try {
+        const parsed = JSON.parse(detail) as { message?: string };
+        resendMessage = parsed.message ?? "";
+      } catch {
+        /* non-JSON body */
+      }
+      console.error("Resend delivery failed:", res.status, resendMessage || detail);
+
+      const sandboxOnly =
+        resendMessage.includes("You can only send testing emails") ||
+        resendMessage.includes("domain is not verified");
+
       return NextResponse.json(
-        { ok: false, error: "We couldn't send your message. Please try again or email us directly." },
+        {
+          ok: false,
+          error: sandboxOnly
+            ? "Contact delivery is not fully configured yet. Please email us directly."
+            : "We couldn't send your message. Please try again or email us directly.",
+          ...(process.env.NODE_ENV !== "production" && resendMessage
+            ? { debug: resendMessage }
+            : {}),
+        },
         { status: 502 }
       );
     }
