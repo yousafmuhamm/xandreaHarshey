@@ -8,6 +8,7 @@
 import RevealText from "@/components/motion/RevealText";
 import Reveal from "@/components/motion/Reveal";
 import AnimatedImage from "@/components/motion/AnimatedImage";
+import Image from "next/image";
 import type { Company } from "@/data/content";
 
 export default function CompanyDetail({
@@ -24,19 +25,38 @@ export default function CompanyDetail({
     <section id={company.slug} className={`${bg} scroll-mt-24 py-section`}>
       <div className="container-site grid items-start gap-12 lg:grid-cols-2 lg:gap-20">
         <div className={reverse ? "lg:order-2" : "lg:order-1"}>
-          <AnimatedImage
-            src={company.image}
-            alt={company.imageAlt}
-            parallax
-            ratioClass="aspect-[4/5]"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-          />
+          <div className="relative">
+            <AnimatedImage
+              src={company.image}
+              alt={company.imageAlt}
+              parallax
+              ratioClass="aspect-[4/5]"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            {company.logo && (
+              <>
+                <div
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy-deep/35 via-navy-deep/10 to-navy-deep/25"
+                  aria-hidden
+                />
+                <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-8 md:px-12">
+                  <Image
+                    src={company.logo}
+                    alt=""
+                    width={620}
+                    height={620}
+                    className="h-auto max-h-[42%] w-auto max-w-[72%] object-contain opacity-90 drop-shadow-[0_2px_18px_rgba(14,26,43,0.55)]"
+                  />
+                </div>
+              </>
+            )}
+          </div>
         </div>
 
         <div className={reverse ? "lg:order-1" : "lg:order-2"}>
           <Reveal>
-            <span className="eyebrow mb-4 block text-gold">
-              {String(index + 1).padStart(2, "0")} — {company.tagline}
+            <span className="eyebrow mb-4 block text-gold-deep">
+              {String(index + 1).padStart(2, "0")} / {company.tagline}
             </span>
           </Reveal>
           <RevealText lines={[company.name]} className="font-serif text-display-md text-ink" />
@@ -48,7 +68,7 @@ export default function CompanyDetail({
           )}
 
           <Reveal className="mt-10">
-            <h3 className="eyebrow mb-5 text-ink/50">Services</h3>
+            <h3 className="eyebrow mb-5 text-ink/65">Services</h3>
           </Reveal>
           <Reveal className="grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2" stagger>
             {company.services.map((s) => (
@@ -62,13 +82,13 @@ export default function CompanyDetail({
           {company.extra && (
             <div className="mt-10">
               <Reveal>
-                <h3 className="eyebrow mb-5 text-ink/50">{company.extra.heading}</h3>
+                <h3 className="eyebrow mb-5 text-ink/65">{company.extra.heading}</h3>
               </Reveal>
               <Reveal className="flex flex-wrap gap-2" stagger>
                 {company.extra.items.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-ink/15 px-4 py-2 font-sans text-xs text-ink/75"
+                    className="inline-flex min-h-11 items-center rounded-full border border-ink/15 px-4 py-2 font-sans text-xs text-ink/75"
                   >
                     {item}
                   </span>

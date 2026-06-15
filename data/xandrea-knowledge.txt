@@ -10,7 +10,7 @@ Company Snapshot:
 - Type: Diversified Canadian business group (Canadian-owned enterprise)
 - Founded: 2018
 - Corporate Headquarters: Calgary, Alberta, Canada
-- General email: info@xandreaharshey.com
+- General email: xandreaservices@gmail.com
 - Scale: 6 business divisions across 8 industry sectors; 100% Canadian-owned; approximately $50M+ diversified group scale.
 
 Company Overview:
@@ -41,21 +41,7 @@ Building organizations through strong leadership, operational discipline, strate
 
 Companies and Divisions:
 
-1. Xandrea Cleaning service
-Tagline:
-Professional Cleaning. Exceptional Standards.
-Focus: Professional residential and commercial cleaning services delivered with care, reliability, and a commitment to exceptional standards.
-Services:
-- Residential Cleaning
-- Commercial Cleaning
-- Deep Cleaning Services
-- Move-In / Move-Out Cleaning
-- Post-Construction Cleaning
-- Office & Workspace Cleaning
-- Recurring Maintenance Cleaning
-- Specialized Surface Cleaning
-
-2. Xandrea Facility Services
+1. Xandrea Facility Services
 Tagline:
 Reliable Solutions. Exceptional Standards.
 Focus: Dependable facility and building support services that keep commercial properties operating at their best.
@@ -67,7 +53,7 @@ Services:
 - Building Operations
 - Exterior Maintenance
 
-3. Primeport Commodity Inc.
+2. Primeport Commodity Inc.
 Tagline:
 Connecting Markets. Delivering Opportunities.
 Focus: International trade and supply chain solutions connecting global markets through strategic partnerships.
@@ -79,7 +65,7 @@ Services:
 - Supply Chain Solutions
 - Strategic Trade Partnerships
 
-4. Xandrea Construction & Property Services
+3. Xandrea Construction & Property Services
 Tagline:
 Building Trust. Creating Value. Delivering Excellence.
 Description:
@@ -109,8 +95,8 @@ Chairman of the Board
 Alejandro Pagcaliwagan is a Canadian entrepreneur, contractor, business executive, and community leader based in Calgary, Alberta. As Chairman of the Board of Xandrea Harshey Services Inc., he provides strategic leadership, corporate governance, and long-term vision across the organization's diverse business interests.
 
 Ajit Hardasani
-President
-Ajit Hardasani is a seasoned business executive, entrepreneur, and corporate leader with extensive experience spanning healthcare, education, trading, consulting, and business development. As President of Xandrea Harshey Services Inc., he is responsible for driving corporate growth, strategic partnerships, operational excellence, and long-term business development initiatives across the organization.
+General Manager
+Ajit Hardasani is a seasoned business executive, entrepreneur, and corporate leader with extensive experience spanning healthcare, education, trading, consulting, and business development. As General Manager of Xandrea Harshey Services Inc., he is responsible for driving corporate growth, strategic partnerships, operational excellence, and long-term business development initiatives across the organization.
 
 Harlem Pagcaliwagan
 Chief Operating Officer
@@ -151,7 +137,7 @@ Xandrea Harshey Services Inc. supports career growth through current opportuniti
 
 Contact:
 Corporate Headquarters: Calgary, Alberta, Canada
-General email: info@xandreaharshey.com
+General email: xandreaservices@gmail.com
 
 Inquiry Categories:
 - General Inquiries
@@ -168,6 +154,7 @@ AI Assistant Rules:
 - Do not make up project timelines.
 - Do not make up guarantees.
 - Do not provide legal, investment, or contract advice.
+- General phone: +1 (437) 868-1988
 - Do not invent phone numbers, specific staff contacts, or details that are not stated above.
 - If the answer is not available in the company knowledge, say: "I do not have enough information on that yet. Please contact Xandrea Harshey Services Inc. directly for the most accurate answer."
 - Keep answers professional, clear, and concise.

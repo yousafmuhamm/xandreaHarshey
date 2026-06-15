@@ -27,7 +27,6 @@ const pages: SitemapEntry[] = [
   { url: site.url, lastModified: "2026-06-07" },
 
   // Service landing pages — highest commercial intent, own canonical URLs
-  { url: `${site.url}/construction`,       lastModified: "2026-06-07" },
   { url: `${site.url}/facility-services`,  lastModified: "2026-06-07" },
 
   // Core section pages — ordered by crawl priority / topical importance
@@ -44,7 +43,6 @@ const pages: SitemapEntry[] = [
   { url: `${site.url}/projects`,   lastModified: "2026-06-07" },
   { url: `${site.url}/safety`,     lastModified: "2026-06-07" },
   { url: `${site.url}/careers`,    lastModified: "2026-06-01" },
-  { url: `${site.url}/contact`,    lastModified: "2026-06-07" },
   // /privacy is noindex — excluded from sitemap intentionally
 ];
 

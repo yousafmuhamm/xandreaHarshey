@@ -1,7 +1,7 @@
 """
 Xandrea Harshey - Multi-viewport screenshot capture + mobile audit script.
 Captures Desktop (1440x900), Mobile (390x844, iPhone 14), Tablet (768x1024)
-for pages: /, /leadership, /services, /contact
+for pages: /, /leadership, /services
 """
 
 import os
@@ -49,7 +49,6 @@ PAGES = [
     {"slug": "/", "name": "home"},
     {"slug": "/leadership", "name": "leadership"},
     {"slug": "/services", "name": "services"},
-    {"slug": "/contact", "name": "contact"},
 ]
 
 

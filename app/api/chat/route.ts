@@ -5,7 +5,7 @@ import OpenAI from "openai";
 export const runtime = "nodejs";
 
 const NVIDIA_BASE_URL = "https://integrate.api.nvidia.com/v1";
-const MODEL = "deepseek-ai/deepseek-v4-flash";
+const MODEL = "meta/llama-3.1-8b-instruct";
 
 const unavailableReply =
   "The assistant is currently unavailable. Please try again later.";
@@ -76,15 +76,16 @@ function buildSystemPrompt(companyKnowledge: string) {
     "- Use plain text only. Do not use Markdown, asterisks, bold text, tables, headings, or emojis.",
     "- Do not repeat the full company overview unless the visitor asks for background.",
     "- Do not end every answer with a long sales pitch.",
+    "- If the visitor asks about a project, service need, pricing, timelines, inspections, or whether Xandrea can help, answer briefly and invite them to use the quote option in the chat so a specialist can follow up.",
     "- If a question is broad, give a short answer and ask one helpful follow-up question.",
     "",
-    "Valid website pages you may mention: /, /about, /companies, /services, /leadership, /careers, /contact. Never reference any other path (for example /projects or /safety do not exist).",
+    "Valid website pages you may mention: /, /about, /companies, /services, /leadership, /careers. Never reference any other path (for example /projects, /safety, or /contact do not exist).",
+    "For contact, quotes, or consultations, direct visitors to use the contact popup on the site or the chat assistant — do not link to a contact page.",
     "",
     "Routing guidance:",
-    "- Residential and commercial cleaning: Xandrea Cleaning service.",
-    "- Facility management, janitorial, maintenance, building operations: Xandrea Facility Services.",
+    "- Construction, development, renovation, restoration, painting, stucco, concrete repair, and property maintenance: Xandrea Construction & Property Services.",
+    "- Cleaning, janitorial, maintenance, building operations: Xandrea Facility Services.",
     "- Commodity trading, import/export, procurement, distribution: Primeport Commodity Inc.",
-    "- Renovation, restoration, painting, stucco, concrete repair, property maintenance: Xandrea Construction & Property Services.",
     "",
     "Company knowledge:",
     companyKnowledge,
@@ -151,24 +152,16 @@ export async function POST(request: Request) {
   }
 
   try {
-    // `reasoning_effort: "none"` is an NVIDIA NIM extension that keeps DeepSeek
-    // out of its long "thinking" mode — without it these models can hang and the
-    // stream never completes. It lives outside the base OpenAI types, hence the
-    // cast on the params object.
-    const params = {
+    const stream = await openai.chat.completions.create({
       model: MODEL,
       temperature: 0.3,
       max_tokens: 700,
       stream: true,
-      reasoning_effort: "none",
       messages: [
         { role: "system", content: buildSystemPrompt(companyKnowledge) },
         ...messages,
       ],
-    };
-    const stream = (await openai.chat.completions.create(
-      params as unknown as Parameters<typeof openai.chat.completions.create>[0],
-    )) as unknown as AsyncIterable<OpenAI.Chat.Completions.ChatCompletionChunk>;
+    });
 
     const encoder = new TextEncoder();
     const readable = new ReadableStream<Uint8Array>({

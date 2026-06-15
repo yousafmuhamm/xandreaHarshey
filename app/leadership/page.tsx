@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import PageHero from "@/components/sections/PageHero";
 import LeaderProfile from "@/components/sections/LeaderProfile";
 import Reveal from "@/components/motion/Reveal";
@@ -11,7 +10,7 @@ import { leaders, leadershipFeatures, pageHeroImages, site } from "@/data/conten
 export const metadata: Metadata = {
   title: "Leadership Team — Calgary Board & Executives | Xandrea Harshey",
   description:
-    "Meet the Calgary-based leadership of Xandrea Harshey Services Inc.: Alejandro Pagcaliwagan (Chairman of the Board), Ajit Hardasani (President), and Harlem Pagcaliwagan (Chief Operating Officer).",
+    "Meet the Calgary-based leadership of Xandrea Harshey Services Inc.: Alejandro Pagcaliwagan (Chairman of the Board), Ajit Hardasani (General Manager), and Harlem Pagcaliwagan (Chief Operating Officer).",
   alternates: { canonical: "/leadership" },
   openGraph: {
     title: "Leadership Team | Xandrea Harshey Services Inc. — Calgary, Alberta",
@@ -43,34 +42,10 @@ export default function LeadershipPage() {
       <PageHero
         eyebrow="Leadership Team — Calgary, Alberta"
         titleLines={["The people behind", "the enterprise."]}
-        intro="Building organizations through strong leadership, operational discipline, strategic partnerships, and long-term thinking. Based in Calgary, Alberta."
+        intro="Calgary-based leadership overseeing operating divisions, project execution, and strategic ventures."
         image={pageHeroImages.leadership}
+        compact
       />
-
-      {/* Last updated + context links */}
-      <section className="bg-cream pb-10 pt-2">
-        <div className="container-site max-w-3xl">
-          <Reveal>
-            <p className="mb-3 font-sans text-xs text-ink/40">Last Updated: June 2026</p>
-            <p className="font-sans text-base leading-relaxed text-ink/65">
-              The leadership team of Xandrea Harshey Services Inc. oversees four Calgary-based operating
-              divisions and a growing portfolio of strategic ventures. Explore our{" "}
-              <Link href="/companies" className="link-underline text-ink hover:text-gold">
-                operating companies
-              </Link>
-              , review{" "}
-              <Link href="/projects" className="link-underline text-ink hover:text-gold">
-                completed projects
-              </Link>
-              , or learn more{" "}
-              <Link href="/about" className="link-underline text-ink hover:text-gold">
-                about the organization
-              </Link>
-              .
-            </p>
-          </Reveal>
-        </div>
-      </section>
 
       {/* Full verbatim bios as crawlable page content */}
       {leaders.map((leader, i) => (
@@ -78,20 +53,29 @@ export default function LeadershipPage() {
       ))}
 
       {/* Leadership Section Features */}
-      <section className="bg-navy text-cream py-section">
+      <section className="relative overflow-hidden bg-navy py-[clamp(4.5rem,10vw,8.5rem)] text-cream">
         <div className="container-site">
-          <div className="mb-12 max-w-2xl">
+          <div className="max-w-2xl">
             <SectionHeading
               light
               eyebrow="How We Lead"
               lines={["A leadership team", "built for the long term."]}
             />
           </div>
-          <Reveal className="grid gap-px overflow-hidden rounded-sm border border-cream/10 bg-cream/10 sm:grid-cols-2 lg:grid-cols-5" stagger>
+
+          <Reveal
+            as="ul"
+            className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 md:mt-16 md:gap-5 lg:grid-cols-5"
+            stagger
+          >
             {leadershipFeatures.map((f) => (
-              <div key={f} className="bg-navy p-7 text-center">
-                <p className="font-sans text-sm leading-relaxed text-cream/80">{f}</p>
-              </div>
+              <li key={f} className="min-w-0">
+                <div className="flex min-h-24 w-full items-center justify-center rounded-full border border-cream/18 bg-cream/[0.045] px-5 py-5 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.10)] md:min-h-28 lg:px-6">
+                  <span className="max-w-[13rem] font-sans text-sm leading-snug text-cream/86 md:text-[0.95rem]">
+                    {f}
+                  </span>
+                </div>
+              </li>
             ))}
           </Reveal>
         </div>

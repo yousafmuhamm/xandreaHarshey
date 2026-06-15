@@ -21,12 +21,20 @@ const layout = [
 
 export default function CompanyGrid() {
   return (
-    <section className="bg-cream py-[clamp(4rem,9vw,8.5rem)]">
-      <div className="container-site mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-        <SectionHeading
-          eyebrow="Our Companies"
-          lines={["A group of businesses,", "one standard of excellence."]}
-        />
+    <section className="bg-cream pb-[clamp(4rem,9vw,8.5rem)] pt-[clamp(3rem,7vw,6rem)]">
+      <div className="container-site mb-12 flex flex-col gap-7 md:flex-row md:items-end md:justify-between">
+        <div className="max-w-3xl">
+          <SectionHeading
+            eyebrow="Our Companies"
+            lines={["A group of businesses,", "one standard of excellence."]}
+          />
+          <Reveal className="mt-5 max-w-2xl">
+            <p className="font-sans text-base leading-relaxed text-ink/65 md:text-lg">
+              Calgary-based and 100% Canadian-owned, Xandrea Harshey operates across
+              construction, facility services, international trade, and hospitality.
+            </p>
+          </Reveal>
+        </div>
         <Reveal>
           <Link
             href="/companies"

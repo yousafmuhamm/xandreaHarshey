@@ -37,38 +37,45 @@ export async function POST(request: Request) {
   const to = process.env.NEWSLETTER_TO_EMAIL || process.env.CONTACT_TO_EMAIL;
   const from = process.env.CONTACT_FROM_EMAIL || "Xandrea Harshey <onboarding@resend.dev>";
 
-  if (apiKey && to) {
-    try {
-      const res = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          from,
-          to: [to],
-          subject: "New newsletter subscriber",
-          text: `New subscriber: ${email}`,
-        }),
-      });
-      if (!res.ok) {
-        const detail = await res.text();
-        console.error("Newsletter delivery failed:", res.status, detail);
-        return NextResponse.json(
-          { ok: false, error: "Something went wrong. Please try again." },
-          { status: 502 }
-        );
-      }
-    } catch (err) {
-      console.error("Newsletter request error:", err);
+  if (!apiKey || !to) {
+    if (process.env.NODE_ENV === "production") {
+      return NextResponse.json(
+        { ok: false, error: "Newsletter signup is not configured yet." },
+        { status: 503 }
+      );
+    }
+    console.info("[newsletter] (no provider configured) subscriber:", email);
+    return NextResponse.json({ ok: true });
+  }
+
+  try {
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from,
+        to: [to],
+        subject: "New newsletter subscriber",
+        text: `New subscriber: ${email}`,
+      }),
+    });
+    if (!res.ok) {
+      const detail = await res.text();
+      console.error("Newsletter delivery failed:", res.status, detail);
       return NextResponse.json(
         { ok: false, error: "Something went wrong. Please try again." },
         { status: 502 }
       );
     }
-  } else {
-    console.info("[newsletter] (no provider configured) subscriber:", email);
+  } catch (err) {
+    console.error("Newsletter request error:", err);
+    return NextResponse.json(
+      { ok: false, error: "Something went wrong. Please try again." },
+      { status: 502 }
+    );
   }
 
   return NextResponse.json({ ok: true });

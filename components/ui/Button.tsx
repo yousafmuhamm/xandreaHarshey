@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { type ReactNode } from "react";
 import { useContactModal } from "@/components/contact/ContactModalProvider";
+import { resolveContactCategory } from "@/lib/contact-categories";
 
 /**
  * Fill-on-hover CTA in the Carolwood style. The `variant` controls the
@@ -21,6 +22,12 @@ const variantClass: Record<Variant, string> = {
   gold: "btn-gold",
 };
 
+function contactCategoryFromHref(href: string): string | undefined {
+  if (!href.startsWith("/contact")) return undefined;
+  const query = href.includes("?") ? href.slice(href.indexOf("?") + 1) : "";
+  return resolveContactCategory(new URLSearchParams(query).get("type"));
+}
+
 export default function Button({
   href,
   children,
@@ -34,10 +41,11 @@ export default function Button({
 }) {
   const { open } = useContactModal();
   const classes = `${variantClass[variant]} ${className}`;
+  const contactCategory = contactCategoryFromHref(href);
 
-  if (href === "/contact") {
+  if (href === "/contact" || href.startsWith("/contact?")) {
     return (
-      <button type="button" onClick={() => open()} className={classes}>
+      <button type="button" onClick={() => open(contactCategory)} className={classes}>
         <span>{children}</span>
       </button>
     );

@@ -94,14 +94,14 @@ export default function Footer() {
           </div>
 
           <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-cream/15 pt-8 sm:flex-row sm:items-center">
-            <p className="font-sans text-xs text-cream/50">{footer.copyright}</p>
+            <p className="font-sans text-xs text-cream/65">{footer.copyright}</p>
             <div className="flex flex-wrap items-center gap-6">
-              <p className="font-sans text-[0.7rem] uppercase tracking-eyebrow text-cream/40">
+              <p className="font-sans text-[0.7rem] uppercase tracking-eyebrow text-cream/65">
                 {site.city}, {site.region}, {site.country}
               </p>
               <Link
                 href="/privacy"
-                className="font-sans text-[0.7rem] uppercase tracking-eyebrow text-cream/40 hover:text-cream/70 transition-colors"
+                className="font-sans text-[0.7rem] uppercase tracking-eyebrow text-cream/65 transition-colors hover:text-cream"
               >
                 Privacy Policy
               </Link>

@@ -1,8 +1,8 @@
 """
 Full mobile rendering audit — Xandrea Harshey Services Inc.
 Viewport: 390x844, deviceScaleFactor:2, iPhone 14 UA.
-Pages: /, /about, /companies, /services, /construction,
-       /facility-services, /leadership, /contact, /careers,
+Pages: /, /about, /companies, /services,
+       /facility-services, /leadership, /careers,
        /projects, /safety
 Also captures the mobile nav overlay (hamburger open state).
 """
@@ -32,10 +32,8 @@ PAGES = [
     {"slug": "/about",             "name": "about"},
     {"slug": "/companies",         "name": "companies"},
     {"slug": "/services",          "name": "services"},
-    {"slug": "/construction",      "name": "construction"},
     {"slug": "/facility-services", "name": "facility_services"},
     {"slug": "/leadership",        "name": "leadership"},
-    {"slug": "/contact",           "name": "contact"},
     {"slug": "/careers",           "name": "careers"},
     {"slug": "/projects",          "name": "projects"},
     {"slug": "/safety",            "name": "safety"},

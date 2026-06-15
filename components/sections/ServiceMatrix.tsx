@@ -11,24 +11,25 @@ import Link from "next/link";
 import Image from "next/image";
 import Reveal from "@/components/motion/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
+import ContactTrigger from "@/components/contact/ContactTrigger";
 import { capabilities } from "@/data/content";
 
 const capabilityLinks: Record<string, string> = {
-  "Construction & Development": "/companies#xandrea-cleaning-service",
+  "Construction & Development": "/companies#construction-property-services",
   "Facility Services": "/companies#xandrea-facility-services",
   "International Trade": "/companies#primeport-commodity",
   "Property Services": "/companies#construction-property-services",
 };
 
-const contactTypes: Record<string, string> = {
-  "Construction & Development": "construction",
-  "Facility Services": "facility",
+const contactCategories: Record<string, string> = {
+  "Construction & Development": "Construction Projects",
+  "Facility Services": "Facility Services",
   "Hospitality & Restaurants": "General Inquiries",
   "International Trade": "General Inquiries",
   "Entertainment & Events": "General Inquiries",
-  "Strategic Business Ventures": "partnership",
-  "Property Services": "construction",
-  "Project Management": "construction",
+  "Strategic Business Ventures": "Partnership Opportunities",
+  "Property Services": "Construction Projects",
+  "Project Management": "Construction Projects",
 };
 
 export default function ServiceMatrix({
@@ -74,18 +75,18 @@ export default function ServiceMatrix({
                     aria-expanded={isOpen}
                   >
                     <span className="flex items-baseline gap-4">
-                      <span className="font-sans text-xs text-gold">
+                      <span className="font-sans text-xs text-gold-deep">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <span
                         className={`font-serif text-xl transition-colors duration-300 md:text-2xl ${
-                          isActive ? "text-ink" : "text-ink/55 group-hover:text-ink"
+                          isActive ? "text-ink" : "text-ink/65 group-hover:text-ink"
                         }`}
                       >
                         {cap.title}
                       </span>
                     </span>
-                    <span className="font-sans text-lg text-ink/40 lg:hidden">
+                    <span className="font-sans text-lg text-ink/65 lg:hidden">
                       {isOpen ? "–" : "+"}
                     </span>
                   </button>
@@ -116,12 +117,12 @@ export default function ServiceMatrix({
                             <span>Explore Division</span>
                           </Link>
                         )}
-                        <Link
-                          href={`/contact?type=${contactTypes[cap.title] ?? "General Inquiries"}`}
+                        <ContactTrigger
+                          category={contactCategories[cap.title] ?? "General Inquiries"}
                           className="btn-ink text-xs"
                         >
                           <span>Get a Quote</span>
-                        </Link>
+                        </ContactTrigger>
                       </div>
                     </div>
                   </div>
@@ -159,12 +160,12 @@ export default function ServiceMatrix({
                         <span>Explore Division</span>
                       </Link>
                     )}
-                    <Link
-                      href={`/contact?type=${contactTypes[capabilities[active].title] ?? "General Inquiries"}`}
+                    <ContactTrigger
+                      category={contactCategories[capabilities[active].title] ?? "General Inquiries"}
                       className="btn-light text-xs"
                     >
                       <span>Get a Quote</span>
-                    </Link>
+                    </ContactTrigger>
                   </div>
                 </div>
               </div>

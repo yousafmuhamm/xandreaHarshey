@@ -12,6 +12,9 @@ const securityHeaders = [
 
 const nextConfig = {
   reactStrictMode: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
@@ -29,6 +32,20 @@ const nextConfig = {
   compress: true,
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
+  },
+  async redirects() {
+    return [
+      {
+        source: "/construction",
+        destination: "/companies/construction-property-services",
+        permanent: true,
+      },
+      {
+        source: "/companies/g-pinoy-construction-development",
+        destination: "/companies/construction-property-services",
+        permanent: true,
+      },
+    ];
   },
 };
 

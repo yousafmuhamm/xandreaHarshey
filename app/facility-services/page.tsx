@@ -4,6 +4,7 @@ import PageHero from "@/components/sections/PageHero";
 import Reveal from "@/components/motion/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ContactCTA from "@/components/sections/ContactCTA";
+import ContactTrigger from "@/components/contact/ContactTrigger";
 import JsonLd, { breadcrumb } from "@/components/seo/JsonLd";
 import { companies, projects, site } from "@/data/content";
 
@@ -197,9 +198,9 @@ export default function FacilityServicesPage() {
               tailored proposal within one business day.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <Link href="/contact?type=facility" className="btn-gold">
+              <ContactTrigger category="Facility Services" className="btn-gold">
                 <span>Request a Quote</span>
-              </Link>
+              </ContactTrigger>
               <Link href="/companies#xandrea-facility-services" className="btn-ink">
                 <span>Full Company Profile</span>
               </Link>

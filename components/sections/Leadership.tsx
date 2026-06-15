@@ -5,18 +5,20 @@
  * Clicking a card opens an animated modal/drawer with the full verbatim bio
  * (scale + opacity in, backdrop blur). Scroll locks while the modal is open.
  */
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import Reveal from "@/components/motion/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { useSmoothScroll } from "@/components/providers/SmoothScrollProvider";
+import { useDialogFocus } from "@/lib/useDialogFocus";
 import { leaders, type Leader } from "@/data/content";
 
 export default function Leadership({ preview = false }: { preview?: boolean }) {
   const [open, setOpen] = useState<Leader | null>(null);
   const { stop, start } = useSmoothScroll();
+  const dialogRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (open) {
@@ -26,14 +28,12 @@ export default function Leadership({ preview = false }: { preview?: boolean }) {
       start();
       document.body.style.overflow = "";
     }
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(null);
-    window.addEventListener("keydown", onKey);
     return () => {
-      window.removeEventListener("keydown", onKey);
       start();
       document.body.style.overflow = "";
     };
   }, [open, stop, start]);
+  useDialogFocus(dialogRef, Boolean(open), () => setOpen(null));
 
   return (
     <section className="bg-cream py-section">
@@ -72,7 +72,7 @@ export default function Leadership({ preview = false }: { preview?: boolean }) {
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/60 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               </div>
               <div className="mt-5">
-                <span className="eyebrow text-gold">{leader.title}</span>
+                <span className="eyebrow text-gold-deep">{leader.title}</span>
                 <h3 className="mt-2 font-serif text-2xl text-ink">{leader.name}</h3>
                 <p className="mt-2 font-sans text-sm leading-relaxed text-ink/60">{leader.short}</p>
               </div>
@@ -97,6 +97,8 @@ export default function Leadership({ preview = false }: { preview?: boolean }) {
               aria-hidden="true"
             />
             <motion.div
+              ref={dialogRef}
+              tabIndex={-1}
               role="dialog"
               aria-modal="true"
               aria-label={`${open.name} biography`}
@@ -118,14 +120,14 @@ export default function Leadership({ preview = false }: { preview?: boolean }) {
               <div className="overflow-y-auto p-8 md:p-10">
                 <div className="mb-6 flex items-start justify-between gap-6">
                   <div>
-                    <span className="eyebrow text-gold">{open.title}</span>
+                    <span className="eyebrow text-gold-deep">{open.title}</span>
                     <h3 className="mt-2 font-serif text-3xl text-ink">{open.name}</h3>
                   </div>
                   <button
                     type="button"
                     onClick={() => setOpen(null)}
                     aria-label="Close biography"
-                    className="shrink-0 font-sans text-[0.72rem] uppercase tracking-eyebrow text-ink/60 hover:text-ink"
+                    className="min-h-11 shrink-0 px-2 font-sans text-[0.72rem] uppercase tracking-eyebrow text-ink/65 hover:text-ink"
                   >
                     Close
                   </button>

@@ -5,6 +5,7 @@ import PageHero from "@/components/sections/PageHero";
 import Reveal from "@/components/motion/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ContactCTA from "@/components/sections/ContactCTA";
+import ContactTrigger from "@/components/contact/ContactTrigger";
 import JsonLd, { breadcrumb } from "@/components/seo/JsonLd";
 import { projects, projectCategories, pageHeroImages, site } from "@/data/content";
 
@@ -173,9 +174,9 @@ export default function ProjectsPage() {
               across every discipline. Serving Calgary and Alberta.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <Link href="/contact" className="btn-gold">
+              <ContactTrigger className="btn-gold">
                 <span>Get a Quote</span>
-              </Link>
+              </ContactTrigger>
               <Link href="/companies" className="btn-light">
                 <span>Our Companies</span>
               </Link>

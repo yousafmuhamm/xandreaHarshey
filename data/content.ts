@@ -7,12 +7,12 @@
  *  Short connective microcopy (e.g. fleshed-out Company History) is marked
  *  with `// connective` and may be edited freely without touching facts.
  *
- *  Imagery uses Unsplash placeholders (themed: construction, Calgary,
- *  corporate, facility, trade, hospitality) — swap the IDs below to brand.
+ *  Imagery uses representative, verified Unsplash photography where no
+ *  project-owned media exists yet. Hero video and division logos are local.
  * ============================================================================
  */
 
-/** Build a consistent Unsplash placeholder URL from a photo id. */
+/** Build a consistent Unsplash media URL from a photo id. */
 const ux = (id: string, w = 1600) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 
@@ -30,8 +30,8 @@ export const site = {
   country: "Canada",
   countryCode: "CA",
   founded: "2018",
-  email: "info@xandreaharshey.com",
-  phone: "+1 (403) 000-0000", // connective placeholder — swap for real number
+  email: "xandreaservices@gmail.com",
+  phone: "+1 (437) 868-1988",
   hqLine: "Calgary, Alberta, Canada",
 };
 
@@ -53,12 +53,8 @@ export const primaryNav = [
   { label: "Contact", href: "/contact" },
 ];
 
-/** Social handles shown in the overlay menu footer (placeholders). */
-export const social = [
-  { label: "LinkedIn", href: "https://www.linkedin.com" },
-  { label: "Instagram", href: "https://www.instagram.com" },
-  { label: "Facebook", href: "https://www.facebook.com" },
-];
+/** Official social channels. Keep empty until real profiles are confirmed. */
+export const social: { label: string; href: string }[] = [];
 
 export const hero = {
   // Warm, human welcome line over the big serif headline.
@@ -87,7 +83,7 @@ export const hero = {
  * Rendered as static gold numerals so they're instant and never flicker.
  */
 export const heroStats = [
-  { value: "4", label: "Operating Companies" },
+  { value: "3", label: "Operating Companies" },
   { value: "30+", label: "Service Capabilities" },
   { value: "$50M+", label: "Enterprise Scale" },
 ];
@@ -159,8 +155,8 @@ export const about = {
     heading: "Company History",
     // connective — blueprint says "Tell the story..."; facts kept neutral & true to positioning.
     body: [
-      "The roots of Xandrea Harshey Services Inc. trace back to 2014, when our founders began building their expertise in construction, property services, and business development in Calgary, Alberta. Those early years were defined by hands-on work, client relationships built one project at a time, and a conviction that disciplined leadership could grow not one great business, but many.",
-      "Xandrea Harshey Services Inc. was formally incorporated and expanded its operations into a diversified enterprise spanning cleaning services, facility management, hospitality, international trade, entertainment, and strategic ventures. Each stage of growth followed the same playbook — identify a real opportunity, build a capable team around it, and operate it to a standard that earns long-term client relationships.",
+      "Xandrea Harshey Services Inc. was founded in Calgary, Alberta, on a simple conviction: that disciplined leadership and operational excellence could build not one great business, but many. What began as a focused construction and property services operation has grown into a diversified enterprise spanning construction, facility services, hospitality, international trade, entertainment, and strategic ventures.",
+      "Each stage of our growth has followed the same playbook — identify a real opportunity, build a capable team around it, and operate it to a standard that earns long-term client relationships. Today the group brings those divisions together under one set of values, creating synergies across industries that few single-sector companies can match.",
       "As we look to the future, our vision is unchanged: to keep building sustainable businesses, creating opportunities for the people and communities we serve, and delivering excellence in everything we do.",
     ],
   },
@@ -219,25 +215,6 @@ export type Company = {
 };
 
 export const companies: Company[] = [
-  {
-    slug: "xandrea-cleaning-service",
-    name: "Xandrea Cleaning service",
-    tagline: "Professional Cleaning. Exceptional Standards.",
-    blurb:
-      "Professional residential and commercial cleaning services delivered with care, reliability, and a commitment to exceptional standards.", // connective
-    services: [
-      "Residential Cleaning",
-      "Commercial Cleaning",
-      "Deep Cleaning Services",
-      "Move-In / Move-Out Cleaning",
-      "Post-Construction Cleaning",
-      "Office & Workspace Cleaning",
-      "Recurring Maintenance Cleaning",
-      "Specialized Surface Cleaning",
-    ],
-    image: ux("1581578731548-c64695cc6952", 1400),
-    imageAlt: "Professional cleaner maintaining a spotless residential space",
-  },
   {
     slug: "xandrea-facility-services",
     name: "Xandrea Facility Services",
@@ -322,7 +299,7 @@ export const leaders: Leader[] = [
     name: "Alejandro Pagcaliwagan",
     title: "Chairman of the Board",
     short: "Entrepreneur, contractor, and community leader providing strategic vision across the group.",
-    image: ux("1560250097-0b93528c311a", 1000),
+    image: "/leadership/alejandro-pagcaliwagan.png",
     bio: [
       "Alejandro Pagcaliwagan is a Canadian entrepreneur, contractor, business executive, and community leader based in Calgary, Alberta. As Chairman of the Board of Xandrea Harshey Services Inc., he provides strategic leadership, corporate governance, and long-term vision across the organization's diverse business interests.",
       "With extensive experience in construction, business development, and entrepreneurship, Alejandro has built a reputation for identifying opportunities, fostering strategic partnerships, and driving sustainable growth. His leadership philosophy is rooted in integrity, accountability, innovation, and a commitment to operational excellence.",
@@ -334,11 +311,11 @@ export const leaders: Leader[] = [
   {
     slug: "ajit-hardasani",
     name: "Ajit Hardasani",
-    title: "President",
+    title: "General Manager",
     short: "Seasoned executive driving corporate growth, partnerships, and operational excellence.",
-    image: ux("1507003211169-0a1dd7228f2d", 1000),
+    image: "/leadership/ajit-hardasani.jpg",
     bio: [
-      "Ajit Hardasani is a seasoned business executive, entrepreneur, and corporate leader with extensive experience spanning healthcare, education, trading, consulting, and business development. As President of Xandrea Harshey Services Inc., he is responsible for driving corporate growth, strategic partnerships, operational excellence, and long-term business development initiatives across the organization.",
+      "Ajit Hardasani is a seasoned business executive, entrepreneur, and corporate leader with extensive experience spanning healthcare, education, trading, consulting, and business development. As General Manager of Xandrea Harshey Services Inc., he is responsible for driving corporate growth, strategic partnerships, operational excellence, and long-term business development initiatives across the organization.",
       "Prior to joining Xandrea Harshey Services Inc., Ajit held several senior leadership positions, including Chief Operating Officer of Forticare Health Systems International, where he played an instrumental role in strengthening operations, enhancing organizational performance, and supporting business expansion. He also served as President of Red Diamond Trading Corporation and President of Little Friends of St. Mary's Learning Center, demonstrating a proven track record in executive leadership, strategic planning, and institution building.",
       "In addition to his corporate achievements, Ajit has a creative background as a former songwriter and recording artist in the Philippines, reflecting a unique blend of creativity, innovation, and entrepreneurial thinking. This diverse experience has contributed to his ability to lead organizations with vision, adaptability, and a people-centered approach.",
       "Recognized for his results-driven leadership style and commitment to excellence, Ajit continues to champion innovation, sustainable growth, and value creation while helping position Xandrea Harshey Services Inc. as a respected and diversified Canadian enterprise.",
@@ -349,7 +326,7 @@ export const leaders: Leader[] = [
     name: "Harlem Pagcaliwagan",
     title: "Chief Operating Officer",
     short: "Operations leader overseeing project execution and organizational performance.",
-    image: ux("1472099645785-5658abf4ff4e", 1000),
+    image: "/leadership/harlem-pagcaliwagan.png",
     bio: [
       "Harlem Pagcaliwagan serves as Chief Operating Officer of Xandrea Harshey Services Inc., where he oversees day-to-day operations, project execution, workforce management, and organizational performance across the company's business divisions.",
       "With extensive hands-on experience across multiple construction trades and operational disciplines, Harlem brings a practical understanding of project management, field operations, and business execution. His technical expertise, combined with a strong commitment to quality, efficiency, and client satisfaction, has contributed significantly to the company's growth and operational success.",
@@ -544,14 +521,36 @@ export const careers = {
   heading: "Build Your Future With Xandrea",
   body:
     "Join a diversified Canadian enterprise where strong leadership, operational excellence, and entrepreneurial vision create real opportunities to grow.", // connective
-  features: [
-    "Current Opportunities",
-    "Online Applications",
-    "Employee Benefits",
-    "Training Programs",
-    "Leadership Development",
-    "Career Advancement Pathways",
+  opportunities: {
+    eyebrow: "Current Opportunities",
+    headingLines: ["Open roles", "at Xandrea."],
+    emptyTitle: "No openings right now",
+    emptyBody:
+      "We do not have any active listings at the moment. Check back as new roles open across our divisions, or leave your resume below and we will reach out when there is a fit.",
+  },
+  growthPillars: [
+    {
+      title: "Training Programs",
+      description:
+        "Hands-on skills development across trades, operations, and corporate functions so you can build capability on real projects.",
+    },
+    {
+      title: "Leadership Development",
+      description:
+        "Mentorship and management pathways for people who want to lead teams, sites, and divisions with accountability.",
+    },
+    {
+      title: "Career Advancement Pathways",
+      description:
+        "Clear routes to grow within and across our operating companies as the group expands in Calgary and beyond.",
+    },
   ],
+  resume: {
+    eyebrow: "Leave Your Resume",
+    headingLines: ["Stay on our radar."],
+    intro:
+      "Share your background and area of interest. Our team reviews every submission and will contact you when a matching opportunity opens.",
+  },
   image: ux("1504307651254-35680f356dfd", 1400),
   imageAlt: "Skilled tradespeople building together — a warm, hands-on team at Xandrea Harshey",
 };
@@ -567,11 +566,11 @@ export const inquiryCategories = [
 ];
 
 export const contactFeatures = [
-  "Online Consultation Booking",
-  "Quote Request Forms",
-  "Interactive Contact Forms",
-  "Live Chat Support",
-  "Office Location Map",
+  "General Inquiries",
+  "Project Consultation Requests",
+  "Partnership Routing",
+  "Career Applications",
+  "Corporate Headquarters",
 ];
 
 export const contact = {
@@ -633,16 +632,18 @@ export const premiumFeatures: PremiumFeature[] = [
   },
 ];
 
-// "Client and partner recognition" marquee — connective placeholders.
+// Operating standards and trust signals. Recognition logos should only be
+// added here after official memberships or partner approvals are confirmed.
 export const recognition = [
-  "Calgary Chamber of Commerce",
   "WCB Alberta",
-  "Canadian Construction Association",
-  "BBB Accredited",
-  "Alberta Construction Safety",
-  "Buildex Canada",
-  "Procurement Canada",
-  "Global Trade Partners",
+  "Fully Insured",
+  "Safety Training",
+  "Quality Control",
+  "Regulatory Compliance",
+  "Professional Project Management",
+  "Site Audits",
+  "Client-Focused Delivery",
+  "Canadian-Owned",
 ];
 
 export const footer = {

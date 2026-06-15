@@ -13,7 +13,7 @@ export default function TrustRow() {
     <section className="border-y border-ink/10 bg-paper py-12">
       <div className="container-site">
         <Reveal className="flex flex-col items-center gap-7 text-center" stagger>
-          <span className="eyebrow text-ink/45">Trusted Standards</span>
+          <span className="eyebrow text-ink/65">Trusted Standards</span>
           <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 md:gap-x-12">
             {trustSignals.map((signal, i) => (
               <li key={signal} className="flex items-center gap-8 md:gap-12">

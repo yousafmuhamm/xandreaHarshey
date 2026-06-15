@@ -20,9 +20,10 @@ export default function LeaderProfile({
 }) {
   const reverse = index % 2 === 1;
   const bg = index % 2 === 1 ? "bg-paper" : "bg-cream";
+  const spacing = index === 0 ? "pb-section pt-[clamp(3rem,6vw,5rem)]" : "py-section";
 
   return (
-    <section id={leader.slug} className={`${bg} scroll-mt-24 py-section`}>
+    <section id={leader.slug} className={`${bg} scroll-mt-24 ${spacing}`}>
       <div className="container-site grid items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
         <div className={reverse ? "lg:order-2" : "lg:order-1"}>
           <AnimatedImage
@@ -35,7 +36,7 @@ export default function LeaderProfile({
 
         <div className={reverse ? "lg:order-1" : "lg:order-2"}>
           <Reveal>
-            <span className="eyebrow mb-4 block text-gold">{leader.title}</span>
+            <span className="eyebrow mb-4 block text-gold-deep">{leader.title}</span>
           </Reveal>
           <RevealText lines={[leader.name]} className="font-serif text-display-md text-ink" />
 
