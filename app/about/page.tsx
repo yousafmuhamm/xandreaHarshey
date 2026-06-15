@@ -61,15 +61,15 @@ export default function AboutPage() {
           <Reveal>
             <p className="mb-2 font-sans text-xs text-ink/40">Last Updated: June 2026</p>
             <p className="font-sans text-lg leading-relaxed text-ink/70">
-              {about.intro2} Our four operating divisions —{" "}
-              <Link href="/construction" className="link-underline text-ink hover:text-gold">
-                G-Pinoy Construction & Development
-              </Link>
-              ,{" "}
+              {about.intro2} Our three operating divisions —{" "}
               <Link href="/facility-services" className="link-underline text-ink hover:text-gold">
                 Xandrea Facility Services
               </Link>
-              , Primeport Commodity, and the Construction & Property Services Division — deliver
+              , Primeport Commodity, and the{" "}
+              <Link href="/companies#construction-property-services" className="link-underline text-ink hover:text-gold">
+                Construction & Property Services Division
+              </Link>{" "}
+              — deliver
               integrated solutions across{" "}
               <Link href="/services" className="link-underline text-ink hover:text-gold">
                 eight capability areas
@@ -151,7 +151,7 @@ export default function AboutPage() {
             items={[
               {
                 q: "What is Xandrea Harshey Services Inc.?",
-                a: "Xandrea Harshey Services Inc. is a diversified Canadian business group headquartered in Calgary, Alberta. Founded in 2018, the company operates four divisions — G-Pinoy Construction & Development, Xandrea Facility Services, Primeport Commodity, and a Construction & Property Services division — delivering integrated solutions across construction, facility management, international trade, and property services.",
+                a: "Xandrea Harshey Services Inc. is a diversified Canadian business group headquartered in Calgary, Alberta. Founded in 2018, the company operates three divisions — Xandrea Facility Services, Primeport Commodity, and a Construction & Property Services division — delivering integrated solutions across construction, facility management, international trade, and property services.",
               },
               {
                 q: "What does Xandrea Harshey Services Inc. do?",

@@ -6,18 +6,17 @@ import PageHero from "@/components/sections/PageHero";
 import Reveal from "@/components/motion/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ContactCTA from "@/components/sections/ContactCTA";
+import ContactTrigger from "@/components/contact/ContactTrigger";
 import JsonLd, { breadcrumb } from "@/components/seo/JsonLd";
 import { companies, projects, site } from "@/data/content";
 
 type Props = { params: { slug: string } };
 
 const ctaLinks: Record<string, { href: string; label: string }> = {
-  "g-pinoy-construction-development": { href: "/construction", label: "View Construction Services" },
   "xandrea-facility-services": { href: "/facility-services", label: "View Facility Services" },
 };
 
 const schemaTypes: Record<string, string> = {
-  "g-pinoy-construction-development": "HomeAndConstructionBusiness",
   "xandrea-facility-services": "LocalBusiness",
   "primeport-commodity": "Organization",
   "construction-property-services": "LocalBusiness",
@@ -49,8 +48,6 @@ export default function CompanySlugPage({ params }: Props) {
 
   const relatedProjects = projects.filter(
     (p) =>
-      (params.slug === "g-pinoy-construction-development" &&
-        ["Commercial Projects", "Residential Projects"].includes(p.category)) ||
       (params.slug === "xandrea-facility-services" &&
         p.category === "Facility Services Contracts") ||
       (params.slug === "construction-property-services" &&
@@ -209,9 +206,9 @@ export default function CompanySlugPage({ params }: Props) {
               Our team will respond within one business day.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <Link href="/contact" className="btn-gold">
+              <ContactTrigger className="btn-gold">
                 <span>Contact Us</span>
-              </Link>
+              </ContactTrigger>
               {cta && (
                 <Link href={cta.href} className="btn-ink">
                   <span>{cta.label}</span>

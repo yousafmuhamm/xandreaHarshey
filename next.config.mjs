@@ -33,6 +33,20 @@ const nextConfig = {
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },
+  async redirects() {
+    return [
+      {
+        source: "/construction",
+        destination: "/companies/construction-property-services",
+        permanent: true,
+      },
+      {
+        source: "/companies/g-pinoy-construction-development",
+        destination: "/companies/construction-property-services",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

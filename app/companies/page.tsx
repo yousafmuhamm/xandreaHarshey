@@ -8,7 +8,7 @@ import { companies, pageHeroImages, site } from "@/data/content";
 export const metadata: Metadata = {
   title: "Our Companies — Calgary Construction, Facility Services & Trade",
   description:
-    "Explore the Calgary-based companies of Xandrea Harshey Services Inc.: G-Pinoy Construction & Development, Xandrea Facility Services, Primeport Commodity, and the Construction & Property Services Division — serving Alberta and Canada.",
+    "Explore the Calgary-based companies of Xandrea Harshey Services Inc.: Xandrea Facility Services, Primeport Commodity, and the Construction & Property Services Division — serving Alberta and Canada.",
   alternates: { canonical: "/companies" },
   openGraph: {
     title: "Our Companies | Xandrea Harshey Services Inc. — Calgary, Alberta",
@@ -42,7 +42,7 @@ export default function CompaniesPage() {
       <PageHero
         eyebrow="Our Companies — Calgary, Alberta"
         titleLines={["A group of businesses,", "one standard of", "excellence."]}
-        intro="Xandrea Harshey Services Inc. operates four Calgary-based business divisions and strategic ventures — each built to deliver exceptional results across construction, facility management, international trade, and property services in Alberta and Canada."
+        intro="Xandrea Harshey Services Inc. operates three Calgary-based business divisions and strategic ventures — each built to deliver exceptional results across construction, facility management, international trade, and property services in Alberta and Canada."
         image={pageHeroImages.companies}
       />
 

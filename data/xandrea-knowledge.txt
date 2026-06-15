@@ -41,21 +41,7 @@ Building organizations through strong leadership, operational discipline, strate
 
 Companies and Divisions:
 
-1. G-Pinoy Construction & Development Inc.
-Tagline:
-Building Today. Developing Tomorrow.
-Focus: Full-scope construction and development — from residential and commercial builds to mixed-use developments and turnkey project delivery.
-Services:
-- Residential Construction
-- Commercial Construction
-- Mixed-Use Developments
-- Property Development
-- Site Development
-- Renovations & Rehabilitation
-- Construction Management
-- Turnkey Project Delivery
-
-2. Xandrea Facility Services
+1. Xandrea Facility Services
 Tagline:
 Reliable Solutions. Exceptional Standards.
 Focus: Dependable facility and building support services that keep commercial properties operating at their best.
@@ -67,7 +53,7 @@ Services:
 - Building Operations
 - Exterior Maintenance
 
-3. Primeport Commodity Inc.
+2. Primeport Commodity Inc.
 Tagline:
 Connecting Markets. Delivering Opportunities.
 Focus: International trade and supply chain solutions connecting global markets through strategic partnerships.
@@ -79,7 +65,7 @@ Services:
 - Supply Chain Solutions
 - Strategic Trade Partnerships
 
-4. Xandrea Construction & Property Services
+3. Xandrea Construction & Property Services
 Tagline:
 Building Trust. Creating Value. Delivering Excellence.
 Description:

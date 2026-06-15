@@ -14,6 +14,7 @@ import {
   type ReactNode,
 } from "react";
 import ContactModal from "./ContactModal";
+import ContactDeepLink from "./ContactDeepLink";
 
 type ContactModalCtx = {
   isOpen: boolean;
@@ -49,6 +50,7 @@ export default function ContactModalProvider({
   return (
     <Context.Provider value={{ isOpen, category, open, close }}>
       {children}
+      <ContactDeepLink />
       <ContactModal isOpen={isOpen} category={category} onClose={close} />
     </Context.Provider>
   );

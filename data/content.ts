@@ -83,7 +83,7 @@ export const hero = {
  * Rendered as static gold numerals so they're instant and never flicker.
  */
 export const heroStats = [
-  { value: "4", label: "Operating Companies" },
+  { value: "3", label: "Operating Companies" },
   { value: "30+", label: "Service Capabilities" },
   { value: "$50M+", label: "Enterprise Scale" },
 ];
@@ -215,26 +215,6 @@ export type Company = {
 };
 
 export const companies: Company[] = [
-  {
-    slug: "g-pinoy-construction-development",
-    name: "G-Pinoy Construction & Development Inc",
-    tagline: "Building Today. Developing Tomorrow.",
-    blurb:
-      "Full-scope construction and development — from residential and commercial builds to mixed-use developments and turnkey project delivery.", // connective
-    services: [
-      "Residential Construction",
-      "Commercial Construction",
-      "Mixed-Use Developments",
-      "Property Development",
-      "Site Development",
-      "Renovations & Rehabilitation",
-      "Construction Management",
-      "Turnkey Project Delivery",
-    ],
-    image: ux("1503387762-592deb58ef4e", 1400),
-    imageAlt: "Construction site with tower crane against a clear sky",
-    logo: "/logos/g-pinoy.png",
-  },
   {
     slug: "xandrea-facility-services",
     name: "Xandrea Facility Services",
@@ -541,14 +521,36 @@ export const careers = {
   heading: "Build Your Future With Xandrea",
   body:
     "Join a diversified Canadian enterprise where strong leadership, operational excellence, and entrepreneurial vision create real opportunities to grow.", // connective
-  features: [
-    "Current Opportunities",
-    "Online Applications",
-    "Employee Benefits",
-    "Training Programs",
-    "Leadership Development",
-    "Career Advancement Pathways",
+  opportunities: {
+    eyebrow: "Current Opportunities",
+    headingLines: ["Open roles", "at Xandrea."],
+    emptyTitle: "No openings right now",
+    emptyBody:
+      "We do not have any active listings at the moment. Check back as new roles open across our divisions, or leave your resume below and we will reach out when there is a fit.",
+  },
+  growthPillars: [
+    {
+      title: "Training Programs",
+      description:
+        "Hands-on skills development across trades, operations, and corporate functions so you can build capability on real projects.",
+    },
+    {
+      title: "Leadership Development",
+      description:
+        "Mentorship and management pathways for people who want to lead teams, sites, and divisions with accountability.",
+    },
+    {
+      title: "Career Advancement Pathways",
+      description:
+        "Clear routes to grow within and across our operating companies as the group expands in Calgary and beyond.",
+    },
   ],
+  resume: {
+    eyebrow: "Leave Your Resume",
+    headingLines: ["Stay on our radar."],
+    intro:
+      "Share your background and area of interest. Our team reviews every submission and will contact you when a matching opportunity opens.",
+  },
   image: ux("1504307651254-35680f356dfd", 1400),
   imageAlt: "Skilled tradespeople building together — a warm, hands-on team at Xandrea Harshey",
 };

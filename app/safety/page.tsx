@@ -116,8 +116,8 @@ export default function SafetyPage() {
             />
             <p className="mt-6 font-sans text-base leading-relaxed text-ink/70">
               All operations under Xandrea Harshey Services Inc. — including{" "}
-              <Link href="/construction" className="link-underline text-ink hover:text-gold">
-                G-Pinoy Construction & Development
+              <Link href="/companies#construction-property-services" className="link-underline text-ink hover:text-gold">
+                Construction & Property Services
               </Link>{" "}
               and{" "}
               <Link href="/facility-services" className="link-underline text-ink hover:text-gold">
