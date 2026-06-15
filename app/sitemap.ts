@@ -34,8 +34,7 @@ const pages: SitemapEntry[] = [
   { url: `${site.url}/companies`,  lastModified: "2026-06-07" },
 
   // Individual company profiles
-  { url: `${site.url}/companies/xandrea-cleaning-service`, lastModified: "2026-06-07" },
-  { url: `${site.url}/companies/xandrea-facility-services`,         lastModified: "2026-06-07" },
+  { url: `${site.url}/companies/xandrea-cleaning-service`,          lastModified: "2026-06-07" },
   { url: `${site.url}/companies/primeport-commodity`,               lastModified: "2026-06-07" },
   { url: `${site.url}/companies/construction-property-services`,    lastModified: "2026-06-07" },
   { url: `${site.url}/leadership`, lastModified: "2026-06-01" },

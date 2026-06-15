@@ -41,8 +41,8 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/companies/g-pinoy-construction-development",
-        destination: "/companies/construction-property-services",
+        source: "/companies/xandrea-facility-services",
+        destination: "/companies/xandrea-cleaning-service",
         permanent: true,
       },
     ];

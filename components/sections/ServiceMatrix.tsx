@@ -16,7 +16,7 @@ import { capabilities } from "@/data/content";
 
 const capabilityLinks: Record<string, string> = {
   "Construction & Development": "/companies#construction-property-services",
-  "Facility Services": "/companies#xandrea-facility-services",
+  "Facility Services": "/companies#xandrea-cleaning-service",
   "International Trade": "/companies#primeport-commodity",
   "Property Services": "/companies#construction-property-services",
 };

@@ -9,18 +9,18 @@ import JsonLd, { breadcrumb } from "@/components/seo/JsonLd";
 import { companies, projects, site } from "@/data/content";
 
 export const metadata: Metadata = {
-  title: "Facility Management & Cleaning Services Calgary | Xandrea Facility Services",
+  title: "Commercial Cleaning & Facility Services Calgary | Xandrea Cleaning Service",
   description:
-    "Xandrea Facility Services — commercial cleaning, janitorial, facility maintenance, and building operations in Calgary, Alberta. 99%+ SLA. Serving commercial, multi-family, and industrial properties.",
+    "Xandrea Cleaning Service — commercial cleaning, janitorial, facility maintenance, and building operations in Calgary, Alberta. 99%+ SLA. Serving commercial, multi-family, and industrial properties.",
   alternates: { canonical: "/facility-services" },
   openGraph: {
-    title: "Facility Management Calgary | Xandrea Facility Services",
+    title: "Commercial Cleaning & Facility Services Calgary | Xandrea Cleaning Service",
     description: "Commercial cleaning, facility maintenance, and building operations in Calgary. 99%+ SLA.",
     url: `${site.url}/facility-services`,
   },
 };
 
-const facility = companies.find((c) => c.slug === "xandrea-facility-services")!;
+const facility = companies.find((c) => c.slug === "xandrea-cleaning-service")!;
 const facilityProjects = projects.filter((p) => p.category === "Facility Services Contracts");
 
 const facilityJsonLd = {
@@ -58,7 +58,7 @@ export default function FacilityServicesPage() {
           [
             { name: "Home", path: "/" },
             { name: "Companies", path: "/companies" },
-            { name: "Facility Services", path: "/facility-services" },
+            { name: "Cleaning Services", path: "/facility-services" },
           ],
           site.url
         )}
@@ -66,7 +66,7 @@ export default function FacilityServicesPage() {
       <JsonLd data={facilityJsonLd} />
 
       <PageHero
-        eyebrow="Xandrea Facility Services — Calgary, Alberta"
+        eyebrow="Xandrea Cleaning Service — Calgary, Alberta"
         titleLines={["Facility Management", "Calgary Trusts."]}
         intro="Commercial cleaning, janitorial services, facility maintenance, and building operations for Calgary's offices, multi-family properties, and commercial spaces. Reliable. Certified. 99%+ SLA."
         image="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80"
@@ -189,7 +189,7 @@ export default function FacilityServicesPage() {
       <section className="bg-cream py-section">
         <div className="container-site max-w-2xl text-center">
           <Reveal>
-            <span className="eyebrow mb-6 block text-gold">Get a Facility Services Quote</span>
+            <span className="eyebrow mb-6 block text-gold">Get a Cleaning Services Quote</span>
             <h2 className="font-serif text-display-md leading-snug text-ink">
               Ready to Elevate Your Property?
             </h2>
@@ -201,7 +201,7 @@ export default function FacilityServicesPage() {
               <ContactTrigger category="Facility Services" className="btn-gold">
                 <span>Request a Quote</span>
               </ContactTrigger>
-              <Link href="/companies#xandrea-facility-services" className="btn-ink">
+              <Link href="/companies#xandrea-cleaning-service" className="btn-ink">
                 <span>Full Company Profile</span>
               </Link>
             </div>

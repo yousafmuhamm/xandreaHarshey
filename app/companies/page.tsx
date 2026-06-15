@@ -8,7 +8,7 @@ import { companies, pageHeroImages, site } from "@/data/content";
 export const metadata: Metadata = {
   title: "Our Companies — Calgary Construction, Facility Services & Trade",
   description:
-    "Explore the Calgary-based companies of Xandrea Harshey Services Inc.: Xandrea Facility Services, Primeport Commodity, and the Construction & Property Services Division — serving Alberta and Canada.",
+    "Explore the Calgary-based companies of Xandrea Harshey Services Inc.: Xandrea Cleaning Service, Primeport Commodity, and the Construction & Property Services Division — serving Alberta and Canada.",
   alternates: { canonical: "/companies" },
   openGraph: {
     title: "Our Companies | Xandrea Harshey Services Inc. — Calgary, Alberta",

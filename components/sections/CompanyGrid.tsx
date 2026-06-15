@@ -70,7 +70,7 @@ export default function CompanyGrid() {
               <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/90 via-navy-deep/25 to-transparent" />
 
               {/* Division logo — fades in over the upper area on hover, kept clear
-                  of the title/tagline at the bottom (4th division has none) */}
+                  of the title/tagline at the bottom (some divisions have none) */}
               {c.logo && (
                 <div className="absolute inset-x-0 top-0 flex h-[60%] items-center justify-center px-8 md:px-10">
                   <Image

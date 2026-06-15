@@ -162,8 +162,8 @@ high-value query this page could rank for but currently can't due to missing geo
 Each of the 8 capability tiles currently goes nowhere. Add a link from each tile to
 the relevant company section and a pre-populated contact CTA:
 
-- Construction & Development → `/companies#g-pinoy-construction-development`
-- Facility Management → `/companies#xandrea-facility-services`
+- Construction & Development → `/companies#construction-property-services`
+- Facility Management → `/companies#xandrea-cleaning-service`
 - International Trade → `/companies#primeport-commodity`
 - etc.
 
@@ -189,9 +189,9 @@ Example placement — add a new simple section:
     <p className="font-sans text-lg leading-relaxed text-ink/75">
       Xandrea Harshey Services Inc. is a Calgary-based diversified enterprise
       operating across construction, facility management, international trade,
-      and hospitality. Through our four operating companies — G-Pinoy
-      Construction & Development, Xandrea Facility Services, Primeport Commodity,
-      and our Construction & Property Services division — we deliver integrated
+      and hospitality. Through our three operating companies — Xandrea Cleaning
+      Service, Primeport Commodity, and our Construction & Property Services
+      division — we deliver integrated
       solutions for commercial, residential, and industrial clients across Alberta
       and Canada.
     </p>
@@ -205,13 +205,13 @@ company does or where.
 
 ---
 
-### 10. Create a standalone /construction page for G-Pinoy
+### 10. Create a standalone /construction page for the Construction & Property Services division
 
 **Action:** Create a new file `app/construction/page.tsx`
 
 This page needs:
-- H1 that includes "Calgary" and "Construction" — e.g. "G-Pinoy Construction & Development — Calgary, Alberta"
-- Service list (pull from the G-Pinoy data in content.ts)
+- H1 that includes "Calgary" and "Construction" — e.g. "Construction & Property Services — Calgary, Alberta"
+- Service list (pull from the Construction & Property Services data in content.ts)
 - 3–4 completed project examples with dollar values (pull from projects data)
 - WCB / insurance badge above the fold
 - A "Request a Construction Quote" form or CTA linking to `/contact?type=construction`
@@ -219,12 +219,12 @@ This page needs:
 
 Add it to the sitemap in `app/sitemap.ts`.
 
-Why this matters: "Calgary construction company" and "G-Pinoy Construction Calgary"
+Why this matters: "Calgary construction company" and "Calgary renovation contractor"
 have zero pages to rank for. This is the biggest revenue gap on the entire site.
 
 ---
 
-### 11. Create a standalone /facility-services page for Xandrea Facility Services
+### 11. Create a standalone /facility-services page for Xandrea Cleaning Service
 
 **Action:** Create a new file `app/facility-services/page.tsx`
 
@@ -506,8 +506,8 @@ Undated pages are deprioritized vs dated ones for AI citation.
 
 Go to https://business.google.com and claim/create a listing for:
 - Xandrea Harshey Services Inc. (the holding group)
-- G-Pinoy Construction & Development Inc. (as a separate listing)
-- Xandrea Facility Services (as a separate listing)
+- Xandrea Cleaning Service (as a separate listing)
+- Construction & Property Services (as a separate listing)
 
 Requires the real phone number (item #1 above) before this is possible.
 
@@ -516,8 +516,7 @@ Requires the real phone number (item #1 above) before this is possible.
 ### 27. Create /companies/[slug] individual pages (future sprint)
 
 Consider adding:
-- `/companies/g-pinoy-construction`
-- `/companies/xandrea-facility-services`
+- `/companies/xandrea-cleaning-service`
 - `/companies/primeport-commodity`
 - `/companies/construction-property-services`
 

@@ -13,11 +13,11 @@ import { companies, projects, site } from "@/data/content";
 type Props = { params: { slug: string } };
 
 const ctaLinks: Record<string, { href: string; label: string }> = {
-  "xandrea-facility-services": { href: "/facility-services", label: "View Facility Services" },
+  "xandrea-cleaning-service": { href: "/facility-services", label: "View Cleaning Services" },
 };
 
 const schemaTypes: Record<string, string> = {
-  "xandrea-facility-services": "LocalBusiness",
+  "xandrea-cleaning-service": "LocalBusiness",
   "primeport-commodity": "Organization",
   "construction-property-services": "LocalBusiness",
 };
@@ -48,7 +48,7 @@ export default function CompanySlugPage({ params }: Props) {
 
   const relatedProjects = projects.filter(
     (p) =>
-      (params.slug === "xandrea-facility-services" &&
+      (params.slug === "xandrea-cleaning-service" &&
         p.category === "Facility Services Contracts") ||
       (params.slug === "construction-property-services" &&
         p.category === "Property Restoration") ||

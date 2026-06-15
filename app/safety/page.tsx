@@ -121,7 +121,7 @@ export default function SafetyPage() {
               </Link>{" "}
               and{" "}
               <Link href="/facility-services" className="link-underline text-ink hover:text-gold">
-                Xandrea Facility Services
+                Xandrea Cleaning Service
               </Link>{" "}
               — maintain active WCB Alberta coverage. This protects workers in the event of
               workplace injuries and gives clients confidence that they are working with a

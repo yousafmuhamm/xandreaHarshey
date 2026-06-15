@@ -29,7 +29,7 @@ export const site = {
   regionCode: "AB",
   country: "Canada",
   countryCode: "CA",
-  founded: "2018",
+  founded: "2014",
   email: "xandreaservices@gmail.com",
   phone: "+1 (437) 868-1988",
   hqLine: "Calgary, Alberta, Canada",
@@ -155,7 +155,7 @@ export const about = {
     heading: "Company History",
     // connective — blueprint says "Tell the story..."; facts kept neutral & true to positioning.
     body: [
-      "Xandrea Harshey Services Inc. was founded in Calgary, Alberta, on a simple conviction: that disciplined leadership and operational excellence could build not one great business, but many. What began as a focused construction and property services operation has grown into a diversified enterprise spanning construction, facility services, hospitality, international trade, entertainment, and strategic ventures.",
+      "Founded in Calgary, Alberta, in 2014, Xandrea Harshey Services Inc. was built on a simple conviction: that disciplined leadership and operational excellence could build not one great business, but many. What began as a focused construction and property services operation has grown into a diversified enterprise spanning construction, facility services, hospitality, international trade, entertainment, and strategic ventures.",
       "Each stage of our growth has followed the same playbook — identify a real opportunity, build a capable team around it, and operate it to a standard that earns long-term client relationships. Today the group brings those divisions together under one set of values, creating synergies across industries that few single-sector companies can match.",
       "As we look to the future, our vision is unchanged: to keep building sustainable businesses, creating opportunities for the people and communities we serve, and delivering excellence in everything we do.",
     ],
@@ -216,11 +216,11 @@ export type Company = {
 
 export const companies: Company[] = [
   {
-    slug: "xandrea-facility-services",
-    name: "Xandrea Facility Services",
+    slug: "xandrea-cleaning-service",
+    name: "Xandrea Cleaning Service",
     tagline: "Reliable Solutions. Exceptional Standards.",
     blurb:
-      "Dependable facility and building support services that keep commercial properties operating at their best.", // connective
+      "Professional commercial cleaning, janitorial, and facility support services that keep properties spotless and operating at their best.", // connective
     services: [
       "Commercial Cleaning",
       "Janitorial Services",
@@ -230,8 +230,7 @@ export const companies: Company[] = [
       "Exterior Maintenance",
     ],
     image: ux("1581578731548-c64695cc6952", 1400),
-    imageAlt: "Professional facility services team maintaining a commercial building",
-    logo: "/logos/facility.png",
+    imageAlt: "Professional commercial cleaning team maintaining a commercial building",
   },
   {
     slug: "primeport-commodity",

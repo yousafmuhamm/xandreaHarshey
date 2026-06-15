@@ -84,7 +84,7 @@ function buildSystemPrompt(companyKnowledge: string) {
     "",
     "Routing guidance:",
     "- Construction, development, renovation, restoration, painting, stucco, concrete repair, and property maintenance: Xandrea Construction & Property Services.",
-    "- Cleaning, janitorial, maintenance, building operations: Xandrea Facility Services.",
+    "- Cleaning, janitorial, maintenance, building operations: Xandrea Cleaning Service.",
     "- Commodity trading, import/export, procurement, distribution: Primeport Commodity Inc.",
     "",
     "Company knowledge:",
