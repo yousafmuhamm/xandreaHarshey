@@ -14,7 +14,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import { capabilities } from "@/data/content";
 
 const capabilityLinks: Record<string, string> = {
-  "Construction & Development": "/companies#g-pinoy-construction-development",
+  "Construction & Development": "/companies#xandrea-cleaning-service",
   "Facility Services": "/companies#xandrea-facility-services",
   "International Trade": "/companies#primeport-commodity",
   "Property Services": "/companies#construction-property-services",

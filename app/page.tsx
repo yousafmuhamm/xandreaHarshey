@@ -39,7 +39,7 @@ export default function HomePage() {
             Xandrea Harshey Services Inc. is a Calgary-based, 100% Canadian-owned
             diversified enterprise operating across construction, facility management,
             international trade, and hospitality. Through our four operating companies —
-            G-Pinoy Construction &amp; Development, Xandrea Facility Services, Primeport
+            Xandrea Cleaning service, Xandrea Facility Services, Primeport
             Commodity, and our Construction &amp; Property Services division — we deliver
             integrated solutions for commercial, residential, and industrial clients
             across Alberta and Canada.

@@ -9,25 +9,25 @@ import JsonLd, { breadcrumb } from "@/components/seo/JsonLd";
 import { companies, projects, site } from "@/data/content";
 
 export const metadata: Metadata = {
-  title: "Calgary Construction Company | G-Pinoy Construction & Development",
+  title: "Calgary Cleaning Service | Xandrea Cleaning service",
   description:
-    "G-Pinoy Construction & Development Inc. — Calgary's full-scope construction company delivering residential, commercial, and mixed-use builds across Alberta. WCB covered. Request a construction quote today.",
+    "Xandrea Cleaning service — Calgary's professional residential and commercial cleaning company. Deep cleaning, move-in/move-out, post-construction, and recurring cleaning across Alberta. Fully insured.",
   alternates: { canonical: "/construction" },
   openGraph: {
-    title: "Calgary Construction Company | G-Pinoy Construction & Development",
-    description: "Full-scope construction and development in Calgary, Alberta. Residential, commercial, and mixed-use builds.",
+    title: "Calgary Cleaning Service | Xandrea Cleaning service",
+    description: "Professional residential and commercial cleaning in Calgary, Alberta. Reliable, insured, exceptional standards.",
     url: `${site.url}/construction`,
   },
 };
 
-const gpinoy = companies.find((c) => c.slug === "g-pinoy-construction-development")!;
+const gpinoy = companies.find((c) => c.slug === "xandrea-cleaning-service")!;
 const constructionProjects = projects.filter((p) =>
   ["Commercial Projects", "Residential Projects"].includes(p.category)
 );
 
 const constructionJsonLd = {
   "@context": "https://schema.org",
-  "@type": "HomeAndConstructionBusiness",
+  "@type": "LocalBusiness",
   name: gpinoy.name,
   description: gpinoy.blurb,
   url: `${site.url}/construction`,
@@ -44,7 +44,7 @@ const constructionJsonLd = {
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Construction Services",
+    name: "Cleaning Services",
     itemListElement: gpinoy.services.map((s) => ({
       "@type": "Offer",
       itemOffered: { "@type": "Service", name: s },
@@ -60,7 +60,7 @@ export default function ConstructionPage() {
           [
             { name: "Home", path: "/" },
             { name: "Companies", path: "/companies" },
-            { name: "G-Pinoy Construction", path: "/construction" },
+            { name: "Xandrea Cleaning service", path: "/construction" },
           ],
           site.url
         )}
@@ -68,10 +68,10 @@ export default function ConstructionPage() {
       <JsonLd data={constructionJsonLd} />
 
       <PageHero
-        eyebrow="G-Pinoy Construction & Development Inc. — Calgary, Alberta"
-        titleLines={["Calgary's Construction", "& Development Partner."]}
-        intro="Full-scope construction and development serving Calgary and Alberta — from residential custom builds and commercial projects to mixed-use developments and turnkey delivery. WCB covered. Fully insured."
-        image="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80"
+        eyebrow="Xandrea Cleaning service — Calgary, Alberta"
+        titleLines={["Calgary's Professional", "Cleaning Partner."]}
+        intro="Reliable residential and commercial cleaning serving Calgary and Alberta — from recurring maintenance and deep cleans to move-in/move-out and post-construction cleanup. Fully insured."
+        image="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80"
       />
 
       {/* Trust badges — above the fold for commercial intent visitors */}
@@ -99,8 +99,8 @@ export default function ConstructionPage() {
         <div className="container-site">
           <div className="mb-14 max-w-2xl">
             <SectionHeading
-              eyebrow="What We Build"
-              lines={["Full-scope construction", "across every project type."]}
+              eyebrow="What We Clean"
+              lines={["Professional cleaning", "across every need."]}
             />
           </div>
           <Reveal
@@ -159,7 +159,7 @@ export default function ConstructionPage() {
         <section className="bg-navy py-section text-cream">
           <div className="container-site">
             <div className="mb-14 max-w-2xl">
-              <SectionHeading eyebrow="Why G-Pinoy" lines={[gpinoy.extra.heading]} />
+              <SectionHeading eyebrow="Why Xandrea Cleaning" lines={[gpinoy.extra.heading]} />
             </div>
             <Reveal
               className="grid gap-px overflow-hidden rounded-sm border border-cream/15 bg-cream/15 sm:grid-cols-2 lg:grid-cols-3"
@@ -182,17 +182,17 @@ export default function ConstructionPage() {
           <Reveal>
             <span className="eyebrow mb-6 block text-gold">Start Your Project</span>
             <h2 className="font-serif text-display-md leading-snug text-ink">
-              Request a Construction Quote
+              Request a Cleaning Quote
             </h2>
             <p className="mt-6 font-sans text-base leading-relaxed text-ink/70">
-              Tell us about your project — residential, commercial, or mixed-use. Our team will
+              Tell us about your space — residential, commercial, or post-construction. Our team will
               review your requirements and follow up within one business day.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <Link href="/contact?type=construction" className="btn-gold">
+              <Link href="/contact?type=cleaning" className="btn-gold">
                 <span>Request a Quote</span>
               </Link>
-              <Link href="/companies#g-pinoy-construction-development" className="btn-ink">
+              <Link href="/companies#xandrea-cleaning-service" className="btn-ink">
                 <span>Full Company Profile</span>
               </Link>
             </div>

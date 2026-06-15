@@ -12,12 +12,12 @@ import { companies, projects, site } from "@/data/content";
 type Props = { params: { slug: string } };
 
 const ctaLinks: Record<string, { href: string; label: string }> = {
-  "g-pinoy-construction-development": { href: "/construction", label: "View Construction Services" },
+  "xandrea-cleaning-service": { href: "/construction", label: "View Cleaning Services" },
   "xandrea-facility-services": { href: "/facility-services", label: "View Facility Services" },
 };
 
 const schemaTypes: Record<string, string> = {
-  "g-pinoy-construction-development": "HomeAndConstructionBusiness",
+  "xandrea-cleaning-service": "LocalBusiness",
   "xandrea-facility-services": "LocalBusiness",
   "primeport-commodity": "Organization",
   "construction-property-services": "LocalBusiness",
@@ -49,8 +49,8 @@ export default function CompanySlugPage({ params }: Props) {
 
   const relatedProjects = projects.filter(
     (p) =>
-      (params.slug === "g-pinoy-construction-development" &&
-        ["Commercial Projects", "Residential Projects"].includes(p.category)) ||
+      (params.slug === "xandrea-cleaning-service" &&
+        p.category === "Facility Services Contracts") ||
       (params.slug === "xandrea-facility-services" &&
         p.category === "Facility Services Contracts") ||
       (params.slug === "construction-property-services" &&

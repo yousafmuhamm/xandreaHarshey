@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     "Calgary construction company",
     "facility services Calgary",
     "international trade Canada",
-    "G-Pinoy Construction & Development",
+    "Xandrea Cleaning service",
     "Primeport Commodity",
     "property services Alberta",
     "Canadian enterprise",
@@ -134,7 +134,7 @@ const orgJsonLd = {
     "Project Management",
   ],
   subOrganization: [
-    { "@type": "Organization", name: "G-Pinoy Construction & Development Inc" },
+    { "@type": "Organization", name: "Xandrea Cleaning service" },
     { "@type": "Organization", name: "Xandrea Facility Services" },
     { "@type": "Organization", name: "Primeport Commodity Inc." },
     { "@type": "Organization", name: "Construction & Property Services Division" },

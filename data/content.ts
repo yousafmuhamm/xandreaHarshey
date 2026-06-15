@@ -159,8 +159,8 @@ export const about = {
     heading: "Company History",
     // connective — blueprint says "Tell the story..."; facts kept neutral & true to positioning.
     body: [
-      "Xandrea Harshey Services Inc. was founded in Calgary, Alberta, on a simple conviction: that disciplined leadership and operational excellence could build not one great business, but many. What began as a focused construction and property services operation has grown into a diversified enterprise spanning construction, facility services, hospitality, international trade, entertainment, and strategic ventures.",
-      "Each stage of our growth has followed the same playbook — identify a real opportunity, build a capable team around it, and operate it to a standard that earns long-term client relationships. Today the group brings those divisions together under one set of values, creating synergies across industries that few single-sector companies can match.",
+      "The roots of Xandrea Harshey Services Inc. trace back to 2014, when our founders began building their expertise in construction, property services, and business development in Calgary, Alberta. Those early years were defined by hands-on work, client relationships built one project at a time, and a conviction that disciplined leadership could grow not one great business, but many.",
+      "Xandrea Harshey Services Inc. was formally incorporated and expanded its operations into a diversified enterprise spanning cleaning services, facility management, hospitality, international trade, entertainment, and strategic ventures. Each stage of growth followed the same playbook — identify a real opportunity, build a capable team around it, and operate it to a standard that earns long-term client relationships.",
       "As we look to the future, our vision is unchanged: to keep building sustainable businesses, creating opportunities for the people and communities we serve, and delivering excellence in everything we do.",
     ],
   },
@@ -220,24 +220,23 @@ export type Company = {
 
 export const companies: Company[] = [
   {
-    slug: "g-pinoy-construction-development",
-    name: "G-Pinoy Construction & Development Inc",
-    tagline: "Building Today. Developing Tomorrow.",
+    slug: "xandrea-cleaning-service",
+    name: "Xandrea Cleaning service",
+    tagline: "Professional Cleaning. Exceptional Standards.",
     blurb:
-      "Full-scope construction and development — from residential and commercial builds to mixed-use developments and turnkey project delivery.", // connective
+      "Professional residential and commercial cleaning services delivered with care, reliability, and a commitment to exceptional standards.", // connective
     services: [
-      "Residential Construction",
-      "Commercial Construction",
-      "Mixed-Use Developments",
-      "Property Development",
-      "Site Development",
-      "Renovations & Rehabilitation",
-      "Construction Management",
-      "Turnkey Project Delivery",
+      "Residential Cleaning",
+      "Commercial Cleaning",
+      "Deep Cleaning Services",
+      "Move-In / Move-Out Cleaning",
+      "Post-Construction Cleaning",
+      "Office & Workspace Cleaning",
+      "Recurring Maintenance Cleaning",
+      "Specialized Surface Cleaning",
     ],
-    image: ux("1503387762-592deb58ef4e", 1400),
-    imageAlt: "Construction site with tower crane against a clear sky",
-    logo: "/logos/g-pinoy.png",
+    image: ux("1581578731548-c64695cc6952", 1400),
+    imageAlt: "Professional cleaner maintaining a spotless residential space",
   },
   {
     slug: "xandrea-facility-services",

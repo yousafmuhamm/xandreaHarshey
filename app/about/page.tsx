@@ -63,7 +63,7 @@ export default function AboutPage() {
             <p className="font-sans text-lg leading-relaxed text-ink/70">
               {about.intro2} Our four operating divisions —{" "}
               <Link href="/construction" className="link-underline text-ink hover:text-gold">
-                G-Pinoy Construction & Development
+                Xandrea Cleaning service
               </Link>
               ,{" "}
               <Link href="/facility-services" className="link-underline text-ink hover:text-gold">
@@ -151,7 +151,7 @@ export default function AboutPage() {
             items={[
               {
                 q: "What is Xandrea Harshey Services Inc.?",
-                a: "Xandrea Harshey Services Inc. is a diversified Canadian business group headquartered in Calgary, Alberta. Founded in 2018, the company operates four divisions — G-Pinoy Construction & Development, Xandrea Facility Services, Primeport Commodity, and a Construction & Property Services division — delivering integrated solutions across construction, facility management, international trade, and property services.",
+                a: "Xandrea Harshey Services Inc. is a diversified Canadian business group headquartered in Calgary, Alberta. With roots going back to 2014, the company operates four divisions — Xandrea Cleaning service, Xandrea Facility Services, Primeport Commodity, and a Construction & Property Services division — delivering integrated solutions across cleaning services, facility management, international trade, and property services.",
               },
               {
                 q: "What does Xandrea Harshey Services Inc. do?",
