@@ -231,6 +231,7 @@ export const companies: Company[] = [
     ],
     image: ux("1581578731548-c64695cc6952", 1400),
     imageAlt: "Professional commercial cleaning team maintaining a commercial building",
+    logo: "/logos/xandrea-cleaning.png",
   },
   {
     slug: "primeport-commodity",
