@@ -10,7 +10,7 @@ import { leaders, leadershipFeatures, pageHeroImages, site } from "@/data/conten
 export const metadata: Metadata = {
   title: "Leadership Team — Calgary Board & Executives | Xandrea Harshey",
   description:
-    "Meet the Calgary-based leadership of Xandrea Harshey Services Inc.: Alejandro Pagcaliwagan (Chairman of the Board), Ajit Hardasani (General Manager), and Harlem Pagcaliwagan (Chief Operating Officer).",
+    "Meet the Calgary-based leadership of Xandrea Harshey Services Inc.: Alejandro Pagcaliwagan (Chairman of the Board) and Harlem Pagcaliwagan (Chief Operating Officer).",
   alternates: { canonical: "/leadership" },
   openGraph: {
     title: "Leadership Team | Xandrea Harshey Services Inc. — Calgary, Alberta",

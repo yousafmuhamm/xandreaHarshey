@@ -52,7 +52,7 @@ export default function Leadership({ preview = false }: { preview?: boolean }) {
           )}
         </div>
 
-        <Reveal className="grid gap-8 md:grid-cols-3" stagger>
+        <Reveal className="grid gap-8 md:max-w-4xl md:grid-cols-2" stagger>
           {leaders.map((leader) => (
             <button
               key={leader.slug}
@@ -66,7 +66,7 @@ export default function Leadership({ preview = false }: { preview?: boolean }) {
                   src={leader.image}
                   alt={`${leader.name}, ${leader.title} — Xandrea Harshey Services Inc.`}
                   fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, 448px"
                   className="object-cover grayscale transition-all duration-[1.1s] ease-luxe group-hover:scale-105 group-hover:grayscale-0"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/60 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />

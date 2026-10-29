@@ -309,19 +309,6 @@ export const leaders: Leader[] = [
     ],
   },
   {
-    slug: "ajit-hardasani",
-    name: "Ajit Hardasani",
-    title: "General Manager",
-    short: "Seasoned executive driving corporate growth, partnerships, and operational excellence.",
-    image: "/leadership/ajit-hardasani.jpg",
-    bio: [
-      "Ajit Hardasani is a seasoned business executive, entrepreneur, and corporate leader with extensive experience spanning healthcare, education, trading, consulting, and business development. As General Manager of Xandrea Harshey Services Inc., he is responsible for driving corporate growth, strategic partnerships, operational excellence, and long-term business development initiatives across the organization.",
-      "Prior to joining Xandrea Harshey Services Inc., Ajit held several senior leadership positions, including Chief Operating Officer of Forticare Health Systems International, where he played an instrumental role in strengthening operations, enhancing organizational performance, and supporting business expansion. He also served as President of Red Diamond Trading Corporation and President of Little Friends of St. Mary's Learning Center, demonstrating a proven track record in executive leadership, strategic planning, and institution building.",
-      "In addition to his corporate achievements, Ajit has a creative background as a former songwriter and recording artist in the Philippines, reflecting a unique blend of creativity, innovation, and entrepreneurial thinking. This diverse experience has contributed to his ability to lead organizations with vision, adaptability, and a people-centered approach.",
-      "Recognized for his results-driven leadership style and commitment to excellence, Ajit continues to champion innovation, sustainable growth, and value creation while helping position Xandrea Harshey Services Inc. as a respected and diversified Canadian enterprise.",
-    ],
-  },
-  {
     slug: "harlem-pagcaliwagan",
     name: "Harlem Pagcaliwagan",
     title: "Chief Operating Officer",
